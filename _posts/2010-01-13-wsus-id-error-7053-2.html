@@ -1,0 +1,30 @@
+---
+layout: post
+title: WSUS ID-ERROR 7053
+date: 2010-01-13 10:22:25.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '719'
+permalink: "/2010/01/13/wsus-id-error-7053-2/"
+---
+<p>A mensagem de erro com o ID 7053, ocorreu o WSUS 3.1.</p>
+<p>Esse problema ocorreu devido a uma alteraç&#227;o na vers&#227;o do Framework (uma espécie de <strong><em>"downgrade"</em></strong>). Isso pode ter ocorrido por diversos motivos.</p>
+<p>Para resolver o problema, executei os seguintes passos.</p>
+<ol>
+<li>Iniciar  &gt;&gt; Executar &gt;&gt; inetmgr</li>
+<li>Bot&#227;o Direito no Default Web Site e selecione propriedades</li>
+<li>Na aba ASP.NET altere a vers&#227;o de 1.4322 para 2.0.50727 em seguida click em OK</li>
+<li>Abra um prompt de comando e navegue até a pasta %windir%Microsoft.netframeworkv2.0.50727</li>
+<li>Execute aspnet_regiis &#8211;I</li>
+<li>Em seguida execute iisreset /restart</li>
+</ol>
+<p>Fonte original em: <a href="http://www.techscrapbook.com/?p=57">http://www.techscrapbook.com/?p=57</a></p>

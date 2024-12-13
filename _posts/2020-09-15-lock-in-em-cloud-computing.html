@@ -1,0 +1,101 @@
+---
+layout: post
+title: Lock-in em cloud computing
+date: 2020-09-15 20:08:37.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- cloud
+- Gestão
+- Governança
+- Transformação Digital
+tags: []
+meta:
+  _thumbnail_id: '2539'
+  _oembed_9528ced16486fd749db2f21caf3e681e: "{{unknown}}"
+  _oembed_0021554665e20c86b524f9f8f06bd1cd: "{{unknown}}"
+  _oembed_3485de2a45198c1f8cea7c73b6513779: "{{unknown}}"
+  _publicize_job_id: '48862307745'
+  timeline_notification: '1600211215'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:25039235;s:57:"https://twitter.com/brunorusso/status/1306006610603638790";}}
+  _publicize_done_23188690: '1'
+  _wpas_done_25039235: '1'
+  publicize_twitter_user: brunorusso
+  _wp_old_date: '2020-09-05'
+permalink: "/2020/09/15/lock-in-em-cloud-computing/"
+---
+<p><!-- wp:paragraph --></p>
+<p>A preocupação com o Lock-in na tecnologia sempre vem à tona, quando um novo fornecedor de serviço com um modelo disruptivo entra em atuação no mercado. E em Cloud Computing, isso não poderia ser diferente.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Apesar de Cloud Computing, ser uma tecnologia com muitos anos de estrada, no Brasil ela vem ganhando cada vez mais espaço e a consequência disso é o surgimento do famoso Lock-in.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2>Como evitar o Lock-in?</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Acredito que o Lock-in você não evita, mas aceita. Entretanto, deve aceitar, criando alternativas para diminuir ao máximo o Lock-in.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Abaixo estão listados alguns tipos de Lock-in:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li><strong>Vendor lock-in:</strong> este é o tipo de lock-in mais famoso e compreende a dificuldade na mudança do fornecedor;</li>
+<li><strong>Product Lock-in:</strong> geralmente produtos Open Source, ajudam a evitar este lock-in, porém podem acabar criando outro lock-in, quando disponibilizam APIs exclusivas (exemplo: kubernetes);</li>
+<li><strong>Version lock-in:</strong> é o bloqueio fixado a uma versão específica de um produto. Geralmente um upgrade de versão acarreta este tipo de lock-in;</li>
+<li><strong>Architecture lock-in: </strong>aqui um bom exemplo é o uso excessivo de um componente, o que acaba impedindo a saída para um outro produto. Um bom exemplo é migrar de kubernetes para um ambiente serverless;</li>
+<li><strong>Platform lock-in:</strong> aqui temos as plataforma milagrosas que implementam tudo: gestão de usuário, gestão de configuração, gestão da aplicação, ambiente para a execução de aplicações. Apesar de disponibilizarem uma grande quantidade de recursos, na grande maioria das vezes são componentes exclusivos de um único fornecedor;</li>
+<li><strong>Skills lock-in:</strong> aqui temos o conhecimento técnico do time. Mudar a solução, irá requerer alto investimento em tempo e recursos financeiros para capacitar as pessoas;</li>
+<li><strong>Legal lock-in:</strong> geralmente está associado a questões legais e/ou aspectos jurídicos;</li>
+<li><strong>Mental lock-in:</strong> é o tipo mais perigoso de lock-in, já que afeta o pensamento das pessoas. </li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>Como podemos ver, não existe uma fórmula exata para trabalhar com questões relacionadas ao Lock-in. Por isso, minha visão é que o Lock-in precisa ser aceito, criando alternativas para diminuí-lo e também alternativas para uma possível saída.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Um bom exemplo seria buscar alternativas e tentar entender o esforço necessário (tempo e dinheiro) para migrar do fornecedor A para o B ou da solução A para a solução B. Ao fazer estes estudos, as possibilidades ficam mais claras e uma estratégia de saída começa a se tornar viável e desenhada, em caso de necessidade.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Quando estamos atuando com Cloud Computing, um grande Lock-in é a retirada dos dados. Tecnologias que os provedores de Cloud Computing disponibilizam, são semelhantes em sua maioria. Isso significa que há um produto ou serviço semelhante entre os provedores.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Agora a retirada dos dados é um fator fundamental e que precisa ser gerenciado 100% do tempo. Logo, a retirada dos dados é um Lock-in que precisa ser aceito, porém com soluções para tratá-lo.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Gregor Hohpe, em um artigo muito bem detalhado sobre o tema de Lock-in, publicado no site: <a rel="noreferrer noopener" href="https://martinfowler.com/articles/oss-lockin.html" target="_blank">https://martinfowler.com/articles/oss-lockin.html</a> exemplifica muito bem esse tema.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Ele criou uma matriz, que descreve as nossas escolhas ao longo de dois eixos: <strong>Custo de troca</strong> X <strong>Utilidade única</strong>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"id":2555,"sizeSlug":"large","ampLightbox":true,"ampNoLoading":true} --></p>
+<figure class="wp-block-image size-large" data-amp-noloading="true" data-amp-lightbox="true"><img src="{{ site.baseurl }}/assets/2020/09/lockin_matrix.png?w=500" alt="" class="wp-image-2555" /></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote"><p><em>A unique product feature doesn't always translate into unique utility for you.</em> - <span style="text-decoration:underline;">Gregor Hohpe</span></p>
+</blockquote>
+<p><!-- /wp:quote --></p>
+<p><!-- wp:paragraph --></p>
+<p>Em muitas situações, ficamos presos e gastamos horas e mais horas, tentando evitar o Lock-in. <strong>Resultado: perda de dinheiro</strong>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Em alguns casos para evitar o Lock-in, decidimos não utilizar algumas funcionalidades que um software fornece, fazendo com que subutilizemos o mesmo. <strong>Resultado: perda de dinheiro</strong>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Em outros casos, surgem soluções mirabolantes ou camadas adicionais. <strong>Resultado: perda de dinheiro</strong>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:image {"align":"center","id":2567,"width":452,"height":578,"sizeSlug":"large","className":"is-style-default","ampLightbox":true,"ampNoLoading":true} --></p>
+<div data-amp-noloading="true" data-amp-lightbox="true" class="wp-block-image is-style-default">
+<figure class="aligncenter size-large is-resized"><img src="{{ site.baseurl }}/assets/2020/09/lock-in_resultadolock-in_resultado_vertical-v2.jpg?w=602" alt="" class="wp-image-2567" width="452" height="578" /></figure>
+</div>
+<p><!-- /wp:image --></p>
+<p><!-- wp:paragraph {"align":"center"} --></p>
+<p class="has-text-align-center"><strong>A consequência do esforço para evitar o Lock-in tem como consequência um novo Lock-in. Pense nisso!</strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Imagem do post: https://blog.ipleaders.in/what-is-a-lock-in-clau</p>
+<p><!-- /wp:paragraph --></p>

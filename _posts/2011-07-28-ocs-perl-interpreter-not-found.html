@@ -1,0 +1,29 @@
+---
+layout: post
+title: OCS PERL Interpreter not found
+date: 2011-07-28 09:48:10.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '933'
+permalink: "/2011/07/28/ocs-perl-interpreter-not-found/"
+---
+<p>Ao tentar instalar o <a href="http://en.wikipedia.org/wiki/OCS_Inventory" target="_blank" rel="noopener noreferrer">OCS Inventory</a> em uma máquina <a href="http://en.wikipedia.org/wiki/Centos" target="_blank" rel="noopener noreferrer">CentOS</a> com uma instalação mínina, a seguinte mensagem de erro é apresentada:</p>
+<pre> +----------------------------------------------------------+
+ | Checking for PERL Interpreter... |
+ +----------------------------------------------------------+
+ PERL Interpreter not found !
+ OCS Inventory NG is not able to work without PERL Interpreter.
+ Setup manually PERL first.
+ Installation aborted !</pre>
+<p>Porém, o pacote <strong>PERL</strong> está instalado! Esse erro pode ocorrer devido a falta de um pocote chamado: <strong>which</strong>.</p>
+<p>Para resolver esse problema, basta instalar o pacote.</p>
+<p><em>#yum install which</em></p>

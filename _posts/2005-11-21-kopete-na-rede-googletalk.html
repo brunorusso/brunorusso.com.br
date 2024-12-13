@@ -1,0 +1,26 @@
+---
+layout: post
+title: Kopete na rede GoogleTalk
+date: 2005-11-21 07:53:04.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '913'
+permalink: "/2005/11/21/kopete-na-rede-googletalk/"
+---
+<p>Há algum tempo tento utilizar o <a href="kopete.kde.org" target="_blank" rel="noopener noreferrer">KOPETE</a> para me conectar na rede <strong>jabber</strong> do <a href="talk.google.com" target="_blank" rel="noopener noreferrer">google</a>, e não consigo. sempre que tentava me conectar aparecia o seguinte erro:<br />
+<img src="{{ site.baseurl }}/assets/2005/11/erro_kopete.png" width="221" /><br />
+<br />
+Mas como o tempo, durante o dia é curto, nunca havia parado para tentar descobrir o que causava esse erro.<br />
+Mas como tudo na vida, isso esgotou minha paciência: em um aprocura rápida pelo google, descobri que faltava a <em>"biblioteca"</em> qca-tls. Essa <em>"biblioteca"</em> é um plugin que fornece a capacitação para programas que utilizam a arquitetura de criptografia Qt (QCA).<br />
+<br />
+Para baixar essa "biblioteca", para o slackware, basta instalar o plugin do site: <a href="http://www.linuxpackages.net/search_view.php?by=name&amp;name=QCA-TLS&amp;ver=10.2" target="_blank" rel="noopener noreferrer">linuxpackages.net</a></p>

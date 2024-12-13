@@ -1,0 +1,25 @@
+---
+layout: post
+title: windows [ldap_search_ext_s() for user failed][Operations error]
+date: 2009-01-11 21:18:49.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '368'
+permalink: "/2009/01/11/windows-ldap_search_ext_s-for-user-failedoperations-error/"
+---
+<p>windows [ldap_search_ext_s() for user failed][Operations error]</p>
+<p>Tive que solucionar o erro acima, ao fazerm com que o Apache, faça a autenticaç&#227;o dos usuários em um Domínio controlado pelo Active Directory!</p>
+<p>A maneira que consegui resolver o problema foi fazer a busca no AD, através de uma OU específica, exemplo</p>
+<p><strong><span style="color:#ff0000;">DC=BRUNORUSSO,DC=ETI,DC=BR</span></strong></p>
+<p><strong><span style="color:#ff0000;">Ocorre o erro!</span></strong></p>
+<p><strong><span style="color:#0000ff;">OU=USUARIO,DC=BRUNORUSSO,DC=ETI,DC=BR</span></strong></p>
+<p><strong><span style="color:#0000ff;">Funciona!</span></strong></p>

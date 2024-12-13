@@ -1,0 +1,31 @@
+---
+layout: post
+title: Unindo vários arquivos PDF em um único arquivo PDF
+date: 2009-01-22 10:00:45.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '435'
+permalink: "/2009/01/22/unindo-varios-arquivos-pdf-em-um-unico-arquivo-pdf/"
+---
+<p><a href="http://www.brunorusso.com.br/imagem/pdf_logo.png"><img class="alignright" src="{{ site.baseurl }}/assets/2009/01/pdf_logo.png" alt="PDF" width="128" height="128" /></a></p>
+<p>Outro dia precisei gerar um relatório tendo como base 3 arquivos em <a title="pdf" href="http://pt.wikipedia.org/wiki/Portable_Document_Format">PDF</a>. Na verdade o que eu queria realmente precisa</p>
+<p>va era unir esses 3 arquivos.</p>
+<p>Como no mundo da informática nada ou praticamente nada é impossível, consegue encontrar um post na internet, de uma pessoa que teve o mesmo problema e solucionou de uma forma bem simples.</p>
+<p>A idéia é bem simples e funcional.</p>
+<p>1-) você faz uma relação dos seus arquivos em PDF com o comando:</p>
+<blockquote><p>ls -1 *.pdf &gt;relacao.txt</p></blockquote>
+<p>2-) em seguida você uni os arquivos com o comando:</p>
+<blockquote><p>gs&nbsp; -sDEVICE=pdfwrite -dSAFER -dBATCH -dNOPAUSE -sOutputFile=/tmp/juntar_tudo.pdf @relacao.txt -c -q</p></blockquote>
+<p>Dessa forma você terá todos os PDF's em um único PDF!</p>
+<p>Para ver mais detalhes acesse o <a title="unindo PDFs" href="http://hamacker.wordpress.com/2008/01/31/juntando-pdfs-na-linha-de-comando/">link original dessa dica</a>.</p>

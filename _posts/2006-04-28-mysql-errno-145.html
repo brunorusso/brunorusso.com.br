@@ -1,0 +1,34 @@
+---
+layout: post
+title: 'MySQL - errno: 145'
+date: 2006-04-28 10:58:53.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- mysql
+tags:
+- Banco de Dados
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '98'
+permalink: "/2006/04/28/mysql-errno-145/"
+---
+<p>Tem coisa que ocorre em hora que não é para acontecer.</p>
+<p>Imagine a situação: você por motivos extras (como manutenção na rede elétrica), precisa reiniciar o Servidor (Desligar e Ligar).</p>
+<p>Ao iniciar você percebe que todos os serviços são inicializados normalmente durante o processo de carga do Sistema Operacional. Como não ocorreu nenhum erro, vamos, apenas para desencargo de consiência, testar os sistemas que são fornecidos pelo Servidor.</p>
+<p>Começam os testes. O primeiro sistema está ok, o segundo sistema também está ok, o terceiro sistema também está ok, o quarto sistema: ERRO.</p>
+<p>...Can't open file: 'TABELA.MYI' (errno: 145)....</p>
+<p>Somente uma tabela com erro, as demais tabelas do Banco funcionam sem maiores problemas. O que fazer???</p>
+<p>Primeiramente vamos recorrer ao nosso amigo <a title="google" href="http://www.google.com.br/linux" target="_self" rel="noopener noreferrer">Google</a>, geralmente ele tem uma resposta para as questões mais difíceis de serem explicadas. E dessa vez não foi diferente. :)</p>
+<p>Encontrei um <a title="errno: 145" href="http://www.irclinux.org/freenode/mysql/2005/10/04/pag-3/" target="_self" rel="noopener noreferrer">link</a>, na qual houve o mesmo erro que eu estava tendo. Logo, vamos executar o comando que a dica para solucionar estava passando.</p>
+<p>"mysqlcheck --all-databases --auto-repair"</p>
+<p>(o que fiz fui trocar o parâmetro --all-databases pelo parâmetro -B database)&nbsp;</p>
+<p>Comando executado. Logo, o sistema voltou a funcionar.&nbsp;</p>
+<p>Incluí a resposta para esse erro (pelo menos eu consegui resolver o problema dessa forma), na seção <a title="FAQ" href="http://www.brunorusso.com.br/?page_id=34" target="_self" rel="noopener noreferrer">FAQ/MySQL</a>.&nbsp;</p>

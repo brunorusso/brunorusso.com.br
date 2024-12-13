@@ -1,0 +1,153 @@
+---
+layout: post
+title: Erro ao instalar o Apache no CentOS 5.2
+date: 2009-09-01 18:00:54.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '626'
+permalink: "/2009/09/01/erro-ao-instalar-o-apache-no-centos-52/"
+---
+<p>Após efetuar uma atualizaç&#227;o no Sistema com o comando:<br />
+<code>yum update</code></p>
+<p>todo o sistema base foi atualizado. Porém, precisei instalar o Apache, e o seguinte erro ocorreu.</p>
+<p><code> yum install httpd<br />
+Loaded plugins: fastestmirror<br />
+Loading mirror speeds from cached hostfile<br />
+* base: mirror.centos-br.org<br />
+* updates: mirror.centos-br.org<br />
+* addons: mirror.centos-br.org<br />
+* extras: mirror.centos-br.org<br />
+Setting up Install Process<br />
+Parsing package install arguments<br />
+Resolving Dependencies<br />
+--&gt; Running transaction check<br />
+---&gt; Package httpd.i386 0:2.2.3-22.el5.centos.2 set to be updated<br />
+Traceback (most recent call last):<br />
+File "/usr/bin/yum", line 29, in ?<br />
+yummain.user_main(sys.argv[1:], exit_code=True)<br />
+File "/usr/share/yum-cli/yummain.py", line 229, in user_main<br />
+errcode = main(args)<br />
+File "/usr/share/yum-cli/yummain.py", line 145, in main<br />
+(result, resultmsgs) = base.buildTransaction()<br />
+File "/usr/lib/python2.4/site-packages/yum/__init__.py", line 647, in buildTransaction<br />
+(rescode, restring) = self.resolveDeps()<br />
+File "/usr/lib/python2.4/site-packages/yum/depsolve.py", line 696, in resolveDeps<br />
+CheckDeps, checkinstalls, checkremoves, missing = self._resolveRequires(errors)<br />
+File "/usr/lib/python2.4/site-packages/yum/depsolve.py", line 779, in _resolveRequires<br />
+thisneeds = self._checkInstall(txmbr)<br />
+File "/usr/lib/python2.4/site-packages/yum/depsolve.py", line 851, in _checkInstall<br />
+provs = self.tsInfo.getProvides(*req)<br />
+File "/usr/lib/python2.4/site-packages/yum/transactioninfo.py", line 432, in getProvides<br />
+result.update(self.getNewProvides(name, flag, version))<br />
+File "/usr/lib/python2.4/site-packages/yum/transactioninfo.py", line 414, in getNewProvides<br />
+for pkg, hits in self.pkgSack.getProvides(name, flag, version).iteritems():<br />
+File "/usr/lib/python2.4/site-packages/yum/packageSack.py", line 300, in getProvides<br />
+return self._computeAggregateDictResult("getProvides", name, flags, version)<br />
+File "/usr/lib/python2.4/site-packages/yum/packageSack.py", line 470, in _computeAggregateDictResult<br />
+sackResult = apply(method, args)<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 861, in getProvides<br />
+return self._search("provides", name, flags, version)<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 43, in newFunc<br />
+return func(*args, **kwargs)<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 837, in _search<br />
+for pkg in self.searchFiles(name, strict=True):<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 43, in newFunc<br />
+return func(*args, **kwargs)<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 586, in searchFiles<br />
+self._sql_pkgKey2po(rep, cur, pkgs)<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 470, in _sql_pkgKey2po<br />
+pkg = self._packageByKey(repo, ob['pkgKey'])<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 413, in _packageByKey<br />
+po = self.pc(repo, cur.fetchone())<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 68, in __init__<br />
+self._read_db_obj(db_obj)<br />
+File "/usr/lib/python2.4/site-packages/yum/sqlitesack.py", line 94, in _read_db_obj<br />
+setattr(self, item, _share_data(db_obj[item]))<br />
+TypeError: unsubscriptable object </code></p>
+<p>Para corrigir esse problema, executei:<br />
+<code>yum clean all<br />
+</code><br />
+e em seguida:<br />
+<code>yum install httpd<br />
+Loaded plugins: fastestmirror<br />
+Determining fastest mirrors<br />
+* base: mirror.centos-br.org<br />
+* updates: mirror.centos-br.org<br />
+* addons: mirror.centos-br.org<br />
+* extras: mirror.centos-br.org<br />
+base                                                                                                                                  | 1.1 kB     00:00<br />
+primary.xml.gz                                                                                                                        | 878 kB     00:00<br />
+base                                                           2508/2508<br />
+updates                                                                                                                               |  951 B     00:00<br />
+primary.xml.gz                                                                                                                        | 317 kB     00:00<br />
+updates                                                        478/478<br />
+addons                                                                                                                                |  951 B     00:00<br />
+primary.xml.gz                                                                                                                        |  157 B     00:00<br />
+extras                                                                                                                                | 1.1 kB     00:00<br />
+primary.xml.gz                                                                                                                        | 107 kB     00:00<br />
+extras                                                         324/324<br />
+Setting up Install Process<br />
+Parsing package install arguments<br />
+Resolving Dependencies<br />
+--&gt; Running transaction check<br />
+---&gt; Package httpd.i386 0:2.2.3-22.el5.centos.2 set to be updated<br />
+filelists.xml.gz                                                                                                                      | 2.8 MB     00:00<br />
+filelists.xml.gz                                                                                                                      | 2.4 MB     00:00<br />
+filelists.xml.gz                                                                                                                      | 151 kB     00:00<br />
+filelists.xml.gz                                                                                                                      |  150 B     00:00<br />
+--&gt; Processing Dependency: libaprutil-1.so.0 for package: httpd<br />
+--&gt; Processing Dependency: libapr-1.so.0 for package: httpd<br />
+--&gt; Running transaction check<br />
+---&gt; Package apr-util.i386 0:1.2.7-7.el5_3.2 set to be updated<br />
+--&gt; Processing Dependency: libpq.so.4 for package: apr-util<br />
+---&gt; Package apr.i386 0:1.2.7-11.el5_3.1 set to be updated<br />
+--&gt; Running transaction check<br />
+---&gt; Package postgresql-libs.i386 0:8.1.11-1.el5_1.1 set to be updated<br />
+--&gt; Finished Dependency Resolution</code></p>
+<p>Dependencies Resolved</p>
+<p>================================<br />
+Package                                 Arch                         Version                                          Repository                       Size<br />
+================================<br />
+Installing:<br />
+httpd                                   i386                         2.2.3-22.el5.centos.2                            updates                         1.2 M<br />
+Installing for dependencies:<br />
+apr                                     i386                         1.2.7-11.el5_3.1                                 updates                         123 k<br />
+apr-util                                i386                         1.2.7-7.el5_3.2                                  updates                          76 k<br />
+postgresql-libs                         i386                         8.1.11-1.el5_1.1                                 base                            196 k</p>
+<p>Transaction Summary<br />
+================================<br />
+Install      4 Package(s)<br />
+Update       0 Package(s)<br />
+Remove       0 Package(s)</p>
+<p>Total download size: 1.6 M<br />
+Is this ok [y/N]: y<br />
+Downloading Packages:<br />
+(1/4): apr-util-1.2.7-7.el5_3.2.i386.rpm                                                                                              |  76 kB     00:00<br />
+(2/4): apr-1.2.7-11.el5_3.1.i386.rpm                                                                                                  | 123 kB     00:00<br />
+(3/4): postgresql-libs-8.1.11-1.el5_1.1.i386.rpm                                                                                      | 196 kB     00:00<br />
+(4/4): httpd-2.2.3-22.el5.centos.2.i386.rpm                                                                                           | 1.2 MB     00:00<br />
+-------------------------------------------------<br />
+Total                                                                                                                        5.1 MB/s | 1.6 MB     00:00<br />
+Running rpm_check_debug<br />
+Running Transaction Test<br />
+Finished Transaction Test<br />
+Transaction Test Succeeded<br />
+Running Transaction<br />
+Installing     : apr                                               [1/4]<br />
+Installing     : postgresql-libs                                   [2/4]<br />
+Installing     : apr-util                                          [3/4]<br />
+Installing     : httpd                                             [4/4]</p>
+<p>Installed: httpd.i386 0:2.2.3-22.el5.centos.2<br />
+Dependency Installed: apr.i386 0:1.2.7-11.el5_3.1 apr-util.i386 0:1.2.7-7.el5_3.2 postgresql-libs.i386 0:8.1.11-1.el5_1.1<br />
+Complete!</p>
+<p>Fato triste s&#227;o as depend&#234;ncias....por isso prefiro Slackware!!!</p>

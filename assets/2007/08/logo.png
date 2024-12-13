@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Linux Chix &#8211; by Brasileiros</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Feed para Linux Chix &raquo;" href="http://www.linuxchix.org.br/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Linux Chix &raquo;" href="http://www.linuxchix.org.br/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.linuxchix.org.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='http://www.linuxchix.org.br/wp-includes/css/dist/block-library/style.min.css?ver=5.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-theme-css'  href='http://www.linuxchix.org.br/wp-includes/css/dist/block-library/theme.min.css?ver=5.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='visual-blog-fonts-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A400%2C700%7CPT+Serif%3A400%2C500%2C700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='http://www.linuxchix.org.br/wp-content/themes/visual-blog/assets/css/bootstrap.min.css?ver=4.4.1%20' type='text/css' media='all' />
+<link rel='stylesheet' id='visual-blog-blocks-css'  href='http://www.linuxchix.org.br/wp-content/themes/visual-blog/assets/css/blocks.css?ver=5.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='visual-main-css'  href='http://www.linuxchix.org.br/wp-content/themes/visual-blog/assets/css/visual-main.css?ver=1.0.3%20' type='text/css' media='all' />
+<link rel='stylesheet' id='visual-blog-style-css'  href='http://www.linuxchix.org.br/wp-content/themes/visual-blog/style.css?ver=5.5.3' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.linuxchix.org.br/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp' id='jquery-core-js'></script>
+<link rel="https://api.w.org/" href="http://www.linuxchix.org.br/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.linuxchix.org.br/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.linuxchix.org.br/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.5.3" />
+</head>
+
+<body class="home blog hfeed">
+	<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<header id="masthead" class="site-header">
+		<div class="top-menu bg-dark text-light pb-2 pt-2">
+			<div class="container">
+								<div class="row">
+					<div class="col-auto">
+						<div class="address-one">Hello!!</div>
+					</div>
+					<div class="col-auto">
+						<div class="address-two"></div>
+					</div>
+					<div class="col-auto ml-auto text-right">
+						<div class="top-menu">
+					<nav id="top-navigation" class="top-navigation">
+												
+						
+					</nav><!-- #site-navigation -->	
+				</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+			        		<div class="header-content ">
+		<div class="container">
+		<div class="site-branding mb-5 mt-5 text-center">
+							<h1 class="site-title"><a href="http://www.linuxchix.org.br/" rel="home">Linux Chix</a></h1>
+							<p class="site-description">
+					by Brasileiros				</p>
+					</div><!-- .site-branding -->
+		</div><!-- .container -->
+		</div><!-- .header content -->
+		
+            <nav class="navbar navbar-expand-lg navbar-light bg-light text-center vblog-menu">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#visual-main" aria-controls="visual-main" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ 
+    
+    
+
+</nav>
+
+		
+
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main mt-5 pt-5 mb-5 pb-5">
+
+		
+<article id="post-12" class="post-12 post type-post status-publish format-standard has-post-thumbnail hentry category-tecnologia">
+	<header class="entry-header">
+		<h2 class="entry-title"><a href="http://www.linuxchix.org.br/e-possivel-trocar-o-windows-pelo-linux/" rel="bookmark">É possível trocar o Windows pelo Linux?</a></h2>			<div class="entry-meta">
+				<span class="posted-on">Posted on <a href="http://www.linuxchix.org.br/e-possivel-trocar-o-windows-pelo-linux/" rel="bookmark"><time class="entry-date published updated" datetime="2020-03-30T17:16:51+00:00">março 30, 2020</time></a></span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="http://www.linuxchix.org.br/author/gabriel/">Gabriel</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+		<a class="post-thumbnail" href="http://www.linuxchix.org.br/e-possivel-trocar-o-windows-pelo-linux/" aria-hidden="true" tabindex="-1">
+			<img width="960" height="640" src="http://www.linuxchix.org.br/wp-content/uploads/2020/03/20163245765244.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="É possível trocar o Windows pelo Linux?" loading="lazy" srcset="http://www.linuxchix.org.br/wp-content/uploads/2020/03/20163245765244.jpg 960w, http://www.linuxchix.org.br/wp-content/uploads/2020/03/20163245765244-300x200.jpg 300w, http://www.linuxchix.org.br/wp-content/uploads/2020/03/20163245765244-768x512.jpg 768w" sizes="(max-width: 960px) 100vw, 960px" />		</a>
+
+		
+	<div class="entry-content">
+		<p>O Windows é certamente o sistema operacional mais usado no mundo. E, infelizmente, esse não é um mercado muito competitivo. As únicas opções são, praticamente, o Linux e o Mac OS X.</p>
+<h2>Por que parar de usar o Windows?</h2>
+<p>Para as pessoas que estão acostumadas com o Windows, pode parecer que não existe motivo para trocar o sistema. Ainda mais que o Windows tem melhorado bastante nas últimas versões. Mas usando apenas o Windows, o usuário pode não perceber quão ruim o Windows é. Usando o Windows, estamos em um sistema inseguro, cheio de vírus, ineficiente, que vive dando problema e é muito caro. A Microsoft cria uma nova versão do Windows sem levar em consideração os computadores que já existem, o que faz com que os usuários tenham que atualizar seus computadores para usar cada nova versão lançada.</p>
+<p>Usando o Linux é possível ter um sistema rápido e seguro, que funcione bem mesmo em um computador mais velho. As diferença em relação aos softwares não é um fator de peso (na maioria dos casos) e as vantagens de trocar o Windows pelo Linux excedem as desvantagens.</p>
+<h2>Usando o Linux</h2>
+<p>O Linux (ou melhor, GNU Linux) é um sistema operacional open-source muito eficiente, estável e seguro. Ele é organizado em distribuições (também chamadas de distros) que nada mais é do que versões diferentes lançadas por grupos de desenvolvedores diferentes.</p>
+<p>Em especial, a distribuição Ubuntu é a que se mais destaca em relação a facilidade de uso. A cada versão o Ubuntu se torna mais agradável e fácil de usar, já que esse sempre foi o foco dessa distribuição. Na verdade, o Ubuntu é tão bom que vários amigos usam, mesmo tendo conhecimento suficiente para usar versões mais avançadas do Linux.</p>
+<h2>O Ubuntu</h2>
+<p>O Ubuntu pode ser baixado gratuitamente para ser gravado em um CD. O CD funciona tanto para fazer a instalação do sistema quanto para testar o sistema sem instalar. Basta você reiniciar o seu computador com o CD dentro e o Ubuntu será carregado. Assim você testa ele e se quiser faz a instalação, que é muito fácil de ser feita, bastando acompanhar as instruções na tela.</p>
+<h2>Softwares Alternativos</h2>
+<p>Muitos dos softwares que as pessoas estão acostumadas a usar no Windows não estão disponíveis para Linux. Mas a comunidade de desenvolvedores cria alternativas livres para esses softwares que são muito bons, algumas vezes melhores que os originais. Com o Ubuntu você poderá criar documentos de texto, planilhas e apresentações, navegar na internet e muitas outras coisas que está acostumado a fazer no Windows.</p>
+<p>Em suma, a resposta para a pergunta do post, na minha opinião, é que sim, dá para trocar o Windows pelo Linux usando o Ubuntu. É apenas necessário um pouco de curiosidade e perseverança sempre utilizando os ótimos tutorias (em texto e vídeo) que existem na internet.</p>
+<p><img src="https://web.archive.org/web/20130502092941im_/http://yarpp.org/pixels/c7e5d63dfc1b73e41fc5e7365c37e4d5" /></p>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="cat-links">Posted in <a href="http://www.linuxchix.org.br/category/tecnologia/" rel="category tag">Tecnologia</a></span><span class="comments-link"><a href="http://www.linuxchix.org.br/e-possivel-trocar-o-windows-pelo-linux/#respond">Leave a Comment<span class="screen-reader-text"> on É possível trocar o Windows pelo Linux?</span></a></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-12 -->
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+		</div>
+			<div class="col-lg-4">
+	
+<aside id="secondary" class="widget-area mt-5 pt-5 mb-5 pb-5">
+	<section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://www.linuxchix.org.br/">
+				<label>
+					<span class="screen-reader-text">Pesquisar por:</span>
+					<input type="search" class="search-field" placeholder="Pesquisar &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Pesquisar" />
+			</form></section><section id="categories-2" class="widget widget_categories"><h2 class="widget-title">Categorias</h2>
+			<ul>
+					<li class="cat-item cat-item-1"><a href="http://www.linuxchix.org.br/category/tecnologia/">Tecnologia</a>
+</li>
+			</ul>
+
+			</section>
+		<section id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widget-title">Posts recentes</h2>
+		<ul>
+											<li>
+					<a href="http://www.linuxchix.org.br/e-possivel-trocar-o-windows-pelo-linux/">É possível trocar o Windows pelo Linux?</a>
+									</li>
+					</ul>
+
+		</section></aside><!-- #secondary -->
+	
+		</div>
+	
+	</div><!-- #row -->
+</div><!-- Container -->
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer bg-light pb-4 pt-4">
+		<div class="container">
+		<div class="site-info text-center">
+			<div class="footer-copytext">
+				<p></p>
+			</div>
+				Proudly powered by WordPress			<span class="sep"> | </span>
+				Theme: visual-blog by Theme Cool.		</div><!-- .site-info -->
+		</div><!-- .site container -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='http://www.linuxchix.org.br/wp-content/themes/visual-blog/assets/js/bootstrap.min.js?ver=4.1.1' id='bootstrap-js-js'></script>
+<script type='text/javascript' src='http://www.linuxchix.org.br/wp-content/themes/visual-blog/assets/js/skip-link-focus-fix.js?ver=1.0.0' id='visual-blog-skip-link-focus-fix-js'></script>
+<script type='text/javascript' src='http://www.linuxchix.org.br/wp-content/themes/visual-blog/assets/js/visual-blog.js?ver=1.0.3' id='visual-blog-js-js'></script>
+<script type='text/javascript' src='http://www.linuxchix.org.br/wp-includes/js/wp-embed.min.js?ver=5.5.3' id='wp-embed-js'></script>
+
+</body>
+</html>

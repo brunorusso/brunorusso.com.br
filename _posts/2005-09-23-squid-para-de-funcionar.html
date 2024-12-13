@@ -1,0 +1,27 @@
+---
+layout: post
+title: Squid para de funcionar
+date: 2005-09-23 15:47:37.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '4'
+  original_post_id: '4'
+  _wp_old_slug: '4'
+permalink: "/2005/09/23/squid-para-de-funcionar/"
+---
+<p>Segunda vez que passo pelo mesmo problema!!! :(</p>
+<p>Inicio o squid e sem mais nem menos ele "<em>cai</em>". Não exibe nenhum erro nos log's nem no log do sistema. Daí quando você vai verificar existem dezenas de processos abertos (isso é devido a quantidade de vezes que você iniciou o Serviço).</p>
+<p>Como resolver o problema? Simples :D</p>
+<p>Vá até o diretório de <em>"spool"</em>, geralmente é locaizado em /var/spool/squid . Nesse diretório deverá existir alguns arquivos. Devido à esses arquivos é que o squid inicia e cai.</p>
+<p>O diretório spool do squid é o local onde ele faz "cache" dos arquivos acessados. Você poderá remover todo esse diretório, mas tome cuidado para não fazer besteira.</p>
+<p>Remoção feita é só iniciar o squid.<br />
+:D</p>

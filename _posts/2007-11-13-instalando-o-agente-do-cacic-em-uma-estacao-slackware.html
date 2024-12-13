@@ -1,0 +1,106 @@
+---
+layout: post
+title: Instalando o Agente do cacic em uma estação Slackware
+date: 2007-11-13 21:30:44.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '260'
+permalink: "/2007/11/13/instalando-o-agente-do-cacic-em-uma-estacao-slackware/"
+---
+<p><img src="{{ site.baseurl }}/assets/2007/11/cacic.gif" width="50" height="50" align="left" /> Vou tentar explicar, passo-a-passo, como instalar o agente do <a href="http://guialivre.governoeletronico.gov.br">CACIC</a> em uma estação GNU/LINUX, mais precisamente em uma estação com <a href="http://www.slackware.com">Slackware</a>.</p>
+<p>Para iniciar, vamos ao diretório /tmp. Em seguida vamos efetuar o download do dmidecode, que é um programa que detecta informações sobre a placa-mãe e outros períféricos. Após, o download, vamos descompactar e instalar o dmedecode. Todos esses passo são feitos abaixo.</p>
+<blockquote><p>Atenção, os comandos abaixo são executados todos com usuário <strong>root</strong>.</p></blockquote>
+<p><code><br />
+cd /tmp<br />
+wget <a href="http://download.savannah.gnu.org/releases/dmidecode/dmidecode-2.9.tar.gz">http://download.savannah.gnu.org/releases/dmidecode/dmidecode-2.9.tar.gz</a><br />
+tar xzvf dmidecode-2.9.tar.gz<br />
+cd dmidecode<br />
+make<br />
+make install<br />
+</code></p>
+<p>Para que o agente co CACIC funcione 100% é necessário alguns módulos de PERL, são eles: <strong>libwww-perl</strong>, <strong>HTML-Tagset</strong>, <strong>HTML-Parser</strong>, <strong>XML-Writer</strong>, <strong>Linux-Distribution</strong>, <strong>Linux-Distribution-Packages</strong>.</p>
+<blockquote><p>Caso você ache conveniente pode ser utilizado o cpan para instalar esses pacotes.</p></blockquote>
+<p>O download e instalação dos pacotes citados é feito nos passos baixo:</p>
+<h3>libwww-perl</h3>
+<p><code><br />
+wget<br />
+<a href="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/libwww-perl-5.808.tar.gz">http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/libwww-perl-5.808.tar.gz</a><br />
+tar xzvf libwww-perl-5.808.tar.gz<br />
+cd libwww-perl-5.808<br />
+perl Makefile.PL</code></p>
+<p><code><br />
+</code></p>
+<p><code>Do you want to install lwp-request? [y] y<br />
+Do you want to install lwp-mirror? [y] y<br />
+Do you want to install lwp-rget? [y] y<br />
+Do you want to install lwp-download? [y] y<br />
+Do you want to install the GET alias? [n] n<br />
+Do you want to install the HEAD alias? [n] n<br />
+Do you want to install the POST alias? [n] n </code></p>
+<p><code>make<br />
+make install</code></p>
+<h3>HTML-Tagset</h3>
+<p><code>wget<br />
+<a href="http://cpan.kinghost.net/authors/id/P/PE/PETDANCE/HTML-Tagset-3.10.tar.gz">http://cpan.kinghost.net/authors/id/P/PE/PETDANCE/HTML-Tagset-3.10.tar.gz</a><br />
+tar xzvf HTML-Tagset-3.10.tar.gz<br />
+cd HTML-Tagset-3.10<br />
+perl Makefile.PL<br />
+make<br />
+make install</code></p>
+<h3>HTML-Parser</h3>
+<p><code>wget<br />
+<a href="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Parser-3.56.tar.gz">http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Parser-3.56.tar.gz</a><br />
+tar xzvf HTML-Parser-3.56.tar.gz<br />
+cd HTML-Parser-3.56<br />
+perl Makefile.PL<br />
+make<br />
+make install</code></p>
+<h3>XML-Writer</h3>
+<p><code>wget<br />
+<a href="http://search.cpan.org/CPAN/authors/id/J/JO/JOSEPHW/XML-Writer-0.603.tar.gz">http://search.cpan.org/CPAN/authors/id/J/JO/JOSEPHW/XML-Writer-0.603.tar.gz</a><br />
+tar xzvf XML-Writer-0.603.tar.gz<br />
+cd XML-Writer-0.603<br />
+perl Makefile.PL<br />
+make<br />
+make install</code></p>
+<h3>Linux-Distribution</h3>
+<p><code>wget<br />
+<a href="http://search.cpan.org/CPAN/authors/id/K/KE/KERBERUS/Linux-Distribution-0.14.tar.gz">http://search.cpan.org/CPAN/authors/id/K/KE/KERBERUS/Linux-Distribution-0.14.tar.gz</a><br />
+tar xzvf Linux-Distribution-0.14.tar.gz<br />
+cd Linux-Distribution-0.14<br />
+perl Makefile.PL<br />
+make<br />
+make install</code></p>
+<h3>Linux-Distribution-Packages</h3>
+<p><code>wget<br />
+<a href="http://search.cpan.org/CPAN/authors/id/J/JU/JUDITH/Linux-Distribution-Packages-0.05.tar.gz">http://search.cpan.org/CPAN/authors/id/J/JU/JUDITH/Linux-Distribution-Packages-0.05.tar.gz</a><br />
+tar zxvf Linux-Distribution-Packages-0.05.tar.gz<br />
+cd Linux-Distribution-Packages-0.05<br />
+perl Makefile.PL<br />
+make<br />
+make install<br />
+</code></p>
+<p>Agora que todas as dependências foram satisfeitas, vamos baixar e instalar o CACIC.</p>
+<p><code>wget <a href="http://guialivre.governoeletronico.gov.br/cacic/debian/cacic-agente_2.2.2rc1.tar.gz">http://guialivre.governoeletronico.gov.br/cacic/debian/cacic-agente_2.2.2rc1.tar.gz</a><br />
+tar xzvf cacic-agente_2.2.2rc1.tar.gz<br />
+cd cacic-agente-2.2.2rc1<br />
+mkdir /etc/cacic<br />
+cp cacic.conf<br />
+chmod +x cacic-agente<br />
+cp cacic-agente /usr/local/sbin<br />
+</code></p>
+<p>Edite o arquivo /etc/cacic/cacic.conf e informe o IP ou o nome do SERVIDOR. Feito isso, execute o agente do CACIC.</p>
+<p><code>cacic-agente<br />
+</code></p>

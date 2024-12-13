@@ -1,0 +1,283 @@
+---
+layout: post
+title: Alguns detalhes do IPV6
+date: 2014-05-19 13:39:00.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '1346'
+permalink: "/2014/05/19/alguns-detalhes-do-ipv6/"
+---
+<p>Alguns pitacos sobre o IPV6, que já começou a ser utilizado pelas grandes empresas de Internet.</p>
+<p style="color:#000000;"><em><img class="alignleft" src="{{ site.baseurl }}/assets/2014/05/bnr-logo-ipv6.gif" alt="" width="53" height="35" /></em></p>
+<p style="color:#000000;"><em>  Esse material, foi escrito com base no treinamento de IPV6, oferecido pelo <acronym title="Common Gateway Interface">CGI</acronym>.br, que está disponível através o endereço: <a class="urlextern" style="color:#436976;" title="http://curso.ipv6.br/" href="http://curso.ipv6.br/" rel="nofollow">http://curso.ipv6.br/</a></em></p>
+<p style="color:#000000;">O endereçamento aumentou de 32 para 128 bits.</p>
+<p style="color:#000000;"><strong>192.168.0.15 </strong>2001:0db8:12ff:cafe:cade:d4d0:087c:140b</p>
+<p style="color:#000000;"><span class="u">340.282.366.920.938.463.374.607.431.211.546</span> esse número ao lado, é a quantidade de endereços IP's para o protocolo IPV6!!! (acho que um dia vai acabar...)</p>
+<p style="color:#000000;">O IPV6, diferente do IPV4, reserva metade dos bits para endereçamento local. Assim, são possíveis 18.446.744.073.709.551.626 (2^64) redes IPV6 na Internet. Cada uma com a mesma quantidade de dispositivos.</p>
+<h2 style="color:#000000;">Vantagens do IPV6</h2>
+<ol>
+<li class="level1">
+<div class="li">Definição e uma arquitetura hierárquica da Internet, possibilitando um encaminhamento mais eficiente dos pacotes e dados;</div>
+</li>
+<li class="level1">
+<div class="li">Distribuição de IP's fixos para DSL, telefones móveis;</div>
+</li>
+<li class="level1">
+<div class="li">Todos os dispositivos conectados à Internet terão um ip válido;</div>
+</li>
+<li class="level1">
+<div class="li">Utilização de uma arquitetura fim-a-fim;</div>
+</li>
+<li class="level1">
+<div class="li">Eliminação dos problemas causados pelo NAT.</div>
+</li>
+<li class="level1">
+<div class="li">O protocolo IPSec é obrigatório no IPV6</div>
+<ol>
+<li class="level2">
+<div class="li">Garantindo a autenticidade;</div>
+</li>
+<li class="level2">
+<div class="li">Privacidade;</div>
+</li>
+<li class="level2">
+<div class="li">Integridade dos dados na comunicação.</div>
+</li>
+</ol>
+</li>
+<li class="level1">
+<div class="li">A fragmentação dos pacotes é realizada apenas na origem, com o intuito de agilizar o roteamento de pacotes;</div>
+</li>
+</ol>
+<h2>O Cabeçalho do IPV6</h2>
+<p style="color:#000000;">Seis campos de cabeçalho do IPV4 foram removidos no IPV6, são eles:</p>
+<ol style="color:#000000;">
+<li class="level1">
+<div class="li">Tamanho do Cabeçalho (IHL);</div>
+</li>
+<li class="level1">
+<div class="li">Identificação (identification);</div>
+</li>
+<li class="level1">
+<div class="li">Flags;</div>
+</li>
+<li class="level1">
+<div class="li">Deslocamento do Fragmento (Frameset Offset);</div>
+</li>
+<li class="level1">
+<div class="li">Soma da verificação do Cabeçalho (checksum);</div>
+</li>
+<li class="level1">
+<div class="li">Opções + Complemento (Options + Padding).</div>
+</li>
+</ol>
+<p style="color:#000000;">Quatro campos foram renomeados e a sua posição foi modificada na estrutura do protocolo, são eles;</p>
+<ol style="color:#000000;">
+<li class="level1">
+<div class="li">Tipo de serviço, agora é chamado de Classe de tráfego;</div>
+</li>
+<li class="level1">
+<div class="li">Tamanho total, agora é identificado de Tamanho de Dados;</div>
+</li>
+<li class="level1">
+<div class="li">Tempo de vida, agora é conhecido como Limite de encaminhamento;</div>
+</li>
+<li class="level1">
+<div class="li">Protocolo, é conhecido como Próximo cabeçalho.</div>
+</li>
+</ol>
+<p style="color:#000000;">Para finalizar a criação do cabeçalho do IPV6, o campo <strong>Identificador de Fluxo</strong> foi adicionado. O exemplo abaixo, mostra como é formado o cabeçalho do IPV6.</p>
+<p style="color:#000000;"><a href="https://brusso2014.files.wordpress.com/2020/08/5b3ed-ipv6_identificador_fluxo.png"><img class="aligncenter size-full wp-image-1347" src="{{ site.baseurl }}/assets/2014/05/5b3ed-ipv6_identificador_fluxo.png" alt="ipv6_identificador_fluxo" width="418" height="114" /></a></p>
+<p style="color:#000000;">A tabela abaixo, mostra algumas informações sobre cada campo do cabeçalho do IPV6.</p>
+<p style="color:#000000;"><a href="https://brusso2014.files.wordpress.com/2020/08/4dce0-ipv6_cabecalho.png"><img class="aligncenter size-full wp-image-1350" src="{{ site.baseurl }}/assets/2014/05/4dce0-ipv6_cabecalho.png" alt="ipv6_cabecalho" width="1145" height="300" /></a></p>
+<p style="color:#000000;"><strong>Cabeçalhos de Extensão</strong> localizam-se entre o cabeçalho base e o cabeçalho da camada de transporte. Não existem quantidades mínimas ou máximas para os cabeçalhos de extensão. A tabela abaixo, tenta explicar o valor para os cabeçalhos de extensão.</p>
+<p><a href="https://brusso2014.files.wordpress.com/2020/08/9529b-ipv6_cabecalho_extensao.png"><img class="aligncenter size-full wp-image-1351" src="{{ site.baseurl }}/assets/2014/05/9529b-ipv6_cabecalho_extensao.png" alt="ipv6_cabecalho_extensao" width="1178" height="229" /></a></p>
+<p><strong style="color:#000000;">Cabeçalhos de Extensão (<span class="u">REGRAS)</span></strong><span style="color:#000000;"> - a ordem da utilização dos cabeçalhos de extensão deve ser a semelhante da tabela anterior. </span><em style="color:#000000;">O roteador apenas processará o cabeçalho <strong>Hop-By-Hop</strong>, otimizando o tempo de processamento</em><span style="color:#000000;">. Caso o endereço de destino tiver um endereço </span><em style="color:#000000;">multicast</em><span style="color:#000000;"> todos os nós da rede processarão os cabeçalhos de extensão.</span></p>
+<h2>Endereçamento do IPV6</h2>
+<p style="color:#000000;">A sintaxe utilizada para representar o endereçamento do protocolo IPV6 é totalmente diferente quando comparada ao protocolo IPV4. Vejamos:</p>
+<ol style="color:#000000;">
+<li class="level1">
+<div class="li">O endereço do IPV6 é formado por um conjunto de 128 bits;</div>
+</li>
+<li class="level1">
+<div class="li">O endereço do IPV6 é representado por oito grupos de 16 bits, separados por <strong>:</strong>, escritos diretamente em <strong>hexadecimais</strong>;</div>
+</li>
+<li class="level1">
+<div class="li">Os caracteres podem estar em maiúsculos ou minúsculos;</div>
+</li>
+<li class="level1">
+<div class="li">É permitida abreviação da seguinte maneira:</div>
+<ol>
+<li class="level2">
+<div class="li">Omição dos zeros à esquerda (isso somente é permitido uma única vez);</div>
+</li>
+<li class="level2">
+<div class="li">Representar os zeros contínuos por <strong>::</strong>.</div>
+</li>
+</ol>
+</li>
+</ol>
+<p style="color:#000000;">A tabela abaixo, mostra um exemplo de um endereço IPV6 e o mesmo endereço IPV6 abreviado.</p>
+<p style="color:#000000;"><a href="https://brusso2014.files.wordpress.com/2020/08/de667-ipv6_enderecamento.png"><img class="aligncenter size-full wp-image-1348" src="{{ site.baseurl }}/assets/2014/05/de667-ipv6_enderecamento.png" alt="ipv6_enderecamento" width="372" height="58" /></a></p>
+<p>A representação da rede continua sendo escrita seguindo a nomenclatura CIDR (Classless Inter-Domain Routing), com essa representação pode-se definir geograficamente o local do endereço IP, o seu provedor de acesso, etc. Todas essas características são importantes, pois diminuem o tempo gasto no roteamento dos pacotes.</p>
+<p>Para uma organização ainda mais detalhada, foram definidos três tipos de endereços, que são representados a seguir:</p>
+<ol>
+<li class="level1">
+<div class="li"><strong>Unicast</strong> - identificam apenas uma única interface. É dividido em:</div>
+<ul>
+<li class="level2">
+<div class="li"><strong>Global Unicast</strong> - equivalente ao IPV4. É globalmente roteável e acessível na Internet IPV6;</div>
+</li>
+<li class="level2">
+<div class="li"><strong>Link Local</strong> - é atribuído automaticamente, é valido apenas dentro do mesmo enlace através do prefixo <strong>FE80::/64</strong>;</div>
+</li>
+<li class="level2">
+<div class="li"><strong>Unique-Local</strong> - endereço globalmente único, não são roteáveis pela Internet. O seu prefixo é identificado pelo <strong>FC00::/7</strong> seguido de um ID global único de 40 bits gerado randomicamente;</div>
+</li>
+<li class="level2">
+<div class="li"><strong>IPV4 mapeado em IPV6</strong> - possui o formato 0:0:0:0:0:FFFF:WXYZ, onde WXYZ é um endereço IPV4 convertido para hexadecimal;</div>
+</li>
+<li class="level2">
+<div class="li"><strong>Loopback</strong> - <strong>::1</strong>, equivalente ao 127.0.0.1 no IPV4;</div>
+</li>
+<li class="level2">
+<div class="li"><strong>Unspecified</strong> - <strong>::0</strong> é identificado para representar a ausência de um endereço.</div>
+</li>
+</ul>
+</li>
+<li class="level1">
+<div class="li"><strong>Multicast</strong> - identifica um grupo de interfaces pertencente a diferentes nós. Este endereço é derivado do bloco <strong>FF00::/8</strong>, onde o octeto que se segue ao prefixo FF é composto por 4 flags.</div>
+</li>
+<li class="level1">
+<div class="li"><strong>Anycast</strong> - identifica um grupo de interfaces pertencente a diferentes nós. Um pacote destinado a um endereço anycast, é enviado apenas para a interface deste grupo mais próxima da origem. Muito útil, pois é possível identificar serviços ou servidores dentro de uma mesma sub-rede.</div>
+</li>
+</ol>
+<h2>Por dentro do IPV6</h2>
+<p>O<strong style="color:#000000;"> ICMPv6</strong><span style="color:#000000;"> é semelhante ao ICMP utilizado no protocolo IPV4. Apenas algumas funções de outros protocolos como ARP/RARP e IGMP foram adicionadas. Abaixo, um exemplo do formato do ICMPv6.</span></p>
+<p><a href="https://brusso2014.files.wordpress.com/2020/08/8395a-ipv6_icmp.png"><img class="aligncenter size-full wp-image-1352" src="{{ site.baseurl }}/assets/2014/05/8395a-ipv6_icmp.png" alt="ipv6_icmp" width="214" height="60" /></a></p>
+<ol style="color:#000000;">
+<li class="level1">
+<div class="li">Tipo - Tipo da mensagem, possui o tamanho de 8 bits.</div>
+</li>
+<li class="level1">
+<div class="li">Código - Possui informações adicionais para algumas mensagens, seu tamanho é de 8 bits.</div>
+</li>
+<li class="level1">
+<div class="li">Soma da Verificação - é utilizado para identificar dados corrompidos, seu tamanho é de 16 bits.</div>
+</li>
+<li class="level1">
+<div class="li">Dados - possui as informações de diagnóstico e erro de acordo com o tipo da mensagem, seu tamanho é variável, de acordo com a mensagem.</div>
+</li>
+</ol>
+<p style="color:#000000;">Ao utilizar o comano ICMPv6, as seguintes mensagens de erro podem ser encontradas (mais mensagens podem ser adicionados a qualquer momento).</p>
+<p style="color:#000000;"><a href="https://brusso2014.files.wordpress.com/2020/08/f9e6c-ipv6_icmp_mensagem.png"><img class="aligncenter size-full wp-image-1353" src="{{ site.baseurl }}/assets/2014/05/f9e6c-ipv6_icmp_mensagem.png" alt="ipv6_icmp_mensagem" width="722" height="218" /></a></p>
+<p style="color:#000000;">Ao utilizar o comano ICMPv6, as seguintes mensagens de informação podem ser encontradas (mais mensagens podem ser adicionados a qualquer momento).</p>
+<p style="color:#000000;"><a href="https://brusso2014.files.wordpress.com/2020/08/dcb82-ipv6_icmpv6_mensagem.png"><img class="aligncenter size-full wp-image-1354" src="{{ site.baseurl }}/assets/2014/05/dcb82-ipv6_icmpv6_mensagem.png" alt="ipv6_icmpv6_mensagem" width="761" height="790" /></a></p>
+<div class="level2">
+<h2>O Protocolo e descoberta de vizinhança!!!</h2>
+<p>É utilizado por hosts e roteadores, visando:</p>
+<ol>
+<li class="level1">
+<div class="li">identificar o MAC de cada nó da rede;</div>
+</li>
+<li class="level1">
+<div class="li">determinar algumas informações da rede;</div>
+</li>
+<li class="level1">
+<div class="li">localizar roteadores vizinhos;</div>
+</li>
+<li class="level1">
+<div class="li">identificar endereços duplicados;</div>
+</li>
+<li class="level1">
+<div class="li">determinar a acessibilidade dos roteadores;</div>
+</li>
+<li class="level1">
+<div class="li">redirecionar os pacotes;</div>
+</li>
+<li class="level1">
+<div class="li">autoconfiguração de endereços.</div>
+</li>
+</ol>
+<h2>Fragmentação de pacotes no IPV6</h2>
+<p>No protocolo IPV4 a fragmentação de um pacote de dados poderia ocorrer no cliente e nos roteadores por onde o pacote seria trafegado. Isso não mais ocorre no IPV6. Antes que um pacote seja transmitido, a fragmentação do pacote é iniciada através do protocolo <em>Path MTU Discovery</em> que é responsável por identificar previamente os MTU's que o pacote irá percorrer até o seu tamanho final, assim como o tamanho máximo que o pacote poderá ter.</p>
+</div>
+<div class="level3">
+<p>Caso, durante a transmissão de um pacote em um determinado MTU, o tamanho do pacote seja maior que o MTU pode trabalhar, uma mensagem de retorno é enviada ao transmissor que irá reduzir o tamanho do pacote de acordo com o tamanho do pacote que o MTU poderá trabalhar.</p>
+<h2>Mudança na estrutura do DNS</h2>
+</div>
+<p class="sectionedit14">As mudanças na estrutura do <acronym title="Domain Name System">DNS</acronym> estão definidas na RFC3596.</p>
+<div class="level3">
+<p>- Foi criado um novo tipo de registro <acronym title="Domain Name System">DNS</acronym> identificado como <strong>AAAA</strong> ou <strong>quad-A</strong>. - Foi criada uma nova estrutura para representar o registro PTR: <strong>ip6.arpa</strong>.</p>
+<h2>QOS</h2>
+<p>O IPV6, foi desenvolvido levando em conta a necessidade de priorização de determinados tráfegos e dados, como por exemplo:</p>
+</div>
+<div class="level3">
+<ol>
+<li class="level1">
+<div class="li">VOIP;</div>
+</li>
+<li class="level1">
+<div class="li">Jogos on-line;</div>
+</li>
+<li class="level1">
+<div class="li">Vídeo;</div>
+</li>
+</ol>
+<p>Dessa forma, o <strong>QOS</strong> foi implementado no IPV6 através de especificações que priorizem o fluxo de determinadas aplicações, para isso foram designados dois campos do cabeçalho do IPV6: O <strong>Classe de Tráfego</strong> e o <strong>Indicador de Fluxo</strong>.</p>
+<h2>Mobilidade</h2>
+<p>Essa funcionalidade no IPV6, permite que um dispositivo móvel altere entre suas redes, sem que o seu endereço seja alterado e sem que ocorra perda na transmissão de dados. Isso torna a movimentação entre as redes invisível para as aplicações.</p>
+</div>
+<div class="level3">
+<h2> Segurança</h2>
+<p>O IPV4 foi criado para fins acadêmicos, por tanto não havia uma preocupação tão grande com a segurança. Já o IPV6 foi desenvolvido em uma era onde transações financeiras ocorrem a cada segundo, e por isso um tópico especial sobre segurança o desenho do protocolo possui.</p>
+<div class="level2" style="color:#000000;">
+<p>A segurança do IPV6 está implementada através do IPSec, onde:</p>
+<ul>
+<li>Não é necessário utilizar NAT, o que permite o pleno funcionamento do IPSes sem nenhuma restrição;</li>
+<li>Os mecanismos de autenticação e encapsulamento do IPSec fazem parte do IPV6;</li>
+<li>O suporte ao IPSec é obrigatório em todos os nós da rede.</li>
+</ul>
+<p>Dessa forma, o IPV6 garante:</p>
+<ul>
+<li>Que a mensagem recebida não foi alterada;</li>
+<li>A identidade do remetente;</li>
+<li>Que a mesma mensagem não seja entregue várias vezes;</li>
+<li>A confidencialidade da mensagem, criptografando seu conteúdo.</li>
+</ul>
+<h2>Roteamento</h2>
+</div>
+<div class="level2" style="color:#000000;">
+<p>O roteamento de um pacote, consiste em encaminhá-lo através de diversos roteadores até alcançar o seu destino final.</p>
+<p>O roteamento no IPV6, ficou inteligente quando comparado ao protocolo IPV4. Pois através de novos recursos, os roteadores, conseguem se comunicar e transmitir entre si informações sobre qual rede cada roteador consegue trabalhar. Isso facilita, visto que caso uma determinada rota não seja conhecida por um roteador a mesma pode ser informada a ele pelo seu roteador vizinho.</p>
+<h2>Coexistência e Transição</h2>
+<p>Durante a transição do protocolo IPV4 para o protocolo IPV6 existe uma coexistência, a qual permite que redes IPV4 e redes IPV6 consigam se comunica de forma transparente ao usuário final.</p>
+</div>
+<div class="level2" style="color:#000000;">
+<p>As técnicas de transição utilizadas para tal, são classificadas como:</p>
+<ol>
+<li><strong>Pilha Dupla</strong> - Provê o suporte a ambos os protocolos no mesmo dispositivo;</li>
+<li><strong>Tunelamento</strong> - Permite o tráfego de pacotes IPV6 sobre estruturas de rede IPV4 (e vice-versa);</li>
+<li><strong>Tradução</strong> - Permite a comunicação entre nós com suporte apenas a IPV6 com nós que suportem apenas IPV4 (e vice-versa).</li>
+</ol>
+<h2>Mais Informações sobre o IPV6</h2>
+<p>Para fazer o curso completo e gratuito do IPV6, acesse: <a class="urlextern" style="color:#436976;" title="http://curso.ipv6.br/" href="http://curso.ipv6.br/" rel="nofollow">http://curso.ipv6.br/</a></p>
+</div>
+<div class="level2" style="color:#000000;">
+<p>Para saber mai sobre alguns cases de implantação do IPV6, acesse: <a class="urlextern" style="color:#436976;" title="http://www.ipv6.br/IPV6/ArtigoVideosRIPENCC" href="http://www.ipv6.br/IPV6/ArtigoVideosRIPENCC" rel="nofollow">http://www.ipv6.br/IPV6/ArtigoVideosRIPENCC</a></p>
+<p>Para saber mais sobre estatística de utilização do IPV6, acesse: <a class="urlextern" style="color:#436976;" title="http://www.ipv6.br/IPV6/ArtigoEstatisticaIPv6" href="http://www.ipv6.br/IPV6/ArtigoEstatisticaIPv6" rel="nofollow">http://www.ipv6.br/IPV6/ArtigoEstatisticaIPv6</a></p>
+<p>Para saber como ativar o IPV6 no seu sistema operacional, acesse: <a class="urlextern" style="color:#436976;" title="http://www.ipv6.br/IPV6/ArtigoHabilitandoIPv6SO" href="http://www.ipv6.br/IPV6/ArtigoHabilitandoIPv6SO" rel="nofollow">http://www.ipv6.br/IPV6/ArtigoHabilitandoIPv6SO</a></p>
+<p>Para ler a RFC contendo toda a especificação do IPV6, acesse: <a class="urlextern" style="color:#436976;" title="http://www.ietf.org/rfc/rfc2460.txt" href="http://www.ietf.org/rfc/rfc2460.txt" rel="nofollow">http://www.ietf.org/rfc/rfc2460.txt</a></p>
+<p>Para ler a RFC contendo a mudança na estrutura o <acronym title="Domain Name System">DNS</acronym>, acesse: <a class="urlextern" style="color:#436976;" title="http://tools.ietf.org/rfc/rfc3596.txt" href="http://tools.ietf.org/rfc/rfc3596.txt" rel="nofollow">http://tools.ietf.org/rfc/rfc3596.txt</a></p>
+<p>Para ler artigos relacionados ao IPV6, acesse: <a class="urlextern" style="color:#436976;" title="http://www.ipv6.br/IPV6/ArtigoRfcIPv6" href="http://www.ipv6.br/IPV6/ArtigoRfcIPv6" rel="nofollow">http://www.ipv6.br/IPV6/ArtigoRfcIPv6</a></p>
+</div>
+</div>

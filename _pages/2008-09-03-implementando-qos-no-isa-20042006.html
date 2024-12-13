@@ -1,0 +1,73 @@
+---
+layout: page
+title: Implementando QoS no ISA 2004/2006
+date: 2008-09-03 16:12:19.000000000 +00:00
+type: page
+parent_id: '323'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '362'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/microsoft/implementando-qos-no-isa-20042006/"
+---
+<p>O <a href="http://en.wikipedia.org/wiki/Quality_of_service">QoS</a> no ISA 2004/2006 é implementado através do protocolo <a href="http://en.wikipedia.org/wiki/Differentiated_services">DiffServ</a>.</p>
+<p>O <strong>DiffServ</strong> ou <em>serviços diferenciados</em> é um método utilizado na tentativa de conseguir qualidade de serviço em grandes redes, como a Internet.</p>
+<p>O método DiffServ opera sobre grandes volumes de dados em oposiç&#227;o a fluxos ou reservas individuais. Os acordos resultantes destas negociaç&#245;es s&#227;o designados de "acordos de nível de serviço" <strong>(Service Level Agreements)</strong>, e envolvem inevitavelmente um custo. Estes acordos especificam que classes de tráfego ser&#227;o servidas, que garantias s&#227;o necessárias para cada classe, e qual o volume de dados para cada classe.</p>
+<p>Uma "nuvem DiffServ" é um grupo de routers DiffServ. Para os pacotes entrarem numa nuvem DiffServ ter&#227;o que ser previamente classificados pelo emissor. O emissor preenche o campo de "tipo de serviço" (TOS, de Type of Service, posteriormente designado de DiffServ Code Point ou DSCP) no cabeçalho IP consoante a classe dos dados; as melhores classes s&#227;o identificadas com os números menores (a escala varia de 0 a 15, contudo deve-se evitar o uso do 0).</p>
+<h2>Exemplo</h2>
+<p>Existem muitas formas de dividir o tráfego em classes, cada uma provavelmente adaptada &#224;s necessidades especiais para cada situaç&#227;o. Por exemplo, o tráfego pode ser dividido em Classes: Ouro, Prata e Bronze. Em cada router, o tráfego de Ouro tem preced&#234;ncia sobre o de Prata, que por sua vez tem preced&#234;ncia sobre o de Bronze.</p>
+<p>Esse tratamento é realizado de duas maneiras:</p>
+<ol>
+<li>Reencaminhamento preferencial, onde os pacotes mais recentes de maior preced&#234;ncia podem ultrapassar (na lista de espera) os de menor preced&#234;ncia;</li>
+<li>Descarte preferencial, onde o espaço do buffer para os pacotes de maior preced&#234;ncia está habilitado a aumentar sob prejuízo dos pacotes de menor preced&#234;ncia, que ser&#227;o descartados.</li>
+</ol>
+<p>Além disso existe alguns esquemas híbridos, envolvendo combinaç&#245;es destas e outras estratégias de QoS. Como por exemplo dar prioridade a tipos específicos de pacotes.</p>
+<ul>
+<li>Tipicamente, isto é conseguido pelo router que liga uma rede local &#224; Internet. O router decide, por exemplo, dar máxima prioridade ao tráfego interativo como jogos online. O outro tráfego, como HTTP ou correio electrónico é classificado com uma prioridade menor, enquanto que o tráfego típico de transfer&#234;ncias de arquivos, como FTP ou redes peer-to-peer é classificado como o de menor prioridade.</li>
+<li>A decis&#227;o sobre qual o tráfego que deverá ser classificado como prioritário depende geralmente das necessidades em relaç&#227;o &#224; rede. Outra abordagem para decidir qual o tráfego importante é utilizando o campo TOS/DiffServ no cabeçalho Protocolo IP.</li>
+</ul>
+<p>É Possível definir 8 tipos de Serviços e para cada Serviço 3 prioridades (0-7).</p>
+<pre>  000 (0) - Route
+  001 (1) - Priority
+  010 (2) - Immediate
+  011 (3) - Flash
+  100 (4) - Flash Override
+  101 (5) - Critical
+  110 (6) - Internetwork Control
+  111 (7) - Network Control
+
+     0     1     2     3     4     5     6     7
+  +-----+-----+-----+-----+-----+-----+-----+-----+
+  |                 |     |     |     |     |     |
+  |   PRIORIDADES   |  D  |  T  |  R  |  0  |  0  |
+  |                 |     |     |     |     |     |
+  +-----+-----+-----+-----+-----+-----+-----+-----+
+
+  Bit    3:  0 = Normal Delay,      1 = Low Delay.
+  Bits   4:  0 = Normal Throughput, 1 = High Throughput.
+  Bits   5:  0 = Normal Relibility, 1 = High Relibility.
+  Bit  6-7:  Reserved for Future Use.</pre>
+<p>No caso do ISA voc&#234; primeiro define uma prioridade, em seguida deve-se definir o domínio/url que deverá ser "contemplada" com essa prioridade.</p>
+<p>Ás vezes o que voc&#234; precisa fazer é configurar o <strong>QoS</strong> para aplicar um "delay", ou seja n&#227;o priorizar pacotes com destinos a determinados sites.</p>
+<p>Essas prioridades s&#227;o aplicadas para toda a rede, ou seja n&#227;o podem ser aplicadas para um grupo de usuários ou usuários.</p>
+<p><em><span style="text-decoration:underline;">Refer&#234;ncias</span></em></p>
+<ul>
+<li><a href="http://tools.ietf.org/html/rfc4594">http://tools.ietf.org/html/rfc4594</a></li>
+<li><a href="http://tools.ietf.org/html/rfc2474">http://tools.ietf.org/html/rfc2474</a></li>
+<li><a href="http://tools.ietf.org/html/rfc791">http://tools.ietf.org/html/rfc791</a></li>
+<li><a href="http://www.myne.org/tech.blog/2-random.tech/13-windows-2003-qos-and-isa.html?tmpl=component&amp;print=1&amp;page=">http://www.myne.org/tech.blog/2-random.tech/13-windows-2003-qos-and-isa.html?tmpl=component&amp;print=1&amp;page=</a></li>
+<li><a href="http://www.isaserver.org/tutorials/Configuring-URL-domain-packet-prioritization-Diffserv.html">http://www.isaserver.org/tutorials/Configuring-URL-domain-packet-prioritization-Diffserv.html</a></li>
+<li><a href="http://www.isaserver.org/tutorials/Installing-Configuring-Microsoft-ISA-Server-2004-SP2.html">http://www.isaserver.org/tutorials/Installing-Configuring-Microsoft-ISA-Server-2004-SP2.html</a></li>
+<li><a href="http://technet.microsoft.com/en-us/library/bb742482.aspx">http://technet.microsoft.com/en-us/library/bb742482.aspx</a></li>
+</ul>

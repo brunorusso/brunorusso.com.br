@@ -1,0 +1,43 @@
+---
+layout: page
+title: Sistema de Arquivos
+date: 2006-11-15 21:11:47.000000000 +00:00
+type: page
+parent_id: '114'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '173'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/diversos/sistema-de-arquivos/"
+---
+<p>Abaixo est&#227;o algumas informaç&#245;es importantes que as pessoas que est&#227;o começando a utilizar GNU/Linux devem saber.</p>
+<ol>
+<li>A partiç&#227;o / (root), pode ser pequena. N&#227;o precisa de muito espaço, pois ela deve conter o seguinte:
+<ul>
+<li>/bin, cont&#234;m alguns programas (ls, free, tar etc) usados por todos os usuários.</li>
+<li>/sbin, cont&#234;m arquivos requiridos pelo Sistema Operacional. Alguns s&#227;o usados na hora do boot e para reparar o sistema.</li>
+<li>/etc, cont&#234;m arquivos de configuraç&#227;o tanto do boot do sistema operacional quanto de outros programas.</li>
+<li>/lib, cont&#234;m as bibliotecas utilizadas por diversos programas.   Portanto, um bom espaço para essa partiç&#227;o seria de 500Mb &#224; 1Gb. Como hoje em dia disco é razoavelmente barato, podemos deixar 1Gb.</li>
+</ul>
+</li>
+<li>A partiç&#227;o /boot para um servidor e para uma estaç&#227;o de trabalho cont&#234;m arquivos estáticos e relativamente pequenos. Um tamanho ideal para essa partiç&#227;o seria de 100Mb.</li>
+<li>A partiç&#227;o /home vai variar conforme o seu uso. Por exemplo: para um servidor de arquivos essa partiç&#227;o pode ser relativamente grande, poisos usuários ir&#227;o armazenar arquivos nela. Mas quando se faz a instalçao de um firewall, onde praticamente n&#227;o haverá mais que 1 ou 2 usuários essa partiç&#227;o pode estar dentro da partiç&#227;o / (root).
+<ul>
+<li><em>Caso ela seja usada como no primeiro exemplo, é aconselhável que seja utilizado raid.</em></li>
+</ul>
+</li>
+<li>A partiç&#227;o /tmp é utilizada por alguns programas para armazenar arquivos temporários. Em algumas distribuiç&#245;es como por exemplo a Debian, essa partiç&#227;o é limpa a cada boot no equipamento. Seu tamanho também pode variar dependendo do tipo de aplicaç&#227;o que for utilizado na máquina.</li>
+<li>A partiç&#227;o /var, na minha opini&#227;o ela é muito importante, pois é nesta partiç&#227;o que s&#227;o armazenados os arquivos de LOG. Em um servidor o uso dessa partiç&#227;o é fundamental. Quase todos os serviços armazenam log nessa partiç&#227;o. Em caso de uma auditoria os arquivos que essa partiç&#227;o cont&#234;m s&#227;o observados com muito cuidado.</li>
+<li>A partiç&#227;o /usr é a maior hierarquia nas partiç&#245;es que existe em um sistema Linux. Mas calma! N&#227;o é por isso que todo o espaço deve ser destinado &#224; ela. Essa partiç&#227;o cont&#234;m grande parte dos programas e comandos utilizados pelos usuários, código fonte, exemplo de configuraç&#227;o e documentaç&#227;o sobre os programas instalados. Em ambientes corporativos essa partiç&#227;o pode ser compartilhada por diversos usuários. em alguns casos, administradores de sistema costumam deixar essa partiç&#227;o somente como leitura e ezecuç&#227;o. Meio radical, mas em alguns casos é necessário para evetiar que ocorra danificaç&#227;o nos dados.</li>
+</ol>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow"> 
+<title>Página não encontrada - Portal R7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=block" rel="stylesheet">
+  <style>
+  *, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .r7-logo__text {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .r7-logo {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    align-items: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: #333;
+  }
+  
+  .page {
+    background: transparent;
+    font-family: 'Open Sans', sans-serif;
+    min-width: 320px;
+    width: 100%; /* IE11 fix */
+  }
+  
+  .page__header {
+    background: #218EE1;
+    width: 100%;
+    height: 58px;
+    margin-bottom: 20px;
+    line-height: 84px;
+    text-align: center;
+  }
+  
+  .page__content {
+    margin: 0 auto;
+    height: 100%;
+    overflow: hidden;
+    max-width: 1100px;
+    width: 100%; /* IE11 fix */
+    display: block; /* IE11 fix */
+  }
+
+  .content__error {
+    background:#eee;
+    height: 300px;
+    border-radius: 5px;
+    width: 1100px;
+    margin-bottom: 20px;
+    position: relative
+  }
+
+  .error__title {
+    font-size: 10rem;
+    text-transform: uppercase;
+    margin: 0 auto;
+    width: 584px;
+    height: 100%;
+    line-height: 300px;
+  }
+
+  .error__description {
+    font-size: 2rem;
+    position: absolute;
+    background-color: #eee;
+    padding: 5px 15px 0px 15px;
+    width: 364px;
+    height: 48px;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    bottom: 78px;
+    text-align: center;
+  }
+
+  .related__list {
+    max-width: 724px;
+    width: 66%;
+    margin-right: 28px;
+    float: left;
+  }
+  
+  .related__ads {
+    width: 348px;
+    background-color: #eee;
+    border-radius: 5px;
+    height: 670px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 10px;
+    float: left;
+    text-align: center;
+  }
+
+  .related__ads--mobile {
+    display: none;
+  }
+
+  .ads__title {
+    font-size: 11px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    margin: 15px;
+  }
+
+  .list__article {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    height: 154px;
+    margin-bottom: 28px;
+    margin-right: 28px;
+    padding: 8px;
+    width: 348px;
+    float: left;
+  }
+
+  .list__article:nth-child(2n) {
+    margin-right: 0;
+  }
+
+  .article__hat {
+    display: flex;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .hat__link {
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+    text-decoration: none;
+  }
+  
+  .hat__img {
+    margin-right: 8px;
+    display: inline-block;
+  }
+
+  .hat__description {
+    color: #606060;
+    font-size: 11px;
+    font-weight: 400;
+    justify-content: center;
+    text-align: left;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .article__item {
+    display: flex;
+    height: 110px;
+    overflow: hidden;
+  }
+
+  .article__image-container {
+    margin-right: 14px;
+  }
+
+  .article__image {
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 0 16px;
+    padding: 56.25% 0 0;
+    position: relative;
+  }
+
+  .image__link {
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+
+  .image__img {
+    display: block;
+    border-radius: 5px;
+    margin-top: -56.25%;
+    height: auto;
+    width: 160px;
+  }
+
+  .article__title {
+    line-height: 1px;
+    overflow: hidden;
+    letter-spacing: -.2px;
+  }
+
+  .title__link {
+    line-height: 20px;
+    color: #333;
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width: 1240px) {
+    .related__ads {
+      display: none;
+    }
+
+    .related__list {
+      width: 90%;
+      max-width: 90%;
+      margin: auto;
+      float: none;
+    }
+
+    .related__ads--mobile {
+      background: #eee;
+      border-top: 1px solid #e6e6e6;
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      height: 51px;
+      margin: 0 auto;
+    }
+
+    .content__error {
+      height: 250px;
+      width: 100%;
+    }
+
+    .error__title {
+      font-size: 5rem;
+      width: 100%;
+      text-align: center;
+      line-height: 250px;
+    }
+    
+    .error__description {
+      font-size: 1rem;
+      width: 178px;
+      text-align: center;
+      padding: 3px 5px 0 5px;
+      height: 28px;
+      bottom: 85px;
+    }
+
+    .list__article {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 16px;
+    }
+
+    .hat__description {
+      font-size: 12px;
+    }
+
+    .article__title {
+      line-height: 20px;
+    }
+
+    .image__img {
+      width: 160px;
+    }
+  }
+
+</style>
+</head>
+<body class="page">
+  <header class="page__header">
+  <a href="https://www.r7.com/" class="r7-logo" title="Portal R7">
+    <svg aria-labelledby="logo-r7com" xmlns="http://www.w3.org/2000/svg" width="39.003" height="34.201" viewBox="0 0 710.44 622.969">
+      <defs>
+        <style>
+          .logo-r7-svg{
+            fill: #fff;
+          }
+          .show .logo-r7-svg{
+            fill: #218EE1 !important;
+          }
+        </style>
+      </defs>
+      <path class="logo-r7-svg" d="M1728.61,489.533h-33.24v98.64h32.17q59.49,0,59.5-50.122Q1787.04,489.544,1728.61,489.533Zm486.76,164.676v-141.9c0-210.308-177.59-204.249-177.59-204.249H1709.23C1505,308.059,1505,494.544,1505,494.544V931s19.61-72.37,116.18-72.37h372.19C2226,858.63,2215.37,654.209,2215.37,654.209ZM1778.46,766.148l-83.09-115.8v115.8H1608V408.579h113.11q45.54,0,68.88,5.373a95.344,95.344,0,0,1,41,20.37q43.95,36.457,43.95,98.1,0,44.5-24.11,74.773-24.12,30.314-64.86,37.266l97.02,121.689H1778.46Zm346.82-287.34-125.97,287.34H1899.07L2030.94,485.78H1892.1v-77.2h233.18v70.229Z" transform="translate(-1505 -308.031)"></path>
+    </svg>
+    <h1 id="logo-r7com" class="r7-logo__text">R7.com</h1>
+  </a>
+</header>
+<main class="page__content">
+  <div class="content__error">
+    <p class="error__title">Ooops!</p>
+    <p class="error__description">Página não encontrada</p>
+  </div>
+  <div class="related__list" data-list-container>
+    </div>
+    <div class="related__ads">
+      <p class="ads__title">PUBLICIDADE</p>
+      <script
+        data-sizes="[300, 600]"
+        data-vendor="r7.com"
+        data-pos="halfpage"
+        data-hash="/7542/r7home/home"
+        src="https://sc.r7.com/r7/js/adPartner.min.js"
+      ></script>
+    </div>
+    <div class="related__ads--mobile">
+      <script
+        data-sizes="[320, 50]"
+        data-vendor="r7.com"
+        data-pos="mobilefixo"
+        data-hash="/7542/r7home/home"
+        src="https://sc.r7.com/r7/js/adPartner.min.js"
+      ></script>
+    </div>
+</main>
+  <script>
+  window.relatedPages = function (data) {
+    var listElement = document.querySelector('[data-list-container]');
+    var template = '';
+    for (var i = 0; i < data.length ; i++) {
+      var page = data[i];
+      template += getListItem(page);
+    }
+    listElement.innerHTML = template;
+  }
+
+  var src = 'https://cms-media-api.r7.com/?section[]=4f99869f6c4db22c70000004&section[]=4f70b9a96c4db25194000110&section[]=5d5c4952cd77c07e400003c4&section[]=502510c61d420654b1000001&hierarchy=true&external_media=true&cover_image=true&page=1&per_page=50&callback=relatedPages';
+  var script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+  document.body.appendChild(script);
+
+  var getListItem = function (page) {
+    var obj = {
+      video: isVideo(page),
+      title: removeTagHtml(page.title),
+      img: tratamentImage(page),
+      timePublication: tratamentDate(page),
+      linkTarget: '_top',
+      agencyImage: page.agency_image,
+      agencyUrl: page.agency_url,
+      canonicalSectionName: page.canonical_section_name_t
+    }
+
+    return getListItemTemplate(page, obj);
+  };
+
+  var getHatTemplate = function (page, obj) {
+    var template = 
+      '<div class="article__hat">' +
+        '<a href="' + page.url + '" title="' + page.agency + '" class="hat__description" target="' + obj.linkTarget + '">' +
+          obj.canonicalSectionName + ' / ' + obj.timePublication +
+        '</a>' +
+      '</div>';
+
+    if (page.agency) {
+      template = 
+        '<div class="article__hat">' +
+          '<a href="' + obj.agencyUrl + '" title="' + page.agency + '" class="hat__link" target="' + obj.linkTarget + '">' +
+            '<img src="' + obj.agencyImage + '?dimensions=16x16" data-src="' + obj.agencyImage + '" alt="' + page.agency + '" title="' + page.agency + '" class="hat__img" loading="lazy">' +
+            '<span class="hat__description">' +
+              page.agency + ' / ' + obj.timePublication +
+            '</span>' +
+          '</a>' +
+        '</div>';      
+    }
+  
+    return template;
+  };
+
+  var getImgTemplate = function (page, obj) {
+    var template = 
+      '<h3 class="article__title">' + 
+        '<a href="' + page.url + '" title="' + obj.title + '" class="title__link" target="' + obj.linkTarget + '">' + 
+          obj.title +
+        '</a>' +
+      '</h3>';
+
+    if (obj.img) {
+      template = 
+        '<div class="article__image-container">' + 
+          '<figure class="article__image">' + 
+            '<a href="' + page.url + '" title="' + obj.title + '" class="image__link" target="' + obj.linkTarget + '">' + 
+              '<img src="' + obj.img + '" alt="' + obj.title + '" title="' + obj.title + '" class="image__img" loading="lazy">' + 
+            '</a>' + 
+          '</figure>' + 
+        '</div>' +
+        '<h3 class="article__title">' + 
+          '<a href="' + page.url + '" title="' + obj.title + '" class="title__link" target="' + obj.linkTarget + '">' + 
+            obj.title + 
+          '</a>'
+        '</h3>';
+    }
+
+    return template;
+  };
+
+  var getListItemTemplate = function (page, obj) {
+
+
+    var hatTemplate = getHatTemplate(page, obj);
+    var imgTemplate = getImgTemplate(page, obj);
+
+    var template = 
+      '<article class="list__article">' + 
+        hatTemplate + 
+        '<div class="article__item">' + 
+          imgTemplate + 
+        '</div>' +
+      '</article>';
+
+    return template;
+  };
+
+  var isVideo = function (data) {
+    var dataHasLikes = Object.prototype.hasOwnProperty.call(data, 'likes');
+    var dataHasViews = Object.prototype.hasOwnProperty.call(data, 'views');
+    var dataHasType = Object.prototype.hasOwnProperty.call(data, 'type');
+
+    var isDataVideo = (dataHasLikes && dataHasViews) || (dataHasType && data.type.toLowerCase() === 'video');
+
+    return isDataVideo;
+  };
+
+  var tratamentImage = function (data) {
+    var dimensions = '160x90';
+
+    var image = '';
+
+    if (data.cover_image) {
+      image = data.cover_image + '?dimensions=' + dimensions;
+    } else if (data.thumb) {
+      image = data.thumb + '?dimensions=' + dimensions;
+    }
+
+    return image;
+  };
+
+  var removeTagHtml = function (title) {
+    return title.replace(/"/gi, "'").replace(/(<([^>]+)>)/ig,"");
+  }
+
+  var tratamentDate = function (obj) {
+    var publi = getDateFormated(obj.first_published_at);
+    var actual = getDateFormated();
+
+    if (publi.inv === actual.inv) {
+      var time;
+      var timeDiff = actual.dat.getTime() - publi.dat.getTime();
+
+      time = Math.round(timeDiff / 60000);
+      time = getTimeFormatted(time, timeDiff);
+
+      return 'há ' + time;
+    }
+
+    return [publi.dia, publi.mes, publi.ano].join('/');
+  };
+
+  var getDateFormated = function (myDate) {
+    var publiDate = myDate ? new Date(myDate) : new Date();
+    var publiYear = publiDate.getFullYear();
+    var publiDay = publiDate.getDate();
+    var publiMonth = publiDate.getMonth() + 1;
+
+    publiDay = publiDay < 10 ? '0' + publiDay : publiDay;
+    publiMonth = publiMonth < 10 ? '0' + publiMonth : publiMonth;
+
+    var invertPubliDate = [publiDay, publiMonth, publiYear].reverse().join('');
+
+    return {
+      dat: publiDate,
+      dia: publiDay,
+      mes: publiMonth,
+      ano: publiYear,
+      inv: invertPubliDate
+    };
+  };
+
+  var getTimeFormatted = function (time, timeDiff) {
+    if (time > 59) {
+      timeDiff /= 1000;
+      timeDiff /= (60 * 60);
+
+      time = Math.abs(Math.round(timeDiff));
+      time += (time === 1) ? ' hora' : ' horas';
+    } else {
+      time += (time === 1) ? ' minuto' : ' minutos';
+    }
+
+    return time;
+  };
+
+  var gaJsHost = (('https:' == document.location.protocol) ? 'https://ssl.' : 'http://www.');
+  document.write(unescape("%3Cscript sr" + "c='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
+
+  try {
+    var pageTracker = _gat._getTracker('UA-10631407-1');
+    pageTracker._trackEvent('erro-404', document.referrer, document.URL);
+  } catch(err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+---
+layout: post
+title: MD5 para Windows
+date: 2006-11-24 12:48:30.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '178'
+permalink: "/2006/11/24/md5-para-windows/"
+---
+<p>Recentemente tive que montar um Servidor com o sistema Operaciona Microsoft Windows 2003 com Active Directory e mais umas outras frescuras....coisas que deixam a máquina muito lenta ;)</p>
+<p>Sempre que um novo Servidor entra em produç&#227;o é interessante que seja feito uma <strong>cópia</strong> dos arquivos do mesmo, de modo que caso ocorra algum problema, como por exemplo uma invas&#227;o, podemos ter a certeza de que os arquivos que est&#227;o no Servidor n&#227;o foram alterados. É muito comum em invas&#245;es os atacantes substituírem arquivos <em>(executáveis)</em> por arquivos <em>(executáveis)</em> porém contaminados.</p>
+<p>Uma maneira que descobri para controlar isso é gerar um arquivo contendo o MD5SUM de cada arquivo, ou seja, ao terminar de instalar e configurar o Servidor, um último passo que efetuo antes de colocá-lo em produç&#227;o é gerar o MD5SUM de tudo o que está instalado e fazer um backup de todos os arquivos.</p>
+<blockquote><p>O MD5 (Message-Digest algorithm 5) é um algoritmo de hash de 128 bits unidirecional. Foi desenvolvido em 1991 por Ronald Rivest para suceder ao MD4 que tinha alguns problemas de segurança. Por ser um algoritmo unidirecional, uma hash md5 n&#227;o pode ser transformada novamente no texto que lhe deu origem. O método de verificaç&#227;o é, ent&#227;o, feito pela comparaç&#227;o das duas hash (uma da base de dados, e a outra da tentativa de login). O MD5 tambem é usado pera verificar a integridade de um arquivo através, por exemplo, do programa md5sum, que cria a hash de um ficheiro. Isto pode-se tornar muito útil para downloads de arquivos grandes, para programas P2P que constroem o arquivo através de pedaços e est&#227;o sujeitos &#224; corrupç&#227;o dos mesmos. Como autenticaç&#227;o de login é utilizada em vários sistemas operacionais unix e em muitos sites com autentificaç&#227;o.</p></blockquote>
+<p>Quando esse processo é feito em um Servidor <a href="http://pt.wikipedia.org/wiki/Linux">GNU/Linux</a> o trabalho se torna bem mais agradável, porém &#224;s vezes é necessário realizar essa tarefa em uma máquina com sistema Operacional Windows e isso se torna uma tarefa árdua <u>(simplesmente pelo fato de usar este sistema operacional)</u>.</p>
+<p>Como o Windows n&#227;o possui uma ferramenta dessa incluída por padr&#227;o em seu ambiente é necessário buscar alternativas. E uma dessas alternativas que encontrei e achei muito interessante é o <a href="http://www.md5summer.org/about.html">MD5Summer</a> criado por <em>Luke Pascoe</em>.</p>
+<p>Desenvolvido em Borland Delphi 7, o MD5Summer é licenciado pela <a href="http://www.gnu.org/copyleft/gpl.html">GPL</a>, funciona nos seguintes Sistemas Operacionais: Microsoft Windows 9x, NT, ME, 2000, XP e 2003 <em>(testei no Windows nesse último e também funcionou)</em>. No próprio site do projeto é possível ver algumas <a href="http://www.md5summer.org/about.html">telas</a> do MD5Summer em aç&#227;o.</p>
+<p>O MD5Summer é muito fácil de ser utilizado, pois possui uma interface gráfica (<em>algo fundamental para usuários de Windows</em>) e é simples e rápido. O site também conta com uma área de <a href="http://www.md5summer.org/help.html">ajuda</a> para quem tiver dificuldades na sua utilizaç&#227;o.</p>
+<p>Caso queira, envie um <strong>Cart&#227;o Postal</strong> para o <em>Luke Pascoe</em>, pois como ele mesmo <a href="http://www.md5summer.org/Postcards/index.html">afirma</a> no site algumas pessoas que usam o MD5Summer enviam para ele <strong>Cart&#245;es Postais</strong>.</p>

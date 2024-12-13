@@ -1,0 +1,64 @@
+---
+layout: post
+title: Cacic funciona 100% no Slackware
+date: 2007-04-06 12:48:24.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '201'
+permalink: "/2007/04/06/cacic-funciona-100-no-slackware/"
+---
+<p><img src="{{ site.baseurl }}/assets/2007/04/cacic.gif" border="0" align="left" />Recentemente fiz a instalação do software de <em>inventário</em> <a href="http://guialivre.governoeletronico.gov.br/cacic/sisp2/">Cacic</a> na versão 11 do Slackware e o resultado foi de 100%. Tudo funcionou sem maiores problemas, porém é claro que foi necessário refazer, ou melhor, recompilar o PHP, mas somente isso. ;)</p>
+<p>A nova versão 2.2.2 <em>acho que é esse o número da última versão...</em> é muito, mas muito mais fácil a instalação! Você apenas salva os arquivos no diretório onde o Servidor web possa acessar e através do browser você cria o banco de dados e verifica as dependências necessárias para a instalação do cacic.</p>
+<p>Abaixo, vou tentar descrever o que deve ser feito para o cacic funcionar com o slackware. São passos simples que devem ser tomados:</p>
+<p>A primeira coisa a fazer é baixar os pacotes da biblioteca mcrypt. Essa biblioteca é necessária para a criptografia, porém o [php ] que vem no <a href="http://www.slackware.com">slackware</a>, tanto o php4 quanto o php5, não possuem suporte a essa bilbioteca.</p>
+<p>Essa biblioteca pode ser baixada no <a href="http://www.sf.net">SF</a>, mas aí vai o link direto: <a href="http://sourceforge.net/project/showfiles.php?group_id=87941">http://sourceforge.net/project/showfiles.php?group_id=87941</a></p>
+<p>A instalação é simples.</p>
+<blockquote><p>&nbsp;tar pacote.tar.gz ; ./configure ; make ; make install ; ldconfig</p></blockquote>
+<p><strong>Detalhe:</strong> primeiro compile a Libmcrypt e em seguida a MCrypt.</p>
+<p>Após, a instalação da bilioteca, baixe o <a href="http://www.slackbuilds.org/">SlackBuild</a> do PHP e todo o conteúdo do diretório, segue o link para o PHP4: <a href="http://ftp.belnet.be/packages/slackware/slackware-11.0/source/n/php/">http://ftp.belnet.be/packages/slackware/slackware-11.0/source/n/php/</a><br />
+Para compilar o PHP é necessário baixar também o pine (<a href="http://ftp.belnet.be/packages/slackware/slackware-11.0/source/n/pine/">http://ftp.belnet.be/packages/slackware/slackware-11.0/source/n/pine/</a>).</p>
+<p>Após baixar todos os pacotes você deve ter uma estrutura semelhante à:</p>
+<pre>&nbsp; |
+
+&nbsp; |
+
+&nbsp; |/pacotes
+
+&nbsp; 	|/php
+
+&nbsp; 	|/pine</pre>
+<p>Não esqueça de deixar os scripts de compilação php.SlackBuild e pine.SlackBuild com permissão de execução (chmod +x).<br />
+Agora basta incluir dentro do php.Slackbuild a seguinte linha:</p>
+<p>Antes,</p>
+<pre>&nbsp; --disable-debug 
+
+&nbsp; --with-zlib=/usr
+
+&nbsp; # --with-mod_charset    # only for Russian patched Apache
+
+&nbsp; # --with-readline=/usr  # this is only for the CGI version</pre>
+<p>Depois,</p>
+<pre>&nbsp; --disable-debug 
+
+&nbsp; --with-zlib=/usr 
+
+&nbsp; --with-mcrypt=/usr      &lt;-----------ESSA É A LINHA QUE DEVE SER INCLUÍDA
+
+&nbsp; # --with-mod_charset    # only for Russian patched Apache
+
+&nbsp; # --with-readline=/usr  # this is only for the CGI version</pre>
+<p>Agora é só executar: <strong>./php.SlackBuild</strong></p>
+<p>Reinstale o pacote do php reinicie o Apache (/etc/rc.d/rc.httpd restart) e acesse o cacic. Com esses passos todas as dependências são solucionadas. ;)</p>
+<p>Boa sorte!!</p>

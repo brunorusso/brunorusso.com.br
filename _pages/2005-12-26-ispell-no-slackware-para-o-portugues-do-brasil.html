@@ -1,0 +1,47 @@
+---
+layout: page
+title: ispell no slackware para o Português do Brasil
+date: 2005-12-26 09:48:28.000000000 +00:00
+type: page
+parent_id: '893'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '41'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/howto/ispell-no-slackware-para-o-portugues-do-brasil/"
+---
+<div align="center">Voc&ecirc; também pode ler este artigo nos formatos: <a href="http://www.brunorusso.eti.br/documentacao/instalacao_ispell_portugues_brasil.pdf" target="_self">PDF</a> e <a href="http://www.brunorusso.eti.br/documentacao/instalacao_ispell_portugues_brasil.odt" target="_self">OpenOffice</a></div>
+<div align="center"> &nbsp;</div>
+<div align="center"><strong>Configurando o ispell no KDE para o Portugu&ecirc;s Brasil</strong></div>
+<p>Muitas vezes, precisamos utilizar um simples editor de texto, como vi (e seus derivados), kwrite, kate, kedit etc. E por mais simples que esse editor possa ser é sempre interessante utilizar o recurso do &quot;corretor ortográfico&quot;.</p>
+<p>Porém no Slackware, o pacote do ispell, n&atilde;o vem com o dicionário para o Portugu&ecirc;s do Brasil. Em uma busca rápida pela Internet (google.com), encontrei a solu&ccedil;&atilde;o!</p>
+<p>No site http://www.ime.usp.br/~ueda/ está disponível uma grande documenta&ccedil;&atilde;o sobre dicionários, gramáticas e afins, tem até programa para ocr, show de bola.</p>
+<p>Bom m&atilde;o-na-massa, o que precisa ser feito é simples, primeiro vamos baixar o arquivo contendo as palavras do dicionário Portugu&ecirc;s Brasil:</p>
+<p>cd /tmp<br />wget http://www.ime.usp.br/~ueda/br.ispell/br.ispell-2.4.tar.gz<br />tar xzvf br.ispell-2.4.tar.gz<br />cd br.ispell-2.4</p>
+<p>O ispell trabalha com um hash, uma espécie de banco de dados, onde ficam armazenadas as palavras. É necessário criar esse &quot;banco de dados&quot;. Para isso utilizamos o comando:</p>
+<p>make br.hash</p>
+<p>Após criado o &quot;banco de dados&quot;, é necessário mover o esse banco de dados para o local onde o ispell busca os &quot;dicionários&quot;, para isso execute:</p>
+<p>make install</p>
+<p>Em seguida é necessário gerar uma lista (um outro banco de dados) com a rela&ccedil;&atilde;o das palavras, para isso execute:</p>
+<p>make palavras</p>
+<p>A instala&ccedil;&atilde;o já está quase finalizada, basta apenas instalar o &quot;conjugador&quot; de verbos, para isso execute:</p>
+<p>make install-conjugue</p>
+<p>Case queira fazer um teste com o conjugador de verbos, execute:</p>
+<p>conjugue</p>
+<p>em seguida digite um verbo.</p>
+<p>Agora o dicionário já está todo instalado. Basta configurar o ambiente para trabalhar com o novo dicionário.</p>
+<p>No kde abra o centro de controle e na se&ccedil;&atilde;o componentes do kde, selecione corretor ortográfico.</p>
+<p>Em dicionário, configure o padr&atilde;o como: Bret&atilde;o [br], codifica&ccedil;&atilde;o como: US-ASCII, em seguida clique em aplicar. Feche o centro de controle. E abra o kwrite, por exemplo.</p>
+<p>Digite uma frase e em seguida clique no menu ferramentas e escolha ortografia. Será apresentada a tela de sugest&otilde;es de palavras para cada palavra que o dicionário entenderá como errada.</p>
+<p>Sobre o Autor:<br />Bruno Tadeu Russo, é Bacharel em Sistemas de Informa&ccedil;&atilde;o com &ecirc;nfase em logística pela Universidade Presbiteriana Mackenzie. Utiliza Linux desde 1999, já utilizou diversas distribui&ccedil;&otilde;es como: RedHat, Conectiva, Debian e Slackware que é sua paix&atilde;o desde o início de 2004. Para maiores informa&ccedil;&otilde;es sobre o autor, visite sua homepage: www.brunorusso.eti.br</p>

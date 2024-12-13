@@ -1,0 +1,373 @@
+---
+layout: post
+title: Multilib para o Slackware x86_64
+date: 2015-02-19 03:10:41.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- mysql
+- slackware
+tags:
+- Banco de Dados
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '1416'
+permalink: "/2015/02/19/multilib-para-o-slackware-x86_64/"
+---
+<p>Este artigo foi importado do site http://linux.brunorusso.com.br, que foi desativado. Este artigo, foi originalmente publicado em: 18/10/2009. Apesar da “idade” deste artigo, o seu conceito ainda é válido.</p>
+<p>Esse artigo é uma tradução do artigo original, escrito por Eric Hameleers (Alien BOB), que pode ser encontrado em: <a class="urlextern" title="http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib" href="http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib" rel="nofollow">http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib</a></p>
+<p>Este artigo contém instruções sobre como criar um verdadeiro Slackware64 multilib. A multilib 64 bits é um sistema Linux capaz de rodar programas de 32 bits em plataformas de 64 bits. O <a class="urlextern" title="http://www.pathname.com/fhs/pub/fhs-2.3.html#LIB64]" href="http://www.pathname.com/fhs/pub/fhs-2.3.html#LIB64]" rel="nofollow">FHS </a>descreve claramente como trabalhar com “bibliotecas” de 32 bits e 64 bits em um mesmo sistema. No Slackware64 foi adotado esse padrão, dessa forma as bibliotecas de 64 bits são instaladas nos diretórios <em>/lib64</em> e<em>/usr/lib64</em>. É por isso que a multilib está pronta para trabalhar com o Slackware64 - apesar das bibliotecas de 32 bits ficarem localizadas nos diretórios <em>/lib</em> e <em>/usr/lib</em>, isso não causa nenhum problema no Slackware64, pois ele não vem com nenhuma biblioteca ou software que necessite de bibliotecas de 32 bits. Há mais um passo para ser feito antes que o Slackware64 possa trabalha com o “multilib habilitado”.</p>
+<p>E isso pode ser realizado da seguinte forma:</p>
+<p>1. Primeiro precisamos mudar para versões de multilib</p>
+<ul>
+<li class="level1">
+<div class="li">glibc (ou seja, uma glibc que suporta a execução de binários 32 bits e 64 bits), e</div>
+</li>
+<li class="level1">
+<div class="li">gcc (ou seja, capaz de compilar binários de 32 bits e 64 bits).</div>
+</li>
+</ul>
+<p>2. Por fim, as bibliotecas de 32 bits são criadas a partir de um Slackware em 32 bits e instaladas em um Slackware 64 bits, assim conclui-se a criação de uma camada de bibliotecas de 32 bits para o sistema.</p>
+<blockquote>
+<div class="no">Slackware para a arquitetura x86_64 (ou Slackware64) é um sistema operacional puro de 64 bits, porém pode ser facilmente atualizado para a multlib. Caso contrário, o Slackware64 só é capaz de compilar e executar programas de 64 bits.</div>
+</blockquote>
+<p>O Slackware64 tem uma vantagem sobre os demais sistemas de 64 bits que existem. Muitos outros sistemas criam a camada de compatibilidade com sistema de 32 bits recompilando grande parte de seus pacotes para 32 bits. Por outro lado, o Slackware, é uma distribuição que possui uma versão para 32 bits e 64 bits, em que cada versão é desenvolvida de forma paralela. Isto quer dizer que você não precisa compilar todos os pacotes de 32 bits a partir do zero, para que seja possível adicionar a camada de compatibilidade de 64 bits. Você simplesmente leva a versão 32 bits para a estrutura de diretórios da versão 64 bits. Por essa razão o multilib não vem por padrão no Slackware64, porém as condições necessárias para que isso ocorra foram elaboradas, cabendo ao administrador usá-las ou não. A seguir será explicado como você pode fazer um pacote de 32 bits do Slackware (por exemplo o pacote: mesa) refazendo o seu conteúdo para que você possa instalar imediatamente no Slackware64 .</p>
+<h2 class="sectionedit2"><a id="vantagem_de_um_sistema_multilib" name="vantagem_de_um_sistema_multilib"></a>Vantagem de um sistema multilib</h2>
+<div class="level2">
+<p>Vou dar alguns exemplos de programas que necessitam do multilib em um Slackware de 64 bits.</p>
+<ul>
+<li class="level1">
+<div class="li">Wine (A maioria dos programas Windows ainda são 32 bits, e para executar esses programas no Linux com o Wine, você precisa de uma versão de 32 bits do wine).</div>
+</li>
+<li class="level1">
+<div class="li">Skype , Citrix client (Estes programas são proprietários e de código fechado. Dependemos do desenvolvedor para porta-los para a plataforma de 64 bit. E isso, até agora não aconteceu, com estes dois programas de exemplo.</div>
+</li>
+</ul>
+<p>Felizmente, a utilização de sistemas 64 bits é cada vez mais comum. No ano passado, a Adobe lançou seu plugin de flash para a versão 64 bits e Sun revelou uma versão de 64 bits plugin de java para o browser. E isso foi uma das atitudes que nos motivou a trabalhar em Slackware64.</p>
+</div>
+<h2 class="sectionedit3"><a id="obtendo_os_pacotes_multilib" name="obtendo_os_pacotes_multilib"></a>Obtendo os pacotes multilib</h2>
+<div class="level2">
+<p>Você pode baixar um conjunto de pacotes habilitados para trabalhar com multilib no site <a class="urlextern" title="http://slackware.com/~alien/multilib/" href="http://slackware.com/~alien/multilib/" rel="nofollow">http://slackware.com/~alien/multilib/</a>.</p>
+<p>Todos os pacotes são acompanhados pelos fontes e pelos scripts SlackBuild, além de vários arquivos README (Este artigo Wiki é baseado em um desses READMEs). Os pacotes necessários para downloads, são apenas os pacotes binários, localizados no diretório principal. O restante está disponível para fins educacionais.</p>
+</div>
+<h3 class="sectionedit4"><a id="ativando_o_suporte_multilib_no_slackware64" name="ativando_o_suporte_multilib_no_slackware64"></a>Ativando o Suporte multilib no Slackware64</h3>
+<div class="level3">
+<p><strong>As instruções são rápidas</strong></p>
+<p>Esta seção contém as instruções essenciais para adicionar a camada multilib completa ao seu sistema Slackware64. Se você quiser entender o processo com maiores detalhes ou informações sobre como compilar software 32bit em Slackware64, leia as próximas seções também.</p>
+<ul>
+<li class="level1">
+<div class="li">Depois de baixar os pacotes do site, você atualizará as os pacotes “gcc” e “glibc” para a versão multlib, para isso execute o comando, dentro do diretório que você baixou os pacotes:</div>
+</li>
+</ul>
+<pre class="code">upgradepkg --reinstall --install-new *.t?z</pre>
+<p>Este comando irá instalar também um pacote adicional chamado “compat32-tools”.</p>
+<ul>
+<li class="level1">
+<div class="li">Agora você deverá ter uma árvore de pacotes do Slackware Disponível. Para quem comprou o DVD oficial do Slackware, poderá utilizar o DVD com a versão de 32 bits, ou como exemplo um árvore dos pacotes do Slackware de 32 bits pode ser obtida em ~ftp/pub/slackware/slackware-13.0/slackware/</div>
+</li>
+</ul>
+<p>Não deve haver sub-diretórios chamados 'a', 'ap', 'd', 'l', 'n', 'x' abaixo deste diretório.</p>
+<ul>
+<li class="level1">
+<div class="li">Crie um novo diretório vazio (chamemos-lhe 'compat32') e mude para ele:</div>
+</li>
+</ul>
+<pre class="code">mkdir compat32 ; cd compat32</pre>
+<ul>
+<li class="level1">
+<div class="li">Execute o seguinte comando para criar um conjunto de pacotes de 32 bits de compatibilidade, usando o pacote original de 32 bits do Slackware com o comando:</div>
+</li>
+</ul>
+<pre class="code">massconvert32.sh -i ~ftp/pub/slackware/slackware-13.0/slackware/</pre>
+<ul>
+<li class="level1">
+<div class="li">Instale os 60 <acronym title="Megabyte">MB</acronym> recém-convertidos de pacotes de 32 bits o Slackware:</div>
+</li>
+</ul>
+<pre class="code">installpkg *-compat32/*.t?z</pre>
+<p>Pronto! Você pode agora começar a baixar, instalar e executar programas de 32 bits.</p>
+<blockquote>
+<div class="no">Se você usar um gerenciador de pacotes como o slackpkg você terá que adicionar glibc e gcc na blacklist. Se você não tomar essa precaução, você corre o risco de seu gerenciador de pacotes acidentalmente substituir as novas versões com multilib para a versão original pura do Slackware64!</div>
+</blockquote>
+</div>
+<h2 class="sectionedit5"><a id="instrucoes_detalhadas" name="instrucoes_detalhadas"></a>Instruções detalhadas</h2>
+<div class="level2">&nbsp;</div>
+<h3 class="sectionedit6"><a id="atualizando_a_glibc_e_gcc" name="atualizando_a_glibc_e_gcc"></a>Atualizando a glibc e GCC</h3>
+<div class="level3">
+<p>Os pacotes glibc/gcc são substituídos por pacotes não padrões do Slackware. Você usa o upgradepkg “programa para atualizar a multilib com novas versões de gcc e glibc. Você vai precisar deles para executar (glibc), e construir (CCG), programas de 32 bits em seu computador com Slackware64 (as versões de pacotes mostradas abaixo são para o Slackware 13,0):</p>
+<ul>
+<li class="level1">
+<div class="li">O compilador gcc:</div>
+<ul>
+<li class="level2">
+<div class="li">gcc-4.3.3_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">gcc-g++-4.3.3_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">gcc-gfortran-4.3.3_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">gcc-gnat-4.3.3_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">gcc-java-4.3.3_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">gcc-objc-4.3.3_multilib-x86_64-4alien.txz</div>
+</li>
+</ul>
+</li>
+<li class="level1">
+<div class="li">As bibliotecas GNU libc:</div>
+<ul>
+<li class="level2">
+<div class="li">glibc-2.9_multilib-x86_64-3alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">glibc-i18n-2.9_multilib-x86_64-3alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">glibc-profile-2.9_multilib-x86_64-3alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">glibc-solibs-2.9_multilib-x86_64-3alien.txz</div>
+</li>
+<li class="level2">
+<div class="li">glibc-zoneinfo-2.9_multilib-noarch-3alien.txz</div>
+</li>
+</ul>
+</li>
+</ul>
+<p>Existe um pacote adicional que você instala usando o installpkg:</p>
+<ul>
+<li class="level1">
+<div class="li">O “kit de ferramentas 32-bit” (scripts que facilitam a criação de pacotes de 32 bits)</div>
+<ul>
+<li class="level2">
+<div class="li">compat32-tools-1.0-noarch-1.tgz</div>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div class="no">Slamd64 separa os pacotes das gcc/glibc para 64 bits e 32 bits. No entanto, penso que é mais limpo manter esses pacotes de multilib de forma individual. Segui o conceito já utilizado no pacote binutils o próprio Slackware64, que tem capacidades de multilib em 64 bits 32 bits.</div>
+</blockquote>
+</div>
+<h3 class="sectionedit7"><a id="adicionando_bibliotecas_32-bit_slackware" name="adicionando_bibliotecas_32-bit_slackware"></a>Adicionando bibliotecas 32-bit Slackware</h3>
+<div class="level3">
+<p>A atualização da glibc e GCC que descrita anteriormente muda seu sistema de <em>“multilib pronto”</em> para <em>“multilib habilitado”</em>.</p>
+<p>Agora, tudo que você precisa fazer é instalar as versões de 32 bits dos software do Slackware para que os futuros programas de 32 bits que você instalará e/ou compilará tenham suas dependências satisfeitas.</p>
+<p>Isto não é tão simples como pegar pacotes do Slackware 32 bits e instalá-los em Slackware64:</p>
+<ul>
+<li class="level1">
+<div class="li">Em primeiro lugar, você vai acabar com vários pacotes duplicados no sistema (dois pacotes de 'mesa', dois pacotes 'zlib', etc …) o que confundirá você e o seu gerenciador de pacotes slackpkg.</div>
+</li>
+</ul>
+<ul>
+<li class="level1">
+<div class="li">Além disso, você terá pacotes contendo binários de 32 (algo como /usr/bin/foo que irá substituir os seus homólogos para o ambiente de 64 bits quando você instalar o pacote de 32 bits). Isso causará sérios problemas para você e o seu sistema.</div>
+</li>
+</ul>
+<p>Um cuidado extra é necessário. O que você precisa, é um pacote de 32 bits que não entra em conflito com o que já está presente em 64 bits no Slackware. Daí o nome “32bit pacote de compatibilidade”.</p>
+<p>Eu decidi que seria um desperdício de banda em download, eu criei pacotes com versões de 32 bits compatíveis para mim. Afinal, você já deve ter comprado o Slackware 13,0 DVD que você já possui tanto 64bit e 32bit versões do Slackware … ou então a árvore do Slackware 32 bits está disponível para download gratuito. <img class="middle" src="{{ site.baseurl }}/assets/2015/02/icon_wink.gif" alt=";-)" /></p>
+<p>Em vez disso, eu escrevi alguns scripts (partes do código do script foi escrito por Fred Emmott de fama slamd64) e envolveu-los em um compat32. Sua finalidade é permitir que você extrair o conteúdo de qualquer pacote do Slackware 32 bits e usar isso para criar um novo pacote de segurança que você pode instalar no seu 64bit Slackware.</p>
+<p>O pacote “compat32-tools” precisa de alguma explicação.</p>
+<p>Por favor, leia as normas 'README' no diretório /usr/doc/compat32-tools-*/ isso vai ajudá-lo em seu aprimoramento. Estes são os três scripts úteis que o pacote instala:</p>
+<ul>
+<li class="level1">
+<div class="li">/etc/profile.d/32dev.sh</div>
+</li>
+</ul>
+<p>Este é o mesmo script que vem com slamd64. Ele reconfigura o shell do seu ambiente para que você possa compilar os programas em 32 bits</p>
+<ul>
+<li class="level1">
+<div class="li">convertpkg-compat32</div>
+</li>
+</ul>
+<p>Este script pega um pacote de 32 bits do Slackware e os converte para um pacote de segurança '-compat32 ” onde você pode instalar (usando o” installpkg ”) no Slackware64, juntamente com a versão de 64-bit do mesmo pacote de software. Por exemplo: suponha que você precisa de bibliotecas 32 bits que estão no pacote mesa. Você leva o pacote mesa de 32 bits Slackware x/mesa-7.5-i486-1.txz e em seguida, executa</p>
+<pre class="code">convertpkg-compat32 /path/to/mesa-7.5-i486-1.txz</pre>
+<p>Isso criará um novo pacote chamado mesa-compat32-7.5-x86_64-1.txz. Este novo pacote (que é criado no seu diretório /tmp a menos que você tenha especificado outro destino) é basicamente o pacote de 32 bits. O nome alterado (mesa-compat32) permite que você instalar este novo pacote de Slackware64 onde irá co-existir com o pacote mesa 64 bits, não substituindo quaisquer arquivos.</p>
+<p>O scripr deixa os arquivos temporários no diretório ”/tmp/package-&lt;prgnam&gt;-compat32 que você pode excluir com segurança.</p>
+<ul>
+<li class="level1">
+<div class="li">massconvert32.sh</div>
+</li>
+</ul>
+<p>Este script contém uma lista interna de que eu considero essencial, o subconjunto de pacotes de 32 bits do Slackware. Ele usa o script convertpkg, para pegar todos os pacotes que estão nesta lista interna, e convertê-los em pacotes '-compat32'.</p>
+<p>Você precisa executar este script uma única vez, por exemplo.</p>
+<pre class="code">     massconvert32.sh -i /mnt/dvd/slackware -d ~/compat32</pre>
+<p>Esta ação vai resultar em cerca de 60 <acronym title="Megabyte">MB</acronym> de novos pacotes que você vai encontrar dentro do diretório recém-criado ~/compat32. Estes pacotes incluem o componente de 32 bits do seu sistema Slackware64 multilib.</p>
+<p>Eles devem ser instalados usando o “installpkg”:</p>
+<pre class="code">     installpkg ~/compat32/*/*.t?z</pre>
+<blockquote>
+<div class="no">Ao instalar os pacotes <em>compat32</em> você irá notar que alguns vão mostrar erros sobre a falta de arquivos em <em>/etc</em>. Estes erros podem ser ignorados. Essas mensagens são geradas pelo fato de que os arquivos em <em>/etc</em> são removidos de um <em>“pacote compat32”</em> durante a conversão (exceto para Pango e gtk +2). Partindo do princípio de que os arquivos em <em>/etc</em> que já tenha sido instalado pelo pacote original de 64 bits.<br />
+Um exemplo desses erros é o pacote do <em>cups-compat32</em>:</div>
+</blockquote>
+<pre class="code">Executing install script for cups-compat32-1.3.11-x86_64-1.txz.
+install/doinst.sh: line 5: [: too many arguments
+cat: etc/cups/interfaces: Is a directory
+cat: etc/cups/ppd: Is a directory
+cat: etc/cups/ssl: Is a directory
+cat: etc/cups/*.new: No such file or directory
+cat: etc/dbus-1/system.d/cups.conf.new: No such file or directory
+chmod: cannot access `etc/rc.d/rc.cups.new': No such file or directory chmod:
+cat: etc/rc.d/rc.cups.new: No such file or directory
+Package cups-compat32-1.3.11-x86_64-1.txz installed.</pre>
+<blockquote>
+<div class="no">Se você estava considerando a possibilidade de usar o script convertpkg-compat32 converter um pacote não-Slackware-compat32 para um pacote, devo alertar para que você não faça isso. O script foi escrito com uma única finalidade que é fazer versões de binários de 32 bits funcionarem em Slackware64, com o multlib. Como tal, o script irá remover um monte de coisas que está presente no pacote de 32 bits original - coisas que devem ter sido instaladas com a versão 64 bits do pacote.<br />
+Em quase todos os casos em que você tenha baixado um não-pacote do Slackware 32 bits e quiser que ele funcione no Slackware64, a melhor maneira é encontrar as fontes e criar uma versão do pacote de 64 bits. Como alternativa, basta instalar o pacote de 32 bits original em vez de tentar “convertê-lo” e depois executá-lo pela linha de comando para encontrar qualquer falta bibliotecas de 32 bits.</div>
+</blockquote>
+</div>
+<h2 class="sectionedit8"><a id="executando_programas_32_bits" name="executando_programas_32_bits"></a>Executando programas 32 bits</h2>
+<div class="level2">
+<p>Executando um programa pré-compilado em 32 bits é fácil depois que você fez a preparação do sistema. Basta baixar, instalar e executá-lo!</p>
+<p>Às vezes, você pode executar um programa que requer uma certa biblioteca de 32 bits do Slackware que você ainda não tem disponível. Nesse caso, você deve descobrir quao o pacote de 32 bits contém essa biblioteca necessária. Então, use o script convertpkg “compat32” para converter o pacote original de 32 bits do Slackware em um pacote compatível com o Slackware64.</p>
+</div>
+<h2 class="sectionedit9"><a id="compilando_programas_bit_32" name="compilando_programas_bit_32"></a>Compilando programas bit 32</h2>
+<div class="level2">
+<p>Caso você precise compilar um programa de 32 bits, você deve configurar o shell, executando o comando:</p>
+<pre class="code">. /etc/profile.d/32dev.sh</pre>
+<p>Observe o “ponto” na frente do nome do arquivo - isso é realmente parte do comando! A execução deste comando altera ou cria diversas variáveis de ambiente. O efeito disto é que as versões de binários de 32 bits têm preferência sobre os binários de 64 bits quando você for compilar o código-fonte - dessa forma, você estará executando uma compilação de 32 bits. O efeito durará até você sair do seu shell.</p>
+<p>Neste ambiente alterado, você será capaz de usar SlackBuilds padrão para construir pacotes de 32-bit para Slackware64. Há duas coisas em mente:</p>
+<ol>
+<li class="level1">
+<div class="li">Você terá que definir a variável ARCH como 'x86_64' mesmo que você está compilando um programa 32-bit!</div>
+</li>
+<li class="level1">
+<div class="li">Você terá que editar o SlackBuild e se quiser usar 'lib64 /' para diretórios “$ ARCH = x86_64”, você terá de forçá-lo a usar o diretório '/lib' em seu lugar. Normalmente, este é realizado por encontrar uma definição, como:</div>
+</li>
+</ol>
+<pre class="code">LIBDIRSUFFIX="64"</pre>
+<p>altere essa linha para</p>
+<pre class="code">LIBDIRSUFFIX=""</pre>
+</div>
+<h2 class="sectionedit10"><a id="advertencias" name="advertencias"></a>Advertências</h2>
+<div class="level2">
+<p>Depois de instalar os pacotes -compat32, você pode ter que re-instalar o binário da Nvidia ou drivers de vídeo ATI X.Org. Estes pacotes contêm driver bibliotecas para 64 bits e 32 bits. Se você instalou os arquivos do driver para ambas as arquiteturas, o pacote mesa-compat32 irá substituir alguns dos arquivos de biblioteca de 32 bits.</p>
+<p>Por outro lado, se você instalou somente as bibliotecas do driver 64bit para sua placa Nvidia, recomenda-se após a instalação dos pacotes multilib, re-instalar o pacote de driver binário. Desta vez, opta-se por instalar o driver de 32 bits também.</p>
+<p>Os aplicativos gráficos de 32 bits em sua instalação multilib são necessários para as suas bibliotecas de drivers de 32 bits. Crashes são suscetíveis de ocorrer se você deixar de instalar os arquivos corretos.</p>
+<p>Pacotes convertido por massconvert32.sh</p>
+<p>Esta é a lista de pacotes convertidos em “compat32” através do script <em>massconvert32.sh</em></p>
+<pre class="code"># The A/ series:
+ 
+bzip2
+cups
+cxxlibs
+dbus
+e2fsprogs
+openssl-solibs
+ 
+# The AP/ series:
+ 
+mysql
+ 
+# The D/ series:
+ 
+libtool
+ 
+# The L/ series:
+ 
+alsa-lib
+alsa-oss
+atk
+cairo
+ncurses
+expat
+freetype
+gamin
+glib2
+gtk+2
+hal
+jasper
+lcms
+libexif
+libgphoto2
+libjpeg
+libmng
+libpng
+libtermcap
+libtiff
+libxml2
+libxslt
+pango
+qt
+readline
+sdl
+svgalib
+zlib
+ 
+# The N/ series:
+ 
+cyrus-sasl
+gnutls
+libgcrypt
+libgpg-error
+openldap-client
+openssl
+ 
+# The X/ series:
+ 
+fontconfig
+libFS
+libICE
+libSM
+libX11
+libXScrnSaver
+libXTrap
+libXau
+libXaw
+libXcomposite
+libXcursor
+libXdamage
+libXdmcp
+libXevie
+libXext
+libXfixes
+libXfont
+libXfontcache
+libXft
+libXi
+libXinerama
+libXmu
+libXp
+libXpm
+libXprintUtil
+libXrandr
+libXrender
+libXres
+libXt
+libXtst
+libXv
+libXvMC
+libXxf86dga
+libXxf86misc
+libXxf86vm
+libdmx
+libdrm
+libfontenc
+liblbxutil
+libxcb
+mesa
+pixman</pre>
+</div>
+<h2 class="sectionedit11"><a id="agradecimentos" name="agradecimentos"></a>Agradecimentos</h2>
+<div class="level2">
+<ul>
+<li class="level1">
+<div class="li">Grande parte dos meus agradecimentos devem ir para Fred Emmott, que criou slamd64, o original e não-oficial fork do Slackware para 64 bits. Embora Slackware64 não foi baseado no trabalho de Fred, eu ainda aprendi mais do que sei sobre a criação de 32-bit parte de um Linux multilib e de seus scripts que são encontrados em slamd64.</div>
+</li>
+<li class="level1">
+<div class="li">Cross Linux From Scratch. Cross Linux From Scratch. O Wiki CLFS <a class="urlextern" title="http://trac.cross-lfs.org/wiki/read#ReadtheCrossLinuxFromScratchBookOnline" href="http://trac.cross-lfs.org/wiki/read#ReadtheCrossLinuxFromScratchBookOnline" rel="nofollow">http://trac.cross-lfs.org/wiki/read#ReadtheCrossLinuxFromScratchBookOnline</a> é um excelente guia de leitura para você entender como portar o Linux para uma nova arquitetura. Eu obtive várias idéias, conceitos e patches de Slackware64 ao criá-lo a partir do zero, e outra vez quando eu criei o meu pacote gcc/glibc multilib a partir do zero Divirta-se!</div>
+</li>
+</ul>
+<p>Eric</p>
+</div>

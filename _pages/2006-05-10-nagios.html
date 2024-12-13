@@ -1,0 +1,31 @@
+---
+layout: page
+title: Nagios
+date: 2006-05-10 17:50:55.000000000 +00:00
+type: page
+parent_id: '888'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '105'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/nagios/"
+---
+<p align="center">Aqui est&atilde;o alguns dos problemas que tive com o Nagios e as solu&ccedil;&otilde;es possíveis!</p>
+<p><strong>1-) Ao tentar utilizar o plugin nrpe, a máquina remota retorna o seguinte erro: <em> &quot;Could not read request from client, bailing out...&quot;</em>.</strong></p>
+<p>R: A máquina servidora está fazendo a requisi&ccedil;&atilde;o para a máquina remota utilizando autentica&ccedil;&atilde;o via SSL. porém a máquina remota está configurada para n&atilde;o trabalhar com encripta&ccedil;&atilde;o SSL. Para resolver esse problema, basta alterar o seguinte par&acirc;metro do arquivo checkcommands.cfg:</p>
+<p><em> define command{<br />        command_name    check_nrpe<br />        command_line    /usr/local/nagios/libexec/check_nrpe -H $HOSTADDRESS$ -c $ARG1$<br />        }</em></p>
+<p><em><br />para</em></p>
+<p><em> </em></p>
+<p><em></em><em>define command{<br />        command_name    check_nrpe<br />        command_line    /usr/local/nagios/libexec/check_nrpe -H $HOSTADDRESS$ -c $ARG1$ -n<br />        }</em> </p>
+<p><em> </em></p>

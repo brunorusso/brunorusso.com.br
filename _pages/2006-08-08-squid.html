@@ -1,0 +1,30 @@
+---
+layout: page
+title: Squid
+date: 2006-08-08 07:50:25.000000000 +00:00
+type: page
+parent_id: '888'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '133'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/squid/"
+---
+<div align="center">Nesta página estão alguns dos problemas que encontrei ao trabalhar com o squid, que é um excelente proxy-cache.</div>
+<p><strong>1) Ao iniciar o squid o mesmo não é inicializado. O processo unlinkd não está ativo. </strong></p>
+<p>R: Ao analisar os log's do sistema (messages), encontrei a seguinte mensagem: storeUfsDirOpenSwapLog: Failed to open swap log.</p>
+<p>Em resumo o erro estava quando o squid tentava abrir o aquivo <em>-var-cache-squid-swap.state.</em></p>
+<p>Por algum motivo esse arquivo acabou sendo truncado. Analisando os logs infelizmente não consegui descobrir o motivo desse problema.</p>
+<p>A solução para esse problema é, remover o arquivo   <em>-var-cache-squid-swap.state </em>e caso existe mais algum<em> </em><em>-var-cache-squid-swap.state.log </em>ou algo do tipo.</p>
+<p>Em seguida é só reiniciar o squid. ;)</p>

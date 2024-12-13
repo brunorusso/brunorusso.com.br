@@ -1,0 +1,27 @@
+---
+layout: post
+title: firefox-3.6.12 com erro em libstdc++.so.6
+date: 2010-11-08 14:15:44.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '822'
+permalink: "/2010/11/08/firefox-3-6-12-com-erro-em-libstdc-so-6/"
+---
+<p>Se você usa a versão x64 do Slackware, e está utilizando o current e possui as <a title="Multilib" href="http://linux.brunorusso.com.br/doku.php?id=multilib_para_o_slackware_x86_64">multilibs</a> instaladas, é bem provável que após atualizar o firefox, o mesmo não carregue. Ao tentar executar ele pelo terminal, a seguinte mensagem é exibida:</p>
+<blockquote><p>$ firefox<br />
+/usr/lib64/firefox-3.6.12/firefox-bin: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.14' not found (required by /usr/lib64/firefox-3.6.12/libxul.so)</p></blockquote>
+<p>O que você precisa fazer é atualizar as multilibs, mas para corrigir esse erro basta apenas atualizar a gcc-g++-4.5.1_multilib-x86_64-2alien.txz.</p>
+<p>Segue o endereço das multilibs "oficiais" do Alien</p>
+<p><a href="http://connie.slackware.com/~alien/multilib/current/">http://connie.slackware.com/~alien/multilib/current/</a></p>

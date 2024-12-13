@@ -1,0 +1,33 @@
+---
+layout: post
+title: Descobrindo o tamanho de um schema no Oracle
+date: 2008-11-19 22:14:25.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '443'
+permalink: "/2008/11/19/descobrindo-o-tamanho-de-um-schema-no-oracle/"
+---
+<p>Ai vai uma dica para saber qual o tamanho de um schema no Oracle.<br />
+<code><br />
+select<br />
+segment_type, sum(bytes) size_in_bytes<br />
+from<br />
+dba_segments<br />
+where<br />
+OWNER = 'NOME_DA_SCHEMA'<br />
+group by<br />
+segment_type<br />
+</code></p>
+<p style="text-align:left;">Substitua: NOME_DO_SCHEMA, pelo nome do&nbsp;schema que você quer saber o tamanho!</p>
+<p style="text-align:center;"><img class="aligncenter" src="{{ site.baseurl }}/assets/2008/11/oracle.gif" alt="" width="497" height="172" /></p>

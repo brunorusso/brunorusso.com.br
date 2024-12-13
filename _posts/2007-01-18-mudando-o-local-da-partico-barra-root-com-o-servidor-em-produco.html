@@ -1,0 +1,205 @@
+---
+layout: post
+title: Mudando o local da partição barra root com o servidor em produção
+date: 2007-01-18 06:52:41.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '183'
+permalink: "/2007/01/18/mudando-o-local-da-partico-barra-root-com-o-servidor-em-produco/"
+---
+<p>Tudo caminha muito bem, até quando voc&#234; começa a verificar os Log's do Servidor e descobre que existe um Disco Rígido (HD), ou melhor, uma partiç&#227;o com problema. Acabou o sussego, pode ter certeza!</p>
+<blockquote><p>Jan 16 12:00:04 mail kernel: scsi1: ERROR on channel 0, id 0, lun 0, CDB: 0x28 00 00 06 f1 a3 00 00 08 00<br />
+Jan 16 12:00:04 mail kernel: Info fld=0x6f1a5, Current sd08:06: sns = f0  3<br />
+Jan 16 12:00:04 mail kernel: ASC=11 ASCQ= 1<br />
+Jan 16 12:00:04 mail kernel: Raw sense data:0xf0 0x00 0x03 0x00 0x06 0xf1 0xa5 0x28 0x00 0x00 0x00 0x00 0x11 0x   01 0x00 0x80 0x00 0x3f 0x00 0x28 0x00 0x16 0x10 0x01 0x69 0x01 0x00 0x00 0x01 0x35 0x02 0x8b 0x00 0x00 0x00 0x0   0 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00<br />
+Jan 16 12:00:04 mail kernel:  I/O error: dev 08:06, sector 262232<br />
+Jan 16 12:00:04 mail kernel: EXT3-fs error (device sd(8,6)): ext3_get_inode_loc: unable to read inode block - i   node=32396, block=32779<br />
+Jan 16 12:00:05 mail kernel: EXT3-fs error (device sd(8,6)) in ext3_reserve_inode_write: IO failure</p></blockquote>
+<p>Aí voc&#234; começa a verificar as partiç&#245;es existentes</p>
+<blockquote><p>Filesystem            Size  Used Avail Use% Mounted on<br />
+/dev/sda6             4.6G  3.4G  911M  80% /<br />
+proc                     0     0     0   -  /proc<br />
+/dev/sda5              92M  7.3M   80M   9% /boot<br />
+/dev/sda7             2.8G  292M  2.3G  12% /usr/local<br />
+/dev/sda11            6.4G  3.3G  2.8G  54% /sobra<br />
+/dev/md0              184G  7.4G  167G   5% /home<br />
+/dev/sdb1              17G  7.7G  8.0G  50% /var<br />
+/dev/hda2              46G   27G   17G  62% /dados<br />
+devpts                   0     0     0   -  /dev/pts</p></blockquote>
+<p>E ent&#227;o, descobre que existe uma partiç&#227;o <strong>LIVRE</strong>. Mas como utilizar essa partiç&#227;o, no meu caso a partiç&#227;o é a <em>sda11</em> denominada de <em>sobra</em>, sem <strong>PARAR</strong> o sistema. Bom sem parar o sistema é um pouco impossível, pois será necessário efetuar um <em>boot</em>, ent&#227;o, como parar o menor tempo possível o sistema de modo que n&#227;o seja perdido nenhuma informaç&#227;o?</p>
+<p>Essa pergunta, é o que fiz e consegui parar o sistema apenas para um simples boot. Vou descrever o problema para um melhor esclarecimento.</p>
+<p>Em uma máquina de produç&#227;o, há uma partiç&#227;o do HD com problemas. Nessa mesma máquina existe uma outra partiç&#227;o, chamada de <em>sobra</em>, que n&#227;o é utilizada para nada, está 100% ociosa. Qual que é a idéia?!? <em>Migrar</em> as informaç&#245;es da partiç&#227;o com problema para a partiç&#227;o que n&#227;o é utilizada.</p>
+<p>Como fazer isso??</p>
+<p>É o que descrevo a seguir...</p>
+<p>Antes de mais nada é importante confirmar se a partiç&#227;o que será utilizada, no meu caso a /de/sda11, está 100%, ou seja, n&#227;o está danificada e pode ser utilizada.</p>
+<p>A primeira coisa a fazer é desmontar a partiç&#227;o <strong>/sobra (sda11)</strong>, para isso executo o comando abaixo:</p>
+<blockquote><p>umount /sobra</p></blockquote>
+<p>Agora vamos executar um <strong>fsck</strong> *<em>(cuidado o fsck pode danificar seus dados, caso n&#227;o seja utilizado corretamente, para maiores informaç&#245;es veja: man fsck)</em> na partiç&#227;o desmontada <em>sda11</em>.</p>
+<blockquote><p>fsck.ext3 -cyv /dev/sda11</p></blockquote>
+<p>Feito a checagem e observando o LOG, posso ver que nessa partiç&#227;o n&#227;o existem <strong>badblocks</strong>.</p>
+<blockquote><p>e2fsck 1.38 (30-Jun-2005)<br />
+Checking for bad blocks (read-only test): done                        995<br />
+Pass 1: Checking inodes, blocks, and sizes<br />
+Pass 2: Checking directory structure<br />
+Pass 3: Checking directory connectivity<br />
+Pass 4: Checking reference counts<br />
+Pass 5: Checking group summary information</p>
+<p>/dev/sda11: ***** FILE SYSTEM WAS MODIFIED *****</p>
+<p>45415 inodes used (2%)<br />
+27 non-contiguous inodes (0.1%)<br />
+# of inodes with ind/dind/tind blocks: 2333/27/0<br />
+912342 blocks used (52%)<br />
+0 bad blocks<br />
+0 large files</p>
+<p>31340 regular files<br />
+2744 directories<br />
+2032 character device files<br />
+7831 block device files<br />
+3 fifos<br />
+0 links<br />
+1448 symbolic links (1448 fast symbolic links)<br />
+8 sockets<br />
+--------<br />
+45406 files</p></blockquote>
+<p>Agora o próximo passo é copiar os arquivos da partiç&#227;o <strong>barra (/)</strong> para a nova partiç&#227;o <strong>/sobra</strong>. Para isso é necessário montar novamente e partiç&#227;o.</p>
+<blockquote><p>mount /dev/sda11 /sobra</p></blockquote>
+<p>Nesse caso vou copiar os seguintes diretórios:</p>
+<ul>
+<li>cp -dpR /bin/ /sobra/</li>
+<li>cp -dpR /etc/ /sobra/</li>
+<li>cp -dpR /lib/ /sobra/</li>
+<li>cp -dpR /mnt/ /sobra/</li>
+<li>cp -dpR /sbin/ /sobra/</li>
+<li>cp -dpR /sys/ /sobra/</li>
+<li>cp -dpR /dev/ /sobra/</li>
+<li>cp -dpR /opt/ /sobra/</li>
+<li>cp -dpR /root/ /sobra/</li>
+<li>cp -dpR /tmp/ /sobra/</li>
+<li>cp -dpR /usr/ /sobra/  Após copiar os arquivos é necessário criar os diretórios que s&#227;o pontos de montagem para outras partiç&#245;es, s&#227;o eles:<br />
+<blockquote><p>mkdir /sobra/proc<br />
+mkdir /sobra/var<br />
+mkdir /sobra/dados<br />
+mkdir /sobra/home</p></blockquote>
+<p>Ao fazer a cópia dos arquivos, os seguintes erros foram apresentados</p>
+<blockquote><p>cp: cannot stat `/usr/lib/gconv/libGB.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/MAC-IS.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO_2033.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/MAC-UK.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/CP737.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/CP775.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/CP932.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/DEC-MCS.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/NATS-DANO.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/T.61.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/SAMI-WS2.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-2.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-3.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-4.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-5.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-6.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-7.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-8.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-9.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ECMA-CYRILLIC.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO-2022-CN-EXT.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO_10367-BOX.so': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/grep.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/kbd.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/minicom.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/dialog.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/sed.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/tar.mo': Input/output error</p></blockquote>
+</li>
+</ul>
+<blockquote><p>O erro acima pode ter sido ocasionado devido ao problema que existe na partiç&#227;o. N&#227;o necessáriamente os arquivos est&#227;o corrompidos por um erro de instalaç&#227;o.</p></blockquote>
+<p>Os arquivos,</p>
+<blockquote><p>cp: cannot stat `/usr/lib/gconv/libGB.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/MAC-IS.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO_2033.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/MAC-UK.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/CP737.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/CP775.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/CP932.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/DEC-MCS.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/NATS-DANO.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/T.61.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/SAMI-WS2.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-2.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-3.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-4.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-5.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-6.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-7.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-8.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO8859-9.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ECMA-CYRILLIC.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO-2022-CN-EXT.so': Input/output error<br />
+cp: cannot stat `/usr/lib/gconv/ISO_10367-BOX.so': Input/output error</p></blockquote>
+<p>s&#227;o do pacote <a href="http://packages.slackware.it/package.php?q=10.2/glibc-2.3.5-i486-5">glibc</a> e <a href="http://packages.slackware.it/package.php?q=10.2/glibc-solibs-2.3.5-i486-5">glibc-solibs</a>. Como o problema detectado foi no disco acredito que esses arquivos tenham sido corrompidos. Como s&#227;o <strong>apenas</strong> bibliotecas, alguns programas podem n&#227;o funcionar corretamente. Por isso, esses pacotes devem ser reinstalados.</p>
+<p>Continuando a lista dos arquivos que n&#227;o foram copiados temos:</p>
+<blockquote><p>cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/grep.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/kbd.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/minicom.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/dialog.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/sed.mo': Input/output error<br />
+cp: cannot stat `/usr/share/locale/es/LC_MESSAGES/tar.mo': Input/output error</p></blockquote>
+<p>Os arquivos acima s&#227;o respectivamente dos seguintes pacotes:</p>
+<ul>
+<li><a href="http://packages.slackware.it/package.php?q=10.2/grep-2.5-i386-2">grep</a></li>
+<li><a href="http://packages.slackware.it/package.php?q=10.2/kbd-1.12-i486-2">kbd</a></li>
+<li><a href="http://packages.slackware.it/package.php?q=10.2/minicom-2.1-i486-2">minicom</a></li>
+<li><a href="http://packages.slackware.it/package.php?q=10.2/pkgtools-10.2.0-i486-5">pkgtools</a></li>
+<li><a href="http://packages.slackware.it/package.php?q=10.2/sed-4.0.9-i486-2">sed</a></li>
+<li><a href="http://packages.slackware.it/package.php?q=10.2/tar-1.16-i486-1_slack10.2">tar</a>  Como esses pacotes s&#227;o todos referentes ao idioma Espanhol n&#227;o é preocupante, porém eles precisar&#227;o ser reinstalados.  Arquivos "<em><strong>copiados"</strong></em>! Agora falta modificar alguns parâmetros em dois arquivos:  ''' /etc/fstab ''' /etc/lilo.conf  Porém os arquivos que iremos modificar n&#227;o encontram-se mais no seu local padr&#227;o <strong>/etc</strong>. Esses arquivos agora encontram-se no diretório <strong>/sobra/etc</strong>. Após reiniciar a máquina os arquivos n&#227;o estar&#227;o mais no <strong>/sobra/FILES</strong> estar&#227;o no <strong>/(barra)</strong>.  Vamos modificar os arquivos.  O primeiro que iremos modificar é o <strong>/sobra/etc/fstab</strong>  Arquivo Original<br />
+<blockquote><p>/dev/sda8        swap             swap        defaults         0   0<br />
+/dev/sda9        swap             swap        defaults         0   0<br />
+/dev/sda10       swap             swap        defaults         0   0<br />
+/dev/sda6        /                ext3        defaults         1   1<br />
+/dev/sda5        /boot            ext3        defaults         1   2<br />
+/dev/sda7        /usr/local       ext3        defaults         1   2<br />
+/dev/sda11       /sobra           ext3        defaults         1   2<br />
+/dev/md0         /home            ext3        defaults,usrquota,grpquota         1   2<br />
+/dev/sdb1        /var             ext3        defaults         1   2<br />
+/dev/hda2        /dados           ext3        defaults         1   2<br />
+/dev/cdrom       /mnt/cdrom       auto        noauto,owner,ro  0   0<br />
+/dev/fd0         /mnt/floppy      auto        noauto,owner     0   0<br />
+devpts           /dev/pts         devpts      gid=5,mode=620   0   0<br />
+proc             /proc            proc        defaults         0   0</p></blockquote>
+<p>Arquivo Modificado <strong>(NOVO)</strong></p>
+<blockquote><p>/dev/sda8        swap             swap        defaults         0   0<br />
+/dev/sda9        swap             swap        defaults         0   0<br />
+/dev/sda10       swap             swap        defaults         0   0<br />
+/dev/sda11       /                ext3        defaults         1   1<br />
+/dev/sda5        /boot            ext3        defaults         1   2<br />
+/dev/sda7        /usr/local       ext3        defaults         1   2<br />
+/dev/md0         /home            ext3        defaults,usrquota,grpquota         1   2<br />
+/dev/sdb1        /var             ext3        defaults         1   2<br />
+/dev/hda2        /dados           ext3        defaults         1   2<br />
+/dev/cdrom       /mnt/cdrom       auto        noauto,owner,ro  0   0<br />
+/dev/fd0         /mnt/floppy      auto        noauto,owner     0   0<br />
+devpts           /dev/pts         devpts      gid=5,mode=620   0   0<br />
+proc             /proc            proc        defaults         0   0</p></blockquote>
+<p>As linhas alteradas foram:  ''' /dev/sda11       /                ext3        defaults         1   1<br />
+''' /dev/sda11       /sobra           ext3        defaults         1   2<br />
+O segundo e último arquivo a ser alterado é o <strong>/sobra/etc/lilo.conf</strong>  Arquivo Original</p>
+<blockquote><p>image = /boot/vmlinuz<br />
+root = /dev/sda6<br />
+label = Linux<br />
+read-only</p></blockquote>
+<p>Arquivo Modificado (NOVO)</p>
+<blockquote><p>image = /boot/vmlinuz<br />
+root = /dev/sda11<br />
+label = Linux<br />
+read-only</p></blockquote>
+<p>Alterados os arquivos, basta alterar as informaç&#245;es do lilo na (MBR). Isso é feito com o comando:  ''' lilo -v -C /sobra/etc/lilo.conf  Se tudo funcionar, basta reiniciar o equipamento e aguardar (ou rezar)!!!</li>
+</ul>

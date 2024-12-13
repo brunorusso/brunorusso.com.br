@@ -1,0 +1,36 @@
+---
+layout: post
+title: Hyperterminal no Linux
+date: 2009-02-24 02:00:51.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '538'
+permalink: "/2009/02/24/hyperterminal-no-linux/"
+---
+<p>Toda vez que precisava configurar um <a title="Switch" href="http://pt.wikipedia.org/wiki/Switch">Switch</a> via <a title="Porta Serial" href="http://pt.wikipedia.org/wiki/Porta_serial">porta SERIAL</a>, lá ia eu usar uma máquina Windows, para usar o hyperterminail. Usava esse, pois nunca fui com a cara do <a title="Minicom" href="http://en.wikipedia.org/wiki/Minicom">minicom</a>. Simplesmente n&#227;o gosto de usá-lo, pois todas as vezes que precisei utilizá-lo apanhei e muito.</p>
+<p>Mas cansei de utilizar uma máquina Windows para isso, ent&#227;o...procura aqui..acessa ali...até que!</p>
+<p><a title="Eureka!" href="http://pt.wikipedia.org/wiki/Eureka_(exclama%C3%A7%C3%A3o)">Eureka</a>!</p>
+<p>Encontrei um excelente <a title="Hyperterminal para Linux" href="http://blog.nexthop.com.br/2007/01/hyperterminal-para-linux.html">hyperterminal para linux</a>, chamado: <strong>C-kermit</strong>, ou apenas <a title="kermit" href="http://www.columbia.edu/kermit/ck80.html"><strong>kermit</strong></a>.</p>
+<p>A utilizaç&#227;o do kermit é muito simples, segue um exemplo feito pelo: <span class="post-author vcard"><span class="fn">Marcelo B. Miola em seu blog.<br />
+</span></span><br />
+<span style="text-decoration:underline;">Utilizando a interface serial do seu micro para se conectar a console de um roteador ou switch (salvar comandos abaixo no arquivo serial.txt).</span></p>
+<p><span style="color:#0000ff;">log session serial.log<br />
+set line /dev/ttyS0<br />
+set speed 9600<br />
+set serial 8N1<br />
+set carrier-watch off<br />
+connect<br />
+close connection<br />
+quit</span></p>
+<p>Após isso execute: <span style="font-size:100%;"><span style="font-weight:bold;"># kermit serial.txt</span></span></p>
+<p>Pronto! Voc&#234; estará conectado em seu switch. Vou tentar fazer o pacote desse hyperterminal para o Slackware, mas n&#227;o pometo...</p>

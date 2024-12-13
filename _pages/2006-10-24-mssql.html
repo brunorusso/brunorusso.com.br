@@ -1,0 +1,57 @@
+---
+layout: page
+title: MSSQL
+date: 2006-10-24 17:32:46.000000000 +00:00
+type: page
+parent_id: '888'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '162'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/mssql/"
+---
+<p>Abaixo est&#227;o alguns comandos em SQL que tive que utilizar para obter algumas informaç&#245;es de um Banco de Dados MSSQL. Apesar de n&#227;o ser DBA, &#224;s vezes é necessário trabalhar em determinados projetos, mesmo que ele n&#227;o seja especificamente da sua área.</p>
+<p>Espero que os comandos possam te ajudar em algo.</p>
+<p><strong>1-) Listando as Triggers do Banco</strong></p>
+<blockquote><p>Select * from sysobjects where xtype = 'TR' order by name</p></blockquote>
+<p><strong>2-) Listando as Triggers de um Banco com suas respectivas Tabelas</strong></p>
+<blockquote><p>Select a.name as Triggers, b.name as Tabela from sysobjects where b.id = a.parent_onj and a.type = 'TR' order by name</p></blockquote>
+<p><strong>3-) Lista as Job's do Banco de Dados</strong></p>
+<blockquote><p>Select distinct</p>
+<p>sysjobs.job_id, sysjobs.name, convert(varchar, sysjobs.date_created, 105) as data_criacao,</p>
+<p>convert(varchar, sysjobs.date_modified, 105) as data_modificacao,</p>
+<p>substring(convert(varchar, next_run_date), 7, 2)+ '/' + substring(convert(varchar, next_run_date),5,2) + '/' + convert(varchar, left(next_run_date , 4)) as proxima_execucao,</p>
+<p>substring(convert(varchar, next_run_time), 0, 2)+ ':' + substring(convert(varchar, next_run_time),3,2) as proxima_execucao_hora,</p>
+<p>sysjobsteps.database_name, sysjobsteps.database_user_name,  	substring(convert(varchar, last_run_date), 7, 2)+ '/' + substring(convert(varchar, last_run_date),5,2) + '/' + convert(varchar, left(last_run_date , 4)) as ultima_execucao,</p>
+<p>substring(convert(varchar, last_run_time), 0, 2)+ ':' + substring(convert(varchar, last_run_time),3,2) as ultima_execucao_hora</p>
+<p>from</p>
+<p>sysjobs, sysjobschedules, sysjobsteps, sysjobhistory</p>
+<p>where</p>
+<p>sysjobs.job_id = sysjobschedules.job_id</p>
+<p>and  	sysjobs.job_id = sysjobsteps.job_id</p>
+<p>group by</p>
+<p>sysjobs.job_id,</p>
+<p>sysjobs.name,</p>
+<p>sysjobs.date_created,</p>
+<p>sysjobs.date_modified,</p>
+<p>sysjobschedules.job_id,</p>
+<p>sysjobschedules.next_run_date,</p>
+<p>sysjobschedules.next_run_time,</p>
+<p>sysjobsteps.database_name,</p>
+<p>sysjobsteps.database_user_name,</p>
+<p>sysjobsteps.last_run_date,</p>
+<p>sysjobsteps.last_run_time,</p>
+<p>sysjobsteps.job_id,</p>
+<p>sysjobhistory.job_id,</p>
+<p>sysjobhistory.run_duration</p></blockquote>

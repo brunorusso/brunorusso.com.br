@@ -1,0 +1,25 @@
+---
+layout: post
+title: Criar arquivos no DOS/Windows com DATA
+date: 2008-01-21 15:11:41.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '280'
+permalink: "/2008/01/21/criar-arquivos-no-doswindows-com-data/"
+---
+<p> Algumas vezes é necessário utilizar o Windows, e algumas dessas vezes, é necessário automatizar algumas tarefas.</p>
+<p>Vou resumir: Imagine que voc&#234; possui um arquivo de LOTE <strong>(.BAT)</strong>, e nesse arquivo voc&#234; precisa por exemplo criar uma pasta ou um arquivo que contenha a data do dia.</p>
+<p>Isso pode ser automatizado da seguinte maneira.</p>
+<p><code><br />
+md NOME-PASTA_%date:~4,220080121:~7,220080121:~12,2%<br />
+</code></p>
+<p>O exemplo acima, pode ser implmentado facilmente em um script de backup.</p>

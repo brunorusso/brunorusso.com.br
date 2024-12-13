@@ -1,0 +1,59 @@
+---
+layout: page
+title: Cacic
+date: 2007-07-04 17:13:34.000000000 +00:00
+type: page
+parent_id: '888'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '219'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/cacic/"
+---
+<p> Select interessante para retornor do banco do CACIC, a relaç&#227;o dos conmputadores com número IP e os softwares utilizados.</p>
+<blockquote><p>  select a.te_nome_computador, a.id_ip_rede, c.nm_software_inventariado from computadores a, softwares_inventariados_estacoes b, softwares_inventariados c<br />
+where a.te_node_address = b.te_node_address and b.id_software_inventariado = c.id_software_inventariado</p></blockquote>
+<p>A saída é semelhante a:</p>
+<table border="1" cellpadding="4">
+<tr>
+<th>te_nome_computador</th>
+<th>id_ip_rede</th>
+<th>nm_software_inventariado</th>
+</tr>
+<tr>
+<td>COMP01</td>
+<td>10.0.0.1</td>
+<td>PrimoPDF</td>
+</tr>
+<tr>
+<td>COMP01</td>
+<td>10.0.0.1</td>
+<td>BrOffice.org 2.2</td>
+</tr>
+<tr>
+<td>COMP01</td>
+<td>10.0.0.1</td>
+<td>WinPcap 4.0</td>
+</tr>
+<tr>
+<td>COMP02</td>
+<td>10.0.0.2</td>
+<td>PrimoPDF</td>
+</tr>
+<tr>
+<td>COMP02</td>
+<td>10.0.0.2</td>
+<td>BrOffice.org 2.2</td>
+</tr>
+</table>

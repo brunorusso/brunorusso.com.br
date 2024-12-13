@@ -1,0 +1,46 @@
+---
+layout: page
+title: Samba
+date: 2005-12-19 15:48:15.000000000 +00:00
+type: page
+parent_id: '888'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '892'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/samba/"
+---
+<p><strong>1-) Samba, monta partiç&#227;o apenas como leitura?</strong></p>
+<p>&#192;s vezes, é preciso acessar uma pasta que esteja localizada em uma máquina com Windows e n&#227;o apenas ler o seu conteúdo e sim gravar. Para isso podemos utilizar o comando mount especificando o tipo de sistemas de arquivos, no caso smbfs. Vamos ao comando:</p>
+<blockquote><p>#mount -t smbfs //MAQUINA_WINDOWS_REMOTA/PASTA /mnt/windows -o username=usuario</p></blockquote>
+<p>Ok! Feito isso voc&#234; consegue ter acesso de leitura nas pasta (pelo menos isso ocorreu comigo), mas e para ter acesso de gravaç&#227;o? Faça o seguinte:</p>
+<blockquote><p>#mount -t smbfs //MAQUINA_WINDOWS_REMOTA/PASTA /mnt/windows -o username=usuario,fmask=0777,dmask=0777</p></blockquote>
+<p>Pronto! O acesso de gravaç&#227;o foi liberado!</p>
+<p><strong>2-) Enviando mensagens (do tipo net-send) para uma estaç&#227;o windows a partir do linux?</strong></p>
+<p>&#192;s vezes, é necessário enviar uma mensagem, através do net-send, para uma máquina Windows a partir de uma máquina Linux. Isso pode ser feito com o comando smbclient:</p>
+<blockquote><p>smbclient -M host</p></blockquote>
+<p>Em seguida digite a mensagem, assim que terminar pressione CTRL+D. Pronto! A mensagem foi enviada.</p>
+<p style="font-weight:bold;">3-) Windows 2003 n&#227;o permite que um clientes windows monte uma pasta compartilhada.</p>
+<p>Ao tentar executar o comando do item 1, a seguinte mensagem de erro é exibida:</p>
+<blockquote><p>cli_negprot: SMB signing is mandatory and we have disabled it</p></blockquote>
+<p>Procurando no nosso velho e querido amigo <a href="http://www.google.com.br/intl/pt-BR/" title="google" target="_blank">google</a>, eis que <a href="http://www.vivaolinux.com.br/artigos/verArtigo.php?codigo=4535&amp;pagina=9" title="vol" target="_blank">achei a soluç&#227;o</a>. Ao invés de utilizar <strong>-t smbfs</strong> deve-se utilizar:</p>
+<blockquote><p>#mount -t cifs //MAQUINA_WINDOWS_REMOTA/PASTA /mnt/windows -o username=usuario</p></blockquote>
+<p><strong>4-) Ao executar wbinfo -u, retorna o seguinte erro: Error looking up domain users</strong></p>
+<p>Ao tentar acessar o compartilhamento através da rede, é apresentada uma mensagem de problema de acesso devido a restriç&#245;es.<br />
+Quando o comando wninfo -u é executado o seguinte o erro acima é apresentado. No log do winbindd, aparece a mensagem: <strong>PANIC: assert failed at nsswitch/winbindd_dual.c(198)</strong><br />
+Para corrigir, basta remover os arquivos <strong>TDB</strong>, localizados em: /var/lib/samba</p>
+<p><code>cd /var/lib/samba<br />
+rm *.tdb<br />
+</code></p>
+<p align="right"><em><a href="http://de.nntp2http.com/comp/os/unix/networking/samba/2007/10/1d3abc7c339fc0ab8938bc5f09bbb66e.html">Fonte da Dica</a></em></p>

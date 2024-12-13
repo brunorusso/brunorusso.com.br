@@ -6,43 +6,43 @@ theme: jekyll-theme-chirpy
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+lang: pt-BR
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Shanghai
+timezone: America/Sao_paulo
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+title: Bruno Russo                          # the main title
 
-description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+tagline: Tecnologia, Cloud, AWS, OCI, Open Source e algo mais   # it will display as the sub-title
 
-# Fill in the protocol & hostname for your site.
-# E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+description: >-                        # used by seo meta and the atom feed
+  Tecnologia, Cloud, AWS, OCI, Open Source e algo mais estes são os conteúdos que este site possui!
+
+# fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
+
+url: 'https://www.brunorusso.com.br'
 
 github:
-  username: github_username # change to your GitHub username
-
+  username: brunorusso            # change to your github username
 twitter:
-  username: twitter_username # change to your Twitter username
-
+  username: brunorusso          # change to your twitter username
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: Bruno T. Russo
+  email: br@brunorusso.com.br            # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
+    - https://twitter.com/username      # change to your twitter homepage
+    - https://github.com/username       # change to your github homepage
+    - https://www.linkedin.com/in/brunorusso
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+
 
 # Site Verification Settings
 webmaster_verifications:
@@ -59,7 +59,7 @@ webmaster_verifications:
 # Web Analytics Settings
 analytics:
   google:
-    id: # fill in your Google Analytics ID
+    id: UA-49251047-1  
   goatcounter:
     id: # fill in your GoatCounter ID
   umami:
@@ -88,7 +88,7 @@ pageviews:
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: [light]
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
@@ -98,7 +98,7 @@ theme_mode: # [light | dark]
 cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/avatar.jpg"
+avatar: https://www.brunorusso.com.br/assets/brunorusso-emoji.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -150,7 +150,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: ""
+#baseurl: "https://www.brunorusso.com.br"
 
 # ------------ The following options are not recommended to be modified ------------------
 
@@ -224,3 +224,98 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+
+
+
+##----------------------------------------------------
+
+
+###google_site_verification: google_meta_tag_verification # change to your verification string
+
+# --------------------------
+
+###google_analytics:
+###  id: 'G-ER9BT4VNZE'          # Fill with your Google Analytics ID
+#  pv:
+    # The Google Analytics pageviews switch.
+    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
+#    enabled: false
+    # the next options only valid when `google_analytics.pv` is enabled.
+#    proxy_url: ''
+#    proxy_endpoint: ''
+#    cache: false  # pv data local cache, good for the users from GFW area.
+
+
+# The CDN endpoint for images.
+# Notice that once it is assigned, the CDN url
+# will be added to all image (site avatar & posts' images) paths starting with '/'
+#
+# e.g. 'https://cdn.com'
+##img_cdn: ''
+# the avatar on sideba
+
+
+
+# DO NOT change this unless you're a Pro user on Jekyll and Web development,
+# Or you think you're smart enough to change other relevant URLs within this template.
+# permalink: /posts/:title/
+# collections:
+#   tabs:
+#     output: true
+#     sort_by: order
+# defaults:
+#   -
+#     scope:
+#       path: ''          # An empty string here means all files in the project
+#       type: posts
+#     values:
+#       layout: post
+#       comments: false    # Enable comments in posts.
+#       toc: true         # Display TOC column in posts.
+#       location: Post
+#   -
+#     scope:
+#       path: _drafts
+#     values:
+#       comments: false
+#   -
+#     scope:
+#       path: ''
+#       type: tabs             # see `site.collections`
+#     values:
+#       layout: page
+#       permalink: /:title/
+#       dynamic_title: true    # Hide title in mobile screens.
+# sass:
+#   style: compressed
+# compress_html:
+#   clippings: all
+#   comments: all
+#   endings: all
+#   profile: false
+#   blanklines: false
+#   ignore:
+#     envs: [development]
+# exclude:
+#   - vendor
+#   - Gemfile
+#   - Gemfile.lock
+#   - '*.gem'
+#   - '*.gemspec'
+#   - tools
+#   - docs
+#   - README.md
+#   - LICENSE
+#   - gulpfile.js
+#   - node_modules
+#   - package.json
+#   - package-lock.json
+
+# plugins:
+#   - jekyll-analytics
+
+# jekyll_analytics:
+#   GoogleAnalytics:          # Add, if you want to track with Google Analytics
+#     id: UA-49251047-1      # Required - replace with your tracking id
+#     anonymizeIp: false

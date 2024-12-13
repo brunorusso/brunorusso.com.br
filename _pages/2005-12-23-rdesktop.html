@@ -1,0 +1,51 @@
+---
+layout: page
+title: rdesktop
+date: 2005-12-23 13:32:02.000000000 +00:00
+type: page
+parent_id: '893'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '894'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/howto/rdesktop/"
+---
+<p align="center">Voc&ecirc; também pode ler este artigo nos formatos: <a href="http://www.brunorusso.eti.br/documentacao/instalacao_rdesktop.pdf" target="_self">PDF</a> e <a href="http://www.brunorusso.eti.br/documentacao/instalacao_rdesktop.odt" target="_self">OpenOffice</a>&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p>Hoje em dia é muito comum em uma rede a exist&ecirc;ncia de&nbsp; de um ambiente heterog&ecirc;neo de Sistemas Operacionais!</p>
+<p>Muitas pessoas utilizam o Windows como Sistema Operacional para desktop e essas pessoas n&atilde;o possuem nenhum problema para acessar o Windows no Servidor, pois utilizam a op&ccedil;&atilde;o do Acesso Remoto. E quando essas mesmas pessoas precisam acessar uma máquina Linux/Unix umas das inúmeras alternativas é utilizar o Putty (http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe).</p>
+<p>Mas para quem utiliza o Linux, assim como eu, uma op&ccedil;&atilde;o interessante é utilizar o ssh para Servidores Linux e o rdesktop para acessar Servidores Windows.</p>
+<p>O rdesktop é um programa de código fonte livre capaz de acessar um Terminal Remoto Windows, através do protocolo RDP. </p>
+<p>Para seu funcionamento rdesktop necessita de um ambiente gráfico (Servidor X).</p>
+<p>A instala&ccedil;&atilde;o do rdesktop é super simples. A vers&atilde;o utilizada para essa instala&ccedil;&atilde;o foi a 1.4.1. Vamos para a instala&ccedil;&atilde;o:</p>
+<ul>
+<li><em>cd /tmp</em></li>
+<li><em>wget http://prdownloads.sourceforge.net/rdesktop/rdesktop-1.4.1.tar.gz?download</em></li>
+<li><em>tar xzvf rdesktop-1.4.1.tar.gz</em></li>
+<li><em>cd rdesktop-1.4.1</em></li>
+<li><em>./configure</em></li>
+<li><em>make</em></li>
+<li><em>make install</em></li>
+</ul>
+<p>Pronto! O software já está instalado. Para acessar um servidor use:</p>
+<div align="left">
+<ul>
+<li><em>rdesktop IP</em></li>
+</ul>
+</div>
+<p>rdesktop pode ser usado com inúmeras op&ccedil;&otilde;es, para maiores informa&ccedil;&otilde;es sobre a ferramente consulte:</p>
+<ul>
+<li><em>rdesktop &ndash;help</em></li>
+<li><em>man rdesktop</em></li>
+</ul>
