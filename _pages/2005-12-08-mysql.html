@@ -1,0 +1,30 @@
+---
+layout: page
+title: Mysql
+date: 2005-12-08 17:36:56.000000000 +00:00
+type: page
+parent_id: '888'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '891'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/mysql/"
+---
+<p><strong>1-) mysql Error: 1030 (Got error 28 from table handler)</strong></p>
+<p>R: O hd acabou! É isso mesmo tive esse problema e quando fui verificar a parti&ccedil;&atilde;o /tmp estava com 100% de uso. Eliminando alguns arquivos o sistema voltou a funcionar.</p></p>
+<p><strong>2-)  MySQL Errno: 145</strong></p>
+<p>R: Provavelmente a tabela está com problemas (foi corrompida). Para resolver execute o comando:</p>
+<p>#mysqlcheck --all-databases --auto-repair</p>
+<p> Voc&ecirc; pode substituir o par&acirc;metro --all-databases p&ocirc;r -B database</p>
+<h2 class="post-title"><a href="http://www.brunorusso.eti.br/?p=98" title="Permanent Link: MySQL - errno: 145"></a><br /></h2>

@@ -1,0 +1,56 @@
+---
+layout: page
+title: Backup MySQL
+date: 2006-07-28 11:06:08.000000000 +00:00
+type: page
+parent_id: '43'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '127'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/programas/backup_mysql/"
+---
+<p>Este script realiza um backup (dump) de todos os banco de dados de um Servidor MySQL (www.mysql.com). Seu funcionamento é bem simples.</p>
+<p>Informe o IP do Servidor de Banco de Dados na variavel HOST. O arquivo de backup do banco de dados será criado em /tmp/backup ou qualquer outro que você especificar na variavel TMP.</p>
+<p>Para executar este backup de forma automática, siga os passos abaixo.</p>
+<p>1-) Crie um usuário no Linux</p>
+<pre># useradd -u 101 backup -d /home/backup -s /bin/bash</pre>
+<p>2-) Crie seu diretório home e altere as permissões deste diretório</p>
+<pre>#mkdir /home/backup
+
+#chown backup -R /home/backup</pre>
+<p>3-) Crie o arquivo de configuração (.my.cnf) do MySQL para o usuário backup. Este arquivo somente terá a senha do usuário que irá se conectar no Banco de Dados.</p>
+<pre>#su - backup
+
+#cd /home/backup
+
+#vi .my.cnf</pre>
+<pre><strong>[client] password       = COLOQUE_AQUI_A_SENHA</strong></pre>
+<p>4-) Agora acesse o Servidor de Banco de Dados e crie um usuário. Atenção: este usuário não é do Sistema Operacional é um usuário do Banco de Dados.</p>
+<pre>GRANT SELECT, LOCK TABLES ON *.* TO 'backup'@'localhost' IDENTIFIED BY 'COLOQUE_AQUI_A_SENHA' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;</pre>
+<p>&nbsp;</p>
+<p>onde,</p>
+<p><strong>backup</strong> - é o nome do usuário</p>
+<p><strong>COLOQUE_AQUI_A_SENHA</strong> - é a senha que o usuário deverá informar para se conectar no Banco de Dados.</p>
+<p>5-) Agora salve o <a href="http://www.brunorusso.eti.br/bin/backup_mysql.sh.gz">script de backup</a> no diretório pessoal (/home/backup) do usuário backup.</p>
+<pre>#gunzip backup_mysql.sh</pre>
+<p>6-) Para que o backup seja realizado automaticamente, falta apenas inserir uma tarefa no crontab. Para isso digite:</p>
+<pre>#crontab -u backup -e</pre>
+<p>Insira a seguinte linha, para agendar a execução do script de backup.</p>
+<pre>30 23 * * * /hoba/backup/backup_mysql.sh</pre>
+<p>Não esqueça de dar permissão de execução ao script, com o comando:</p>
+<pre>#chmod +x /home/backup/backup_mysql.sh</pre>
+<p>Comentários são bem vindos!! :)</p>

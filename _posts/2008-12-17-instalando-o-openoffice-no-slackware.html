@@ -1,0 +1,58 @@
+---
+layout: post
+title: Instalando o Openoffice no Slackware
+date: 2008-12-17 23:09:36.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '463'
+permalink: "/2008/12/17/instalando-o-openoffice-no-slackware/"
+---
+<p style="text-align:center;"><img src="{{ site.baseurl }}/assets/2008/12/OpenOffice.gif" alt="OpenOffice" /></p>
+<p style="text-align:left;">Para quem ainda não sabe, o OpenOffice é uma suíte de escritório OpenSource distribuída pela Sun Microsystems.</p>
+<p style="text-align:left;">O OpenOffice é uma verdadeira alternativa para a suíte de escritório "Microsoft Office".</p>
+<blockquote>
+<p style="text-align:left;">Durante todo a sua existência já foram contabilizados quase 50 milhões de downloads, dos mais de 40 idiomas diferentes nos quais o OpenOffice.org está disponível. Ao ser disponibilizado sobre as plataformas GNU/Linux, Windows, Sun Solaris e Mac OS X (X11), entre outras, o OpenOffice.org rompeu a barreira da conectividade, integrando usuários dos mais variados perfis e estabelecendo o Software Livre como uma alternativa concreta no até então invariável mercado de aplicativos para usuários finais.</p>
+</blockquote>
+<p style="text-align:left;">Para saber mais sobre o OpenOfice, acesse o <a title="broffice" href="http://www.broffice.org/">site oficial do Projeto no Brasil</a>.</p>
+<p style="text-align:left;">Você pode baixar o OpenOffice diretamente do site oficial ou de algum mirror. Porém, para linux existem os seguintes formatos: RPM (para distribuições que utilizam esse formato) e DEB (para debian e seus derivados).</p>
+<p style="text-align:left;">O Slackware não utiliza nenhum desses formatos, pois o seu <a href="http://slackbookptbr.sourceforge.net/livro/slackbook.html#toc198">sistema de pacotes é único</a> em comparação às demais distribuições Linux existentes. O Sistema de pacotes do Slackware é o TGZ.</p>
+<p style="text-align:left;">Porém, nada impede que você instale pacotes do tipo RPM, pois o sistema permite que isso aconteça, mas isso deve ser feito com cautela, visto que pacotes RPM podem possuir dependências ;)</p>
+<p style="text-align:left;">Após, baixar a versão do OpenOffice, você terá um arquivo parecido com</p>
+<blockquote>
+<p style="text-align:left;">$ ls -la BrOo_3.0.0_20080930_LinuxIntel_install_pt-BR.tar.gz<br />
+-rw-r--r-- 1 brunorusso users 149118284 2008-12-15 23:04 BrOo_3.0.0_20080930_LinuxIntel_install_pt-BR.tar.gz</p>
+</blockquote>
+<p style="text-align:left;">Repare que eu efetuei o download da versão .tar.gz.</p>
+<p style="text-align:left;">A primeira etapa que iremos realizar é a descompactação e "extração" desse arquivo.</p>
+<blockquote>
+<p style="text-align:left;">$ tar xzvf BrOo_3.0.0_20080930_LinuxIntel_install_pt-BR.tar.gz</p>
+</blockquote>
+<p style="text-align:left;">Feito isso, será criado um diretório, parecido como:</p>
+<blockquote>
+<p style="text-align:left;">OOO300_m9_native_packed-1_pt-BR.9358</p>
+</blockquote>
+<p style="text-align:left;">Dentro desse diretório, temos um diretório chamado RPMS e dentro desse diretório estão os arquivos no formato rpm que iremos instalar, com o comando:</p>
+<blockquote>
+<p style="text-align:left;">rpm -ivh *.rpm --nodeps --force</p>
+</blockquote>
+<p style="text-align:left;">As opções --nodeps e --force é para que o rpm, não verifique se o pacote possui dependência para ser instalado e para forçar a instalação.</p>
+<p style="text-align:left;">Após a instalação, vamos instalar o pacote, que agora esta em formato tgz que é o utilizado pelo Slackkware, de integração de Desktop. Esse paacote cria os mens no KDE/XFCE.</p>
+<p style="text-align:left;">O comando que utilizaremos é:</p>
+<blockquote>
+<p style="text-align:left;">installpkg broffice.org3.0-slackware-menus-3.0-noarch-9354.tgz</p>
+</blockquote>
+<p style="text-align:left;">Pronto! O OpenOffice está instalado. Para acessá-lo através do KDE, vá até o menu Office ou Escritório e acesse os aplicativos do OpenOffice.</p>
+<p style="text-align:left;">Essa instalação, foi realizada, no Slackware 12.2, porém os passos são os mesmos para qualquer outra versão do Slackware.</p>
+<p style="text-align:left;">&nbsp;</p>

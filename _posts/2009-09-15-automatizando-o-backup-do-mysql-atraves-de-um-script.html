@@ -1,0 +1,58 @@
+---
+layout: post
+title: Automatizando o backup do Mysql através de um script
+date: 2009-09-15 09:30:03.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- mysql
+tags:
+- Banco de Dados
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '609'
+permalink: "/2009/09/15/automatizando-o-backup-do-mysql-atraves-de-um-script/"
+---
+<p>Script de Backup do MySQL<br />
+<code><br />
+#!/bin/bash<br />
+# backup_mysql.sh - Copyright (C) 2009 Bruno Tadeu Russo </code></p>
+<p># Definicao das variaveis<br />
+DESTINO=/mnt/mysql/<br />
+DATAI=`date +%d-%m-%Y-%Hh.%Mmin`<br />
+DATA=`date +%a-%m-%Y`</p>
+<p>echo "1" &gt; /tmp/backup-erro.log<br />
+echo "|--------------------INICIO--------------------|" &gt; /tmp/backup.log<br />
+echo -e "Data e Hora de Inicio" &gt;&gt; /tmp/backup.log<br />
+echo -e "$DATAI" &gt;&gt; /tmp/backup.log<br />
+echo -e "Relacao de Banco de Dados" &gt;&gt; /tmp/backup.log</p>
+<p>mysql -u root &lt; lista_database.sql &gt; saida.txt</p>
+<p>sed 1d saida.txt &gt; saida1.txt<br />
+sed 1d saida1.txt &gt; saida.txt</p>
+<p>cat saida.txt | while read BANCO;<br />
+do<br />
+mysqldump --database $BANCO -u root | gzip &gt; $DESTINO$BANCO.bkp.gz 2&gt; /tmp/backup-erro.log<br />
+echo -e "$BANCO  ==&gt; $DESTINO$BANCO.bkp.gz " &gt;&gt; /tmp/backup.log<br />
+done</p>
+<p>STATUS=`cat /tmp/backup-erro.log | grep backup -c`</p>
+<p>TITULO="OK - $HOSTNAME - MySQL - Banco de Dados"<br />
+if [ $STATUS -ne 0 ]; then<br />
+TITULO="ERRO - $HOSTNAME - MySQL - Banco de Dados"<br />
+echo "Copia - ERRO" &gt;&gt; /tmp/backup.log<br />
+cat /tmp/backup-erro.log &gt;&gt; /tmp/backup.log<br />
+fi</p>
+<p>echo -e "Backup finalizado com sucesso!" &gt;&gt; /tmp/backup.log<br />
+echo -e "Tamanho do arquivo Final:" &gt;&gt; /tmp/backup.log<br />
+du -sh $DESTINO*.bkp.gz &gt;&gt; /tmp/backup.log</p>
+<p>DATAF=`date +%d-%m-%Y-%Hh.%Mmin`<br />
+echo -e "Data e hora de termino: $DATAF" &gt;&gt; /tmp/backup.log<br />
+echo -e "|----------------------FIM----------------------|" &gt;&gt; /tmp/backup.log</p>
+<p>mail -s "$TITULO" $EMAIL &lt; /tmp/backup.log</p>
+<p>Para que funcione sem solicitar senha, basta configurar o arquivo ~/.my.cnf com o seguinte parâmetro:</p>
+<p>[client]<br />
+password = SUA_SENHA</p>

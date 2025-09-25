@@ -1,0 +1,44 @@
+---
+layout: post
+title: Segunda-feira brava!
+date: 2005-11-28 07:56:13.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '916'
+permalink: "/2005/11/28/segunda-feira-brava/"
+---
+<p>É impressionante, como tudo o que tem que dar errada acaba acontecendo na segunda-feira!</p>
+<p><strong>Fico besta com isso!!!&nbsp;</strong></p>
+<p>Hoje pela manhã chego à empresa para trabalhar, marco meu ponto (peão tem que marcar ponto) em seguida vou acessar à Interntet e........nada!, tento novamente e......nada!</p>
+<p>Vejo se o servidor está no ar:</p>
+<p>ping &lt;server&gt;&nbsp; e ele está no ar! menos mal, bom então pode ser o link. Então efetua-se uma conexão SSH no server.</p>
+<p>&nbsp;ps xau para ver os serviços rodandos no servidor, fico pasmo: squid tá fora! <img title="emoticon" src="{{ site.baseurl }}/assets/2005/11/huh.gif" alt="emoticon" border="0" /></p>
+<p>entaum vamos reiniciar o serviço e em seguida verificar e nada! squid continua fora!</p>
+<p>como já tive um <a href="http://www.brunorusso.com.br/?p=6" target="_self" rel="noopener noreferrer">problema pareciso com o squid </a></p>
+<p>realizei os procedimentos novamente e quando vou remover o <em>/var/spool/squid</em>&nbsp;</p>
+<p><strong>rm -rf /var/spool/squid</strong></p>
+<p>detalhe o sistema estava apenas para leitura!</p>
+<p>Ffui verificar as últimas mensagens com o comando dmesg então foi a descoberta infernal da manhã de uma segunda-feira ensolarada! olha a saída dmesg</p>
+<p>dmesg&nbsp;</p>
+<p>EXT3-fs error (device hda6) in start_transaction: Journal has aborted<br />
+&nbsp;</p>
+<pre>hda6 é somente a partição que contêm o /var <strong>fui tudo pro beleléu!</strong></pre>
+<pre>&nbsp;</pre>
+<pre>Mas acabei resolvendo: tinha uma partição que eu não usava para nada! uma tal de /dados, logo alterei o</pre>
+<pre>/var da partição /dev/hda6 para a partição onde existia o /dados (hda9)</pre>
+<pre>&nbsp;</pre>
+<pre>mount -a e com mais alguns comandos o server estava novamente no ar. Isso é meio gambiarra mas foi o</pre>
+<pre>que pude fazer. Agora estou na net mas vou precisar configurar outro server.</pre>
+<pre>&nbsp;</pre>
+<p>&nbsp;</p>

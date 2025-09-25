@@ -1,0 +1,80 @@
+---
+layout: page
+title: Backup
+date: 2006-01-06 17:05:18.000000000 +00:00
+type: page
+parent_id: '43'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '56'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/programas/script-de-backup/"
+---
+<p>Abaixo segue um script simples para realizar um backup. Apenas altere o que for necessário à sua Necessidade.</p>
+<p>Licença: GPL</p>
+<p>Autor: Bruno T. Russo</p>
+<p>Criação: 06/01/2006</p>
+<p>&nbsp;</p>
+<pre><em>#!/bin/bash
+
+#E-mail do administrador
+EMAIL="contato@brunorusso.eti.br"
+
+#Detecta a hora inicial
+HORAI=`date`
+
+#Diret?ios que serao feitos backup
+DIR="/home /etc /root /var/lib/mysql "
+
+#Cria arquivos que sera usado como LOG para o backup
+touch /tmp/log.backup
+touch /tmp/log.backup.erro
+touch /tmp/log.mensagem
+
+#rebobina a fita
+mt rewind -f /dev/nst0
+
+#Realiza um backup
+for LOCAL in $DIR
+do
+        tar -cvf /dev/nst0 $LOCAL  1&gt;&gt; /tmp/log.backup 2&gt;&gt; /tmp/log.backup.erro
+        sleep 2
+done
+
+#Detecta a hora final
+HORAF=`date`
+
+#Cria a mensagem para ser enviada para o administrador
+echo "Em $HORAI, foi iniciado o backup do Servidor XXX." &gt;&gt; /tmp/log.mensagem
+echo "Este backup ir?afetar os seguintes diret?ios:" &gt;&gt; /tmp/log.mensagem
+echo "$DIR" &gt;&gt; /tmp/log.mensagem
+echo "----------------------------------------------------------------" &gt;&gt; /tmp/log.mensagem
+echo "Backup realizado com sucesso ? $HORAF" &gt;&gt; /tmp/log.mensagem
+echo "----------------------------------------------------------------" &gt;&gt; /tmp/log.mensagem
+echo "----------------------------------------------------------------" &gt;&gt; /tmp/log.mensagem
+echo "LOG - SUCESSO" &gt;&gt; /tmp/log.mensagem
+echo "----------------------------------------------------------------" &gt;&gt; /tmp/log.mensagem
+cat /tmp/log.backup &gt;&gt; /tmp/log.mensagem
+echo "----------------------------------------------------------------" &gt;&gt; /tmp/log.mensagem
+echo "LOG - ERRO" &gt;&gt; /tmp/log.mensagem
+echo "----------------------------------------------------------------" &gt;&gt; /tmp/log.mensagem
+cat /tmp/log.backup.erro &gt;&gt; /tmp/log.mensagem
+
+#Envia um e-mail informando o backup
+mail -s "backup do Servidor" $EMAIL &lt; /tmp/log.mensagem
+
+#Remove arquivos criados
+rm /tmp/log.backup
+rm /tmp/log.backup.erro
+rm /tmp/log.mensagem</em></pre>

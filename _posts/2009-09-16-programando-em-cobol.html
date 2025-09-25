@@ -1,0 +1,99 @@
+---
+layout: post
+title: Programando em Cobol
+date: 2009-09-16 09:00:10.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '659'
+permalink: "/2009/09/16/programando-em-cobol/"
+---
+<p>Recuperando documentos antigos....da époda ca faculdade, olha só o que encontrei!</p>
+<p>Programas em cobol.</p>
+<p><code><br />
+IDENTIFICATION DIVISION.<br />
+PROGRAM-ID.   PROG02.<br />
+AUTHOR. BRUNO.</code><br />
+<code><br />
+*DEFINICAO DO PATH ARQUIVO DE ENTRADA<br />
+ENVIRONMENT DIVISION.<br />
+CONFIGURATION SECTION.<br />
+SPECIAL-NAMES.  DECIMAL-POINT IS COMMA.<br />
+INPUT-OUTPUT SECTION.<br />
+FILE-CONTROL.<br />
+SELECT ARQ-S ASSIGN TO "CLIENTES.DAT".<br />
+</code><br />
+<code><br />
+*DEFINICAO DO ARQUIVO DE ENTRADA<br />
+DATA DIVISION.<br />
+FILE SECTION.<br />
+FD ARQ-S<br />
+LABEL RECORD IS STANDARD.<br />
+01 REG-S<br />
+03 COD-CLI-E PIC 9(05).<br />
+03 VALOR-E   PIC 9(07)V99.<br />
+</code><br />
+<code><br />
+*DEFINICAO DAS VARIAVEIS UTILIZADAS NO PROGRAMA<br />
+WORKING-STORAGE SECTION.<br />
+77 W-GRAVA PIC X.<br />
+77 W-OUTRO PIC X.<br />
+01 W-COD-CLI-E PIC 9(05).<br />
+01 W-VALOR-E   PIC 9(07)V99.<br />
+</code><br />
+<code><br />
+*INICIO DA CODIFICACAO DO PROGRAMA<br />
+PROCEDURE DIVISION.<br />
+INICIO.<br />
+OPEN OUTPUT ARQ-S.<br />
+</code><br />
+<code><br />
+PERFORM TELA01.<br />
+CLOSE ARQ-S<br />
+STOP RUN.<br />
+</code><br />
+<code><br />
+*INICIO DA CONSTRUCAO DA TELA<br />
+TELA01<br />
+DISPLAY (03 21) "C A D A S T R O  D E  C L I E N T E S".<br />
+DISPLAY (06 09) "CLIENTE..:".<br />
+DISPLAY (08 09) "VALOR....:".<br />
+ACCEPT (06 20) W-COD-CLI-E.<br />
+ACCEPT (08 20) W-VALOR-E.<br />
+PERFORM TELA02.<br />
+</code><br />
+<code><br />
+TELA02<br />
+DISPLAY (16 33) "                             ".<br />
+DISPLAY (14 01) "----------------------------------------"<br />
+DISPLAY (14 40) "----------------------------------------"<br />
+DISPLAY (16 34) "GRAVAR...:".<br />
+ACCEPT (16 44) W-GRAVA.<br />
+</code><br />
+<code><br />
+IF W-GRAVA = "S"<br />
+PERFORM GRAVAR.<br />
+</code><br />
+<code><br />
+*PROCEDURE QUE GRAVA O REGISTRO<br />
+GRAVAR.<br />
+MOVE W-COD-CLI-E TO COD-CLI-E.<br />
+MOVE W-VALOR-E   TO VALOR-E.<br />
+WRITE REG-S.<br />
+DISPLAY (16 34) "            ".<br />
+DISPLAY (16 33) "CONTINUAR...:".<br />
+ACCEPT (16 48) W-OUTRO.<br />
+IF W-OUTRO = "S"<br />
+PERFORM TELA01.<br />
+</code><br />
+Segue um <a href="http://www.brunorusso.com.br/Programas/Faculdade/cobol.tar.gz">TAR.GZ</a> com todos os Programas em cobol...</p>

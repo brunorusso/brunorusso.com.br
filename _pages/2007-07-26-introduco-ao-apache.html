@@ -1,0 +1,125 @@
+---
+layout: page
+title: Introdução ao Apache
+date: 2007-07-26 08:18:20.000000000 +00:00
+type: page
+parent_id: '228'
+published: true
+password: freefall
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '231'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/treinamentos/introduco-ao-apache/"
+---
+<p>Apostila de Introduç&#227;o ao Servidor Web Apache</p>
+<ol>
+<li><a href="#toc1">Introduç&#227;o ao Servidor Apache</a>
+<ul>
+<li><a href="#toc2">1.1. Servidor Apache 2.0</a>
+<ul>
+<li><a href="#toc3">1.1.1. Características da vers&#227;o 2.0 do Apache</a></li>
+</ul>
+</li>
+<li><a href="#toc4">1.2. Instalando o Apache</a>
+<ul>
+<li><a href="#toc5">1.2.1. Instalaç&#227;o baseada em pacotes</a></li>
+<li><a href="#toc6">1.2.2. Instalaç&#227;o baseada em código fonte</a></li>
+</ul>
+</li>
+<li><a href="#toc7">1.3. Iniciando e parando o serviço</a></li>
+<li><a href="#toc8">1.4. Arquivos de configuraç&#227;o</a>
+<ul>
+<li><a href="#toc9">1.4.1. Parâmetros básicos do arquivo de configuraç&#227;o</a>
+<ul>
+<li><a href="#toc10">1.4.1.1. ServerRoot</a></li>
+<li><a href="#toc11">1.4.1.2. PidFile</a></li>
+<li><a href="#toc12">1.4.1.3. Timeout</a></li>
+<li><a href="#toc13">1.4.1.4. KeepAlive</a></li>
+<li><a href="#toc14">1.4.1.5. MaxKeepAliveRequests</a></li>
+<li><a href="#toc15">1.4.1.6. KeepAliveTimeout</a></li>
+<li><a href="#toc16">1.4.1.7. IfModule</a></li>
+<li><a href="#toc17">1.4.1.8. MPM Specific Server-Pool Directives</a></li>
+<li><a href="#toc18">1.4.1.9. Listen</a></li>
+<li><a href="#toc19">1.4.1.10. Include</a></li>
+<li><a href="#toc20">1.4.1.11. LoadModule</a></li>
+<li><a href="#toc21">1.4.1.12. ExtendedStatus</a></li>
+<li><a href="#toc22">1.4.1.13. IfDefine</a></li>
+<li><a href="#toc23">1.4.1.14. SuexecUserGroup</a></li>
+<li><a href="#toc24">1.4.1.15. User</a></li>
+<li><a href="#toc25">1.4.1.16. Group</a></li>
+<li><a href="#toc26">1.4.1.17. ServerAdmin</a></li>
+<li><a href="#toc27">1.4.1.18. ServerName</a></li>
+<li><a href="#toc28">1.4.1.19. UseCanonicalName</a></li>
+<li><a href="#toc29">1.4.1.20. DocumentRoot</a></li>
+<li><a href="#toc30">1.4.1.21. Directory</a></li>
+<li><a href="#toc31">1.4.1.22. Options</a></li>
+<li><a href="#toc32">1.4.1.23. AllowOverride</a></li>
+<li><a href="#toc33">1.4.1.24. Order</a></li>
+<li><a href="#toc34">1.4.1.25. Allow</a></li>
+<li><a href="#toc35">1.4.1.26. Deny</a></li>
+<li><a href="#toc36">1.4.1.27. UserDir</a></li>
+<li><a href="#toc37">1.4.1.28. DirectoryIndex</a></li>
+<li><a href="#toc38">1.4.1.29. AccessFileName</a></li>
+<li><a href="#toc39">1.4.1.30. CacheNegotiatedDocs</a></li>
+<li><a href="#toc40">1.4.1.31. TypesConfig</a></li>
+<li><a href="#toc41">1.4.1.32. DefaultType</a></li>
+<li><a href="#toc42">1.4.1.33. HostnameLookups</a></li>
+<li><a href="#toc43">1.4.1.34. ErrorLog</a></li>
+<li><a href="#toc44">1.4.1.35. LogLevel</a></li>
+<li><a href="#toc45">1.4.1.36. LogFormat</a></li>
+<li><a href="#toc46">1.4.1.37. CustomLog</a></li>
+<li><a href="#toc47">1.4.1.38. ServerSignature</a></li>
+<li><a href="#toc48">1.4.1.39. Alias</a></li>
+<li><a href="#toc49">1.4.1.40. ScriptAlias</a></li>
+<li><a href="#toc50">1.4.1.41. Redirect</a></li>
+<li><a href="#toc51">1.4.1.42. IndexOptions</a></li>
+<li><a href="#toc52">1.4.1.43. AddIconByEncoding</a></li>
+<li><a href="#toc53">1.4.1.44. AddIconByType</a></li>
+<li><a href="#toc54">1.4.1.45. AddIcon</a></li>
+<li><a href="#toc55">1.4.1.46. DefaultIcon</a></li>
+<li><a href="#toc56">1.4.1.47. AddDescription</a></li>
+<li><a href="#toc57">1.4.1.48. ReadmeName</a></li>
+<li><a href="#toc58">1.4.1.49. HeaderName</a></li>
+<li><a href="#toc59">1.4.1.50. IndexIgnore</a></li>
+<li><a href="#toc60">1.4.1.51. AddEncoding</a></li>
+<li><a href="#toc61">1.4.1.52. AddLanguage</a></li>
+<li><a href="#toc62">1.4.1.53. LanguagePriority</a></li>
+<li><a href="#toc63">1.4.1.54. AddType</a></li>
+<li><a href="#toc64">1.4.1.55. AddHandler</a></li>
+<li><a href="#toc65">1.4.1.56. Action</a></li>
+<li><a href="#toc66">1.4.1.57. ErrorDocument</a></li>
+<li><a href="#toc67">1.4.1.58. BrowserMatch</a></li>
+<li><a href="#toc68">1.4.1.59. Location</a></li>
+<li><a href="#toc69">1.4.1.60. ProxyRequests</a></li>
+<li><a href="#toc70">1.4.1.61. Proxy</a></li>
+<li><a href="#toc71">1.4.1.62. Cache Directives</a></li>
+<li><a href="#toc72">1.4.1.63. NameVirtualHost</a></li>
+<li><a href="#toc73">1.4.1.64. VirtualHost</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc74">1.5. Diretivas de Configuraç&#227;o para SSL</a></li>
+<li><a href="#toc75">1.6. Módulos Padr&#245;es</a></li>
+<li><a href="#toc76">1.7. Módulos Adicionais</a></li>
+<li><a href="#toc77">1.8. Hosts Virtuais</a></li>
+</ul>
+</li>
+<li><a href="#toc78">Monitorando o Acesso do Servidor</a>
+<ul>
+<li><a href="#toc79">2.1. Instalando o awstats</a></li>
+<li><a href="#toc80">2.2. Configurando o awstats</a></li>
+<li><a href="#toc81">2.3. Acessando os relatórios</a></li>
+</ul>
+</li>
+</ol>

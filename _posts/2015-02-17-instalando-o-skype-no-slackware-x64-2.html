@@ -1,0 +1,127 @@
+---
+layout: post
+title: Instalando o Skype no Slackware X64
+date: 2015-02-17 21:06:23.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '1412'
+permalink: "/2015/02/17/instalando-o-skype-no-slackware-x64-2/"
+---
+<p>Este artigo foi importado do site http://linux.brunorusso.com.br, que foi desativado. Este artigo, foi originalmente publicado em: 25/07/2011. Apesar da "idade" deste artigo, o seu conceito ainda é válido.</p>
+<p>Infelizmente o <a class="urlextern" title="http://skype.com" href="http://skype.com/" rel="nofollow">Skype</a> não fornece um pacote no formato dos pacotes reconhecidos pelo <strong>Slackware</strong>, porém podemos criar um pacote a partir dos scripts disponibilizados pelo site <a class="urlextern" title="http://slackbuilds.org" href="http://slackbuilds.org/" rel="nofollow">http://slackbuilds.org</a>.</p>
+<p>A criação do pacote a partir do slackbuild é muito fácil. Siga os passos abaixo para criar o pacote no formato <strong>.tgz</strong></p>
+<p><strong>1º Passo</strong></p>
+<p>Acesse o site: <a class="urlextern" title="http://slackbuilds.org/repository/13.37/network/skype/" href="http://slackbuilds.org/repository/13.37/network/skype/" rel="nofollow">http://slackbuilds.org/repository/13.37/network/skype/</a> e baixe os seguintes arquivos:</p>
+<p><strong>skype-2.2.0.35.tar.bz2</strong> - <a class="urlextern" title="http://download.skype.com/linux/skype-2.2.0.35.tar.bz2" href="http://download.skype.com/linux/skype-2.2.0.35.tar.bz2" rel="nofollow">http://download.skype.com/linux/skype-2.2.0.35.tar.bz2</a></p>
+<p>skype.tar.gz - <a class="urlextern" title="http://slackbuilds.org/slackbuilds/13.37/network/skype.tar.gz" href="http://slackbuilds.org/slackbuilds/13.37/network/skype.tar.gz" rel="nofollow">http://slackbuilds.org/slackbuilds/13.37/network/skype.tar.gz</a></p>
+<p><strong>2º Passo</strong></p>
+<p>Descompacte o arquivo skype.tar.gz, com o comando:</p>
+<p>#tar xzvf skype.tar.gz skype/ skype/README skype/doinst.sh skype/skype.info skype/slack-desc skype/skype.SlackBuild skype/README.STATIC</p>
+<p><strong>3º Passo</strong></p>
+<p>Mova o arquivo skype-2.2.0.35.tar.bz2 para o diretório skype, que foi criado com o comando anterior, através da descompactação.</p>
+<p>#mv skype-2.2.0.35.tar.bz2 skype/</p>
+<p><strong>4º Passo</strong></p>
+<p>Como usuário <strong>root</strong>, execute:</p>
+<p>#cd skype/ #./skype.SlackBuild</p>
+<p>Neste momento o pacote no formato do Slackware está sendo criado. Ao final deverá aparecer a seguinte mensagem:</p>
+<blockquote>
+<div class="no">Slackware package /tmp/skype-2.2.0.35-i486-1_SBo.tgz created.</div>
+</blockquote>
+<p><strong>5º Passo</strong></p>
+<p>Para instalar o pacote, execute:</p>
+<p># installpkg /tmp/skype-2.2.0.35-i486-1_SBo.tgz</p>
+<p>Se você utiliza uma versão do Slackware de 32bits, o skype deve funcionar sem nenhum problema. Agora se você utiliza a versão X64, você irá precisar utilizar as [Multilibs | <a class="urlextern" title="http://slackbuilds.org/slackbuilds/13.37/network/skype.tar.gz" href="http://slackbuilds.org/slackbuilds/13.37/network/skype.tar.gz" rel="nofollow">http://slackbuilds.org/slackbuilds/13.37/network/skype.tar.gz</a> ].</p>
+<p>Facilitando o trabalho, abaixo estão todas as multilibs necessárias para o <strong>skype</strong> funcionar no Slackware X64.</p>
+<ul>
+<li class="level1">
+<div class="li">aaa_elflibs-compat32-13.37-x86_64-7.txz</div>
+</li>
+<li class="level1">
+<div class="li">compat32-tools-2.1-noarch-9alien.tgz</div>
+</li>
+<li class="level1">
+<div class="li">fontconfig-compat32-2.8.0-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">gcc-4.5.2_multilib-x86_64-2alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">gcc-g++-4.5.2_multilib-x86_64-2alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">gcc-gfortran-4.5.2_multilib-x86_64-2alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">gcc-gnat-4.5.2_multilib-x86_64-2alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">gcc-java-4.5.2_multilib-x86_64-2alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">gcc-objc-4.5.2_multilib-x86_64-2alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">glibc-2.13_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">glibc-i18n-2.13_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">glibc-profile-2.13_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">glibc-solibs-2.13_multilib-x86_64-4alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">glibc-zoneinfo-2.13_multilib-noarch-4alien.txz</div>
+</li>
+<li class="level1">
+<div class="li">libICE-compat32-1.0.7-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">libSM-compat32-1.2.0-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">libX11-compat32-1.4.3-x86_64-2.txz</div>
+</li>
+<li class="level1">
+<div class="li">libXScrnSaver-compat32-1.2.1-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">libXau-compat32-1.0.6-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">libXdmcp-compat32-1.1.0-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">libXext-compat32-1.2.0-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">libXrender-compat32-0.9.6-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">libXv-compat32-1.0.6-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">libxcb-compat32-1.7-x86_64-1.txz</div>
+</li>
+<li class="level1">
+<div class="li">qt-compat32-4.7.0_7abde40-x86_64-3.txz</div>
+</li>
+<li class="level1">
+<div class="li">util-linux-compat32-2.19-x86_64-1.txz</div>
+</li>
+</ul>
+<p>Todos esses pacotes podem ser encontrados em: <a class="urlextern" title="http://connie.slackware.com/~alien/multilib/" href="http://connie.slackware.com/~alien/multilib/" rel="nofollow">http://connie.slackware.com/~alien/multilib/</a></p>

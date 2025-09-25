@@ -1,0 +1,29 @@
+---
+layout: post
+title: 'Kmail: Erro ao enviar mensagem'
+date: 2005-09-24 17:36:46.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '5'
+  original_post_id: '5'
+  _wp_old_slug: '5'
+permalink: "/2005/09/24/kmail-erro-ao-enviar-mensagem/"
+---
+<p>Bom se você é como eu, utiliza o kmail para enviar e receber mensagens (cliente de e-mail) e ao tentar enviar a mensagem surge o erro: SASL(-4).</p>
+<p><a href="http://www.brunorusso.com.br/imagem/erro_kmail.jpg" target="_blank" rel="noopener noreferrer"> <img src="{{ site.baseurl }}/assets/2005/09/erro_kmail.jpg" alt="SASL(-4)" width="640" border="0" /></a></p>
+<p>Existe uma maneira fácil de resolver o problema.</p>
+<p>A nova versão do Kmail 1.8.1 que vem com o KDE 3.4 teve algumas alterações com relação a autenticação, passou a depender no cyrus-sasl. Por isso o erro acima ocorre. Para resolver este problema, basta instalar o pacote <strong><em>"cyrus-sasl"</em></strong>.</p>
+<p>Após instalar o erro acima é necessário atualizar a relação de bibliotecas, Sugiro que você reinicie o KDE :)</p>
+<p>Feito isso, o problema será solucionado.</p>
+<p>:D</p>

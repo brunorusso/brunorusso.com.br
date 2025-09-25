@@ -1,0 +1,31 @@
+---
+layout: page
+title: Fazer o Crontab não enviar e-mail
+date: 2006-11-15 21:16:25.000000000 +00:00
+type: page
+parent_id: '114'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '175'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/diversos/fazer-o-crontab-no-enviar-e-mail/"
+---
+<p>&#192;s vezes, algumas tarefas que s&#227;o executadas através do crontab n&#227;o queremos receber informaç&#245;es sobre o status da tarefa, ou seja, n&#227;o queremos ser avisados em caso de execuç&#227;o com sucesso.</p>
+<p>Para isso, podemos utilizar um "truque" que existe para n&#227;o receber esse tipo de informaç&#227;o. Basta acrescentar 1&gt; /dev/null</p>
+<p>Explicando melhor, caso a tarefa tenha sido executada com sucesso, ou seja, n&#227;o teve erro nenhum, as informaç&#245;es que ela traria, como por exemplo: "<u>OK</u>" ou "<u>SUCESSO</u>" s&#227;o enviadas para o diretório "escuro" (buraco negro) do Linux o /dev/null.</p>
+<p>Linha do crontab</p>
+<p><strong><u>Antiga</u></strong></p>
+<p>30 2 * * * /bin/tarefa.sh</p>
+<p><strong><u>Nova</u></strong></p>
+<p>30 2 * * * /bin/tarefa.sh 1&gt; /dev/null</p>

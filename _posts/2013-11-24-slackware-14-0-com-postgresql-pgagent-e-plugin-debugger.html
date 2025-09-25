@@ -1,0 +1,111 @@
+---
+layout: post
+title: Slackware 14.0 com PostgreSQL, pgAgent e Plugin Debugger
+date: 2013-11-24 14:16:57.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '957'
+permalink: "/2013/11/24/slackware-14-0-com-postgresql-pgagent-e-plugin-debugger/"
+---
+<p>A documentação abaixo, foi elaborada pelo Felipe AKA Carcamano, que autorizou a publicação no meu blog.</p>
+<p>Este tutorial refere-se a instalação do PostgreSQL 9.2.5 compilada e distribuida pela EnterpriseDB. Em seguida iremos configurar o banco e diretórios para receber a instalação do pgAgent (Schedule Tasks Within a Postgres Database Server). E por fim iremos habilitar o Debuuger de PL/SQL (plpgsql) neste banco.</p>
+<p>Então vamos lá!</p>
+<p><strong>INSTALANDO O POSTGRESQL</strong></p>
+<p>Para instalar a distribuição do PostgreSQL provida pela EnterpriseDB, vamos precisar do paconte linux-pam, baixe e instale:</p>
+<blockquote><p>root@slack14vm:~# wget http://slackpack.ludost.net/packages/slackware-13.1/linux-pam-1.1.3-i486-1gds.txz<br />
+root@slack14vm:~# installpkg linux-pam-1.1.3-i486-1gds.txz</p></blockquote>
+<p>Agora vamos baixar e instalar o PostgreSQL, todas as versões disponíveis podem sem encontradas em</p>
+<p><a href="http://www.enterprisedb.com/products-services-training/pgdownload">http://www.enterprisedb.com/products-services-training/pgdownload</a>, abaixo vou utilizar a x86-32 por conta do minha versão do Slackware:</p>
+<blockquote><p>root@slack14vm:~# wget http://get.enterprisedb.com/postgresql/postgresql-9.2.5-1-linux.run<br />
+root@slack14vm:~# chmod +x postgresql-9.2.5-1-linux.run<br />
+root@slack14vm:~# ./postgresql-9.2.5-1-linux.run</p></blockquote>
+<p>Neste ponto a instalação pode ser feita toda no padrão que virá no pacote. A única coisa que modifiquei foi a senha do usuário "postgres" no banco. Este usuário é o Super User do banco.</p>
+<p>Pronto. O PostgreSQL está instalado e já está rodando! A partir deste ponto irei considerar que a instalação do PostgesSQL foi feita com os parâmetros default passados pelo Installer, ok?</p>
+<p>Para testar que o Banco está rodando você pode logar no Banco e rodar o comando<strong> db</strong> que lhe retornará todas as Table Spaces disponíveis. O <strong>q</strong> dará quit no psql, veja:</p>
+<blockquote><p>
+root@slack14vm:~# /opt/PostgreSQL/9.2/bin/psql -U postgres<br />
+Password for user postgres:</p>
+<p>postgres=# db</p>
+<p>List of tablespaces<br />
+Name | Owner | Location<br />
+------------+----------+----------<br />
+pg_default | postgres |<br />
+pg_global | postgres |<br />
+(2 rows)</p>
+<p>postgres=# q<br />
+root@slack14vm:~#</p></blockquote>
+<p>Agora vamos alterar alguns arquivos de configuração para facilitar algumas situações.</p>
+<p>Adicione permanentemente ao $PATH o seguinte diretório. Para fazer isso você deve editar o arquivo "/etc/profile" :<br />
+- /opt/PostgreSQL/9.2/bin</p>
+<p>Feito isso, iremos editar o arquivo pg_hba.conf com seu editor de texto preferido:</p>
+<blockquote><p>root@slack14vm:~# mcedit /opt/PostgreSQL/9.2/data/pg_hba.conf</p></blockquote>
+<p>Iremos alterar as entradas de localhost para autenticação "trust" ou seja, em localhost o banco não irá solicitar a senha.  Também será adicionada uma linha neste arquivo permitindo conexões de rede ao banco porém estas autenticadas por senha. a parte final do arquivo deverá ficar assim:</p>
+<blockquote><p>
+# TYPE DATABASE USER ADDRESS METHOD</p>
+<p># "local" is for Unix domain socket connections only<br />
+local all all trust<br />
+# IPv4 local connections:<br />
+host all all 127.0.0.1/32 trust<br />
+host all all 0.0.0.0/0 md5<br />
+# IPv6 local connections:<br />
+host all all ::1/128 trust<br />
+# Allow replication connections from localhost, by a user with the<br />
+# replication privilege.<br />
+#local replication postgres md5<br />
+#host replication postgres 127.0.0.1/32 md5<br />
+#host replication postgres ::1/128 md5</p></blockquote>
+<p>Agora vamos preparar o arquivo de inicialização. Na verdade este arquivo já está pronto, mas foi copiado pelo instalador do pacote para um caminho que não me agrada, então irei alterá-lo:</p>
+<blockquote><p>
+root@slack14vm:~# mv /etc/init.d/postgresql-9.2 /etc/rc.d/rc.postgres</p></blockquote>
+<p>Agora precisamos reiniciar o PostgreSQL para reler o pg_hba.conf:</p>
+<blockquote><p>
+root@slack14vm:~# /etc/rc.d/rc.postgres restart</p></blockquote>
+<p>Pronto. Nossa instalação do PostgreSQL está concluída!</p>
+<p><strong>HABILITANDO PL/SQL DEBUGGER PARA O PGADMIN</strong></p>
+<p>O PL Debugger é um excelente recurso para desenvolvedores. Habilitar este recurso é mais simples o que parece (vale lembrar que este recurso está disponível somente na versão disponibilizada pela EnterpriseDB), o que a torna realmente difícil é que não existe uma explicação na internet que diga de fato como fazer.</p>
+<p>Primeiro precisamos saber se o banco sabe onde está o diretório de Libs, rode o comando:</p>
+<blockquote><p>
+root@slack14vm:~# pg_config --pkglibdir</p></blockquote>
+<p>Voce deve obter /opt/PostgreSQL/9.2/lib/postgresql como retorno.</p>
+<p>Agora precisamos habilitar a lib. Edite o arquivo "/opt/PostgreSQL/9.2/data/postgresql.conf" procure por "shared_preload_libraries". Descomente e coloque o valor '$libdir/plugin_debugger.so'. A linha deverá ficar assim:</p>
+<blockquote><p>
+shared_preload_libraries = '$libdir/plugin_debugger.so'</p></blockquote>
+<p>Precisamos também executar o Script de debbug, veja:</p>
+<p>&nbsp;</p>
+<blockquote><p>root@slack14vm:~# psql -U postgres -f /opt/PostgreSQL/9.2/share/postgresql/extension/pldbgapi--1.0.sql</p></blockquote>
+<p>&nbsp;</p>
+<p>Agora basta reiniciar o banco que o Debugger estará funcionando:</p>
+<blockquote><p>
+root@slack14vm:~# /etc/rc.d/rc.postgres restart</p></blockquote>
+<p><strong>INSTALANDO O PGAGENT</strong></p>
+<p>O pgAgent é um software auxiliar ao PostgreSQL. Minha necessidade de com ele é o Schedule de Jobs dentro do banco. O pgAgent basicamente fica rodando como serviço e verificando algumas tabelas em banco, literalmente conferindo se há algum Job para rodar, e se houver ele roda.</p>
+<p>Os jobs podem ser criados tanto em ambiente gráfico com o pgAdmin (mesmo com o pgAdmin como client em Windows) quanto com Inserts em SQL, mas iremos nos limitar neste tutorial a instalar o pgAgent, os Jobs ficam para outra hora e também porque são muito simples de serem criados dentro do pgAdmin.</p>
+<p>O pgAgent é bastante complexo de compilar, pois ele demanda das bibliotecas wxGTK e wxWidgets, por isso vou utilizar uma versão que já deixei preparada para está versão e que pode ser baixada pelo Stackbuilder. Apenas a titulo de curiosidade, o Stackbuilder também é distribuído pela EnterpriseDB e é um excelente assistente gráfico para instalação de plugins e extensões do PostgreSQL, mas como nem sempre temos acesso gráfico ao servidor, vou deixar uma versão já pronta para download.</p>
+<p>Nota: Para rodar o Stackbuilder, você irá precisar criar dois links simbólicos, são:</p>
+<blockquote><p>
+root@slack14vm:~# ln -s /opt/PostgreSQL/9.2/pgAdmin3/lib/libtiff.so.5 /usr/lib/libtiff.so.5<br />
+root@slack14vm:~# ln -s /opt/PostgreSQL/9.2/lib/libiconv.so.2 /usr/lib/libiconv.so.2</p></blockquote>
+<p>Bom, vamos colocar esse pgAgent para rodar!</p>
+<blockquote><p>
+root@slack14vm:~# cd /opt/PostgreSQL/9.2/<br />
+root@slack14vm:/opt/PostgreSQL/9.2# wget http://www.bcj.com.br/download/postgres/pgAgent-3.3.0.tar.gz<br />
+root@slack14vm:/opt/PostgreSQL/9.2# tar -zxvf pgAgent-3.3.0.tar.gz<br />
+root@slack14vm:/opt/PostgreSQL/9.2# psql -U postgres -f /opt/PostgreSQL/9.2/pgAgent/share/pgagent.sql<br />
+root@slack14vm:/opt/PostgreSQL/9.2# mv /opt/PostgreSQL/9.2/pgAgent/rc.pgagent /etc/rc.d/rc.pgagent<br />
+root@slack14vm:/opt/PostgreSQL/9.2# /etc/rc.d/rc.pgagent start<br />
+root@slack14vm:/opt/PostgreSQL/9.2# rm pgAgent-3.3.0.tar.gz<br />
+root@slack14vm:/opt/PostgreSQL/9.2# cd ~</p></blockquote>
+<p><strong>CONCLUSÃO</strong></p>
+<p>Como queríamos demonstrar a instação do PostgreSQL é simples dependendo de como você quer fazê-la. O que na minha opinião faltava era um tutorial simples.</p>
+<p>Tudo que foi feito aqui pode ser feito baixando os fontes e compilando. Mas se você tiver uma situação de instalação em ambiente de produção em massa, por exemplo, ter que instalar em 30 ou 40 servidores, este tutorial pode te ajudar muito.</p>
+<p>Espero ter ajudado, boa sorte a todos!</p>

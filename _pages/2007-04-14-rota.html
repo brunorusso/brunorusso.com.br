@@ -1,0 +1,70 @@
+---
+layout: page
+title: Rota
+date: 2007-04-14 17:42:23.000000000 +00:00
+type: page
+parent_id: '43'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '204'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/programas/rota/"
+---
+<p>Este script é muito simples! Ele simplesmente apaga uma rota e cria uma segunda rota. Para isso usa o comando <em><strong>route</strong></em>.</p>
+<p>É interessante utilizá-lo quando se tem dois roteadores e apenas um deve ser ativo. Quando o roteador ativo, por algum motivo, deixar de responder, o roteador secundário deve assumir. É exatamente isso que o script faz!</p>
+<p><u>Imagine a seguinte situação:</u></p>
+<p>Você tem o <strong>Roteador 1</strong> que faz a ligação entre a sua <strong>Rede A</strong> e a sua <strong>Rede B</strong>. Mas esse roteador <strong>Router 1</strong> pode, por diversos motivos deixar de funcionar, com isso o roteador <strong>Router 2</strong> deve entrar no "ar".</p>
+<pre>  Situação A
+  ==========
+  		|--------|
+  		| REDE A |
+  		|--------|
+  		   |
+  		---|
+  		|
+  		V
+  	|----------|	|----------|
+  	| ROUTER 1 |	| ROUTER 2 |
+  	|----------|	|----------|
+  		|
+  		|---
+  		   |
+  		   V
+  		|--------|
+  		| REDE B |
+  		|--------|
+
+  Situação B
+  ==========
+                  |--------|
+                  | REDE A |
+                  |--------|
+  		      |
+                        |-----
+                             |
+                             V
+          |----------|    |----------|
+          | ROUTER 1 |    | ROUTER 2 |
+          |----------|    |----------|
+                             |
+                             |
+                        |-----
+                        V
+                  |--------|
+                  | REDE B |
+                  |--------|
+</pre>
+<p>O script simplesmente altera a rota!</p>
+<p><a href="http://www.brunorusso.com.br/Programas/rota/rota-0.1.tar.gz">Download </a>- versão 0.1<br />
+MD5 - f70af93eac041c90bb9412010abe735a</p>

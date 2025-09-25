@@ -1,0 +1,22 @@
+---
+layout: post
+title: SQL2005 - Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+date: 2009-07-28 13:37:36.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '612'
+permalink: "/2009/07/28/sql2005-guid-should-contain-32-digits-with-4-dashes-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/"
+---
+<p>Ao criar um plano de manutenç&#227;o no SQL2005, ocorre o seguinte erro:</p>
+<blockquote><p>Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)</p></blockquote>
+<p>Após, uma consulta <a href="http://www.google.com.br/search?q=guid+should+contain+32+digits+with+4+dashes+sql2005&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;rls=org.mozilla:en-US:official&amp;client=firefox-a">básica no google</a>, encontrei uma <a title="KB922651" href="http://support.microsoft.com/kb/922651">KB</a> (922651), que identifica que esse erro é na verdade um BUG do SQL2005.</p>
+<p><strong>Soluç&#227;o:</strong> Instalar o SP mais novo, pois o SP2 do SQL possui o SP1. E o SP3, possui o SP1 e SP2. No meu caso o <a title="SQL2005 - SP3" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=ae7387c3-348c-4faa-8ae5-949fdfbe59c4&amp;displaylang=en">Service Pack 3</a>.</p>

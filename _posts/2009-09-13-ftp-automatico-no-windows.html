@@ -1,0 +1,35 @@
+---
+layout: post
+title: FTP automático no Windows
+date: 2009-09-13 07:30:25.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '619'
+permalink: "/2009/09/13/ftp-automatico-no-windows/"
+---
+<p>Em determinados momentos precisamos automatizar algumas tarefas, e abaixo segue um exemplo de como automatizar um FTP no Microsoft Windows.</p>
+<p>Crie um arquivo com o seguinte conteúdo:</p>
+<p><code><br />
+open ftp.seuservidor.com.br<br />
+poeaquiseulogin<br />
+poeaquisuasenha<br />
+binary<br />
+hash<br />
+mget arquivoquequerbaixar*</code></p>
+<p>bye<br />
+quit</p>
+<p>Salve-o com o nome de <strong>script.txt</strong>.</p>
+<p>E, supondo que esse script.txt esteja no c:, é só executar através do prompt de comando a seguinte linha:<br />
+<code><br />
+c:WINDOWSsystem32ftp.exe -s:c:script.txt<br />
+</code></p>
+<p style="text-align:right;"><em>http://br.answers.yahoo.com/question/index?qid=20070124101803AArDjty</em></p>

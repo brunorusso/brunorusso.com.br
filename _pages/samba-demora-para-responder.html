@@ -1,0 +1,27 @@
+---
+layout: page
+title: Samba demora para responder
+date: 
+type: page
+parent_id: '0'
+published: false
+password: ''
+status: draft
+categories: []
+tags: []
+meta:
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '367'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/"
+---
+<p>Ao acessar o Servidor Samba pelo caminho:</p>
+<p>NOME_DO_SERVIDOR<br />
+ocorre uma grande lentidÃ£o e solicita usuÃ¡rio e senha.</p>
+<p>Ao verificar os parametros do smb.conf, verifiquei que o nome do servidor no parÃ¢metro <strong>password server</strong>, estava escrito de forma errada.</p>
+<p>ApÃ³s alterar para o nome correto do Servidor e reiniciar o serviÃ§o, o acesso ao servidor voltou a ficar normal.</p>

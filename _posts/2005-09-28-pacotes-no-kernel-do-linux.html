@@ -1,0 +1,179 @@
+---
+layout: post
+title: Pacotes no Kernel do Linux
+date: 2005-09-28 16:15:57.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '7'
+  original_post_id: '7'
+  _wp_old_slug: '7'
+permalink: "/2005/09/28/pacotes-no-kernel-do-linux/"
+---
+<p><font size="-1"><br />
+ [15:12:24] [brusso]vejam essa imagem e salvem-na <a href="http://ebtables.sourceforge.net" target="_blank" rel="noopener noreferrer"><img src="{{ site.baseurl }}/assets/2005/09/bridge3b.png" width="640" height="480" border="0" /></a><br />
+ [15:14:11] [brusso]viram<br />
+ [15:14:29] [Lipe]to vendo aqui <br />
+ [15:14:33] [brusso]essa tabela eh o filtro de pacotes que o firewall utiliza<br />
+ [15:14:34] [d22005]sim<br />
+ [15:14:37] [brusso]ok<br />
+ [15:14:57] [Lipe]blz<br />
+ [15:15:00] [brusso]o kernel do linux possui 3 tipos de tabelas<br />
+ [15:15:07] [brusso]mangle, nat, filter<br />
+ [15:15:10] [brusso]correto<br />
+ [15:15:16] [Lipe]blz<br />
+ [15:15:18] [d22005]blz<br />
+ [15:15:29] [brusso]essas tabelas seguem uma ordem<br />
+ [15:16:09] [Lipe]mas pra cada tipo de chain ou naum?<br />
+ [15:16:21] [brusso]sim<br />
+ [15:16:41] [brusso]cada tabela e cada chain tem uma hora especifica<br />
+ [15:16:46] [Lipe]blz..<br />
+ [15:16:54] [Lipe]hum<br />
+ [15:17:10] [brusso]um pacote chegando no firewall<br />
+ [15:17:24] [brusso]a primeira tabela que ele passa<br />
+ [15:17:28] [Lipe]sim<br />
+ [15:17:28] [brusso]eh a mangle<br />
+ [15:17:33] [brusso]veja a ficura<br />
+ [15:17:35] [brusso]figura<br />
+ [15:17:52] [Lipe]lah em cima né?<br />
+ [15:18:12] [brusso]naum<br />
+ [15:18:20] [brusso]a primeira da esquerda para a direita<br />
+ [15:18:32] [Lipe]achei...<br />
+ [15:18:56] [brusso]encontrou d2<br />
+ [15:19:10] [d22005]sim!<br />
+ [15:19:30] [brusso]ok<br />
+ [15:19:46] [brusso]caso exista alguma regra para essa tabela a regra eh feita<br />
+ [15:20:01] [brusso]caso naum o pacote passa para a proxima tabela/chain<br />
+ [15:20:15] [brusso]que eh a tabela NAT/prerouting<br />
+ [15:20:31] [Lipe]blz...<br />
+ [15:21:22] [brusso]ok<br />
+ [15:23:30] [d22005]tô vendo!<br />
+ [15:26:12] [brusso]tem regra nessa tabela tem -------&gt; executa (essa regra eh aquela utilizada geralmente para DMZ)<br />
+ [15:26:20] [brusso]ok<br />
+ [15:26:26] [brusso]sem regra nessa tabela<br />
+ [15:26:39] [brusso]verifica se o pacote eh de redirecionamento ou naum<br />
+ [15:26:56] [brusso]ou seja verifica se o destina eh a maquina (firewall) ou outra maquina<br />
+ [15:27:07] [brusso]caso seja a maquina(firewall) vai para o INOUT<br />
+ [15:27:11] [brusso]INPUT<br />
+ [15:27:22] [brusso]caso seja de redirecionamento vai para a regra forward<br />
+ [15:27:29] [brusso]eestao entendendo<br />
+ [15:27:57] [d22005]sim sim<br />
+ [15:28:27] [brusso]entaum se for para a maquina<br />
+ [15:28:31] [brusso]cai na regra de input<br />
+ [15:28:45] [brusso]e cai nas regras<br />
+ [15:28:51] [brusso]estabelecidas<br />
+ [15:29:14] [brusso]em seguida vai para a tabela mangle de output<br />
+ [15:29:36] [brusso]depois para a output nat e output filter<br />
+ [15:29:54] [brusso]detalhe o pacote ainda naum saiu do "kernel"<br />
+ [15:30:15] [brusso]ele ainda está passando sobre os filtors que o kernel possui<br />
+ [15:30:33] [d22005]blz estou etendendo<br />
+ [15:30:49] [brusso]por fim cai na tabela mangle postrouting<br />
+ [15:31:01] [brusso]e depois na nat de postrouting<br />
+ [15:31:16] [brusso]mas e se o pacote for de redirecionamento?!?<br />
+ [15:31:22] [brusso]bom ele cai na tabela forward<br />
+ [15:31:41] [brusso]mas primeiramente en na table mangle/forward<br />
+ [15:34:45] [d22005]seguida da filter,,,  hummm<br />
+ [15:35:40] [brusso]e em seguida da filter<br />
+ [15:35:42] [brusso]exatamente<br />
+ [15:35:47] [Lipe]certo<br />
+ [15:35:49] [brusso]cara<br />
+ [15:35:55] [brusso]entendendo como issi funciona<br />
+ [15:35:59] [brusso]vc faz qualquer firewall<br />
+ [15:36:37] [d22005]vlw brunão, entendi o que vc me falou!! mais<br />
+ [15:36:38] [brusso]vcs usam a tabela mangle<br />
+ [15:36:49] [d22005]vou ter q da uma estudada mais forte einda cara!!!<br />
+ [15:37:02] [d22005]n]ao<br />
+ [15:37:41] [Lipe]essa tabela tem principios de que?<br />
+ [15:37:59] [brusso]eh o mais interessante que já vi<br />
+ [15:38:08] [brusso]a tabela mangle agiliza<br />
+ [15:38:10] [brusso]ou seja<br />
+ [15:38:20] [brusso]da prioridade para o pacote ser trabalhado no kernel<br />
+ [15:38:38] [brusso]com isso vc pode aumentar a velocidade de sua conexao discada em grnade quantidade<br />
+ [15:38:55] [Lipe]ah...........<br />
+ [15:39:16] [Lipe]tipo ela por qu tipo de parametro? porta?<br />
+ [15:39:21] [d22005]tipo um "Qos"<br />
+ [15:39:22] [d22005]?<br />
+ [15:43:34] [brusso]mangle diz ao kernel ter prioridade no processamento daquele pacote<br />
+ [15:45:23] [Lipe]mas como ele sabe que é aquele o pacote?<br />
+ [15:47:42] [brusso]da mesma forma que vc bloqueia um pacote com destino a porta 22, por exemplo<br />
+ [15:48:02] [Lipe]hum...<br />
+ [15:49:00] [brusso]veja o desenho<br />
+ [15:49:08] [brusso]imagina assim<br />
+ [15:49:30] [brusso]tudo que chegar em seu firewall com destino na porta 80, por exemplo, vc da prioridade<br />
+ [15:49:32] [brusso]ok<br />
+ [15:49:38] [Lipe]ok<br />
+ [15:49:42] [brusso]agora olhe a seguinte situção<br />
+ [15:49:54] [brusso]chegam 10 pacotes ao mesmo tempo no firewall<br />
+ [15:50:08] [brusso]5 com destino a porta 25<br />
+ [15:50:12] [Lipe]sim<br />
+ [15:50:15] [brusso]3 com destina na porta 22<br />
+ [15:50:17] [Lipe]hum<br />
+ [15:50:19] [brusso]1 na porta 21<br />
+ [15:50:19] [Lipe]hum<br />
+ [15:50:21] [Lipe]hum<br />
+ [15:50:30] [brusso]e 1 pacote na porta 80<br />
+ [15:50:43] [Lipe]sm<br />
+ [15:50:47] [brusso]qual o kernel ira executar primeiro<br />
+ [15:50:50] [brusso]o da porta 80<br />
+ [15:50:54] [brusso]entendeu?!?<br />
+ [15:51:07] [Lipe]sim...<br />
+ [15:51:11] [brusso]logo se vc fizer a seguinte regra em sua conexão discada:<br />
+ [15:51:16] [Lipe]pq eu dei prioridade <br />
+ [15:51:55] [brusso]iptables -t mangle -A OUTPUT -o ppp0 -p tcp --dport 80 -j TOS --set-tos 8<br />
+ [15:52:00] [brusso]sua net vai ficar mais rápida<br />
+ [15:52:04] [brusso]entendeu?!?<br />
+ [15:52:25] [Lipe]humm<br />
+ [15:52:39] [Lipe]o que significa TOS?<br />
+ [15:53:52] [d22005]muito legal cara,,,,,vc está lendo algum livro, documentação? <br />
+ [15:54:42] [Lipe]eu tenho aquele do humberto jucá... naum sei se vc jah escutou falar<br />
+ [15:55:17] [brusso]tipo de serviço<br />
+ [15:55:38] [brusso]humberto jucá naum lembro<br />
+ [15:55:59] [brusso]d22005: tive me ferrando e daí resolvi ler<br />
+ [15:56:07] [brusso]mas no guiafoca tem tudo isso<br />
+ [15:56:10] [Lipe]hummm<br />
+ [15:56:12] [brusso]no modo avançado<br />
+ [15:56:19] [brusso]lá aprendi bastante<br />
+ [15:56:21] [Lipe]ah...<br />
+ [15:56:25] [brusso]sobre a tabela mangle<br />
+ [15:56:32] [Lipe]blz...<br />
+ [15:56:50] [brusso]agora sobre a fluxo do pacote aprendi na prática<br />
+ [15:57:02] [Lipe]certo;...<br />
+ [15:57:28] [brusso]o guiafoca diz que utilizando a tabela mangle<br />
+ [15:57:46] [brusso]pode-se aumentar a velocidade de uma conexão discada em até 300%<br />
+ [15:57:50] [Lipe]hum<br />
+ [15:57:54] [Lipe]porra!!<br />
+ [15:57:55] [brusso]porém ainda naum consegui testar em casa<br />
+ [15:58:03] [brusso]o número é exorbitante<br />
+ [15:58:21] [brusso]imagina só 300% mais rápido é quase uma conexão ADSL<br />
+ [15:58:22] [brusso]kkkkkkkkk<br />
+ [15:58:39] [brusso]vou mandar meu novo script de firewall para vcs...<br />
+ [15:58:43] [brusso]por e-mail<br />
+ [15:58:56] [Lipe]blz..<br />
+ [15:58:58] [Lipe]mandai pra gente ter uma noçao...<br />
+ [15:59:17] [brusso]ele está dividido por funcoes e a ordem de como são executadas são definidas no final do script<br />
+ [15:59:23] [brusso]ta bem facil e bem comentado<br />
+ [15:59:33] [brusso]agora tem script de start e stop<br />
+ [15:59:34] [brusso]:D<br />
+ [15:59:40] [Lipe]blz<br />
+ [15:59:44] [d22005]rs!!!!!<br />
+ [16:00:16] [d22005]quando vc consegui testar na sua casa a parada me avisa q vou cancelar o virtua lá em casa<br />
+ [16:01:32] [brusso]kkkkkkkk<br />
+ [16:01:51] [brusso]bom duvidas vamos discutir<br />
+ [16:02:23] [brusso]leiam o guiafoca avançado tem tudo isso e muito mais<br />
+ [16:02:35] [Lipe]blz..<br />
+ [16:02:42] [brusso]deixa eu trabalhar agora<br />
+ [16:02:42] [d22005]blz mano!!!!!<br />
+ [16:02:59] - --d22005 deixou o bate-papo.<br />
+ [16:02:45] [Lipe]valeu pela dica brunão<br />
+ [16:02:55] [d22005]vai lá<br />
+ [16:02:56] [d22005]bj<br />
+ [16:03:03] [brusso]fui<br />
+</font></p>

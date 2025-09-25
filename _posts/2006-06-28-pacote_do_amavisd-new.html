@@ -1,0 +1,53 @@
+---
+layout: post
+title: Pacote do amavisd-new
+date: 2006-06-28 17:37:12.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '125'
+permalink: "/2006/06/28/pacote_do_amavisd-new/"
+---
+<p>Hoje, tive que montar mais um Servidor de Email (<a href="http://en.wikipedia.org/wiki/Mail_transfer_agent">MTA</a>). E novamente tive que compilar diversos programas manualmente.</p>
+<p>Um desses programas é o <a href="http://www.ijs.si/software/amavisd/">Amavisd-new</a>. Que é um <a href="http://en.wikipedia.org/wiki/Daemon_%28computer_software%29">daemon</a> na qual verifica as mensagens à procura de vírus e spam.</p>
+<p>Para facilitar tentei criar um pacote para o <a href="http://www.slackware.com">Slackware</a>. Em testes realizados o pacote funcionou!</p>
+<p>Não garanto que o pacote irá funcionar para você também, caso encontre algum tipo de problema avise para que possa ser possível criar um pacote mais apropriado.</p>
+<p>Para pegar o pacote pronto ou o SlackBuild, clique <a href="http://www.brunorusso.com.br/pacotes/amavisd-new">aqui</a>.</p>
+<p><strong><u>Atenção:</u></strong> este pacote apenas instala o básico do Amavisd. Lembre-se de que o Amavis precisa do interpretador Perl e de diversos módulos. todos esses módulos podem ser instalados através do <a href="http://cpan.org/">cpan</a>.</p>
+<p>Abaixo listei alguns dos módulos de Perl necessários para que o amavisd funcione corretamente.</p>
+<p>BerkeleyDB::Btree<br />
+IO::Wrap<br />
+IO::Stringy<br />
+Unix::Syslog<br />
+Mail::Field<br />
+Mail::Address<br />
+Mail::Header<br />
+Mail::Internet<br />
+Compress::Zlib<br />
+MIME::Words<br />
+MIME::Head<br />
+MIME::Body<br />
+MIME::Entity<br />
+MIME::Parser<br />
+MIME::Decoder<br />
+MIME::Decoder::Base64<br />
+MIME::Decoder::Binary<br />
+MIME::Decoder::QuotedPrint<br />
+MIME::Decoder::NBit<br />
+MIME::Decoder::UU<br />
+MIME::Decoder::Gzip64<br />
+Net::Server<br />
+Net::Server::PreForkSimple<br />
+Convert::TNEF<br />
+Convert::UUlib</p>

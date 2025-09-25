@@ -1,0 +1,205 @@
+---
+layout: page
+title: Instalando o VirtualBox em uma Máquina com Slackware
+date: 2008-10-27 21:49:36.000000000 +00:00
+type: page
+parent_id: '423'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '425'
+  _oembed_4328a4e894e506e6f268a2bec79bbb62: "{{unknown}}"
+  _oembed_342ed0a34e14f3da9d751c7c7c70b444: "{{unknown}}"
+  _oembed_2d8814fc3ee244ec50fd1c03903062af: "{{unknown}}"
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/virtualizacao/instalando-o-virtualbox-em-uma-maquina-com-slackware/"
+---
+<p>O <a href="http://www.virtualbox.org">VirtualBox</a>, é uma poderosa ferramenta de virtualizaç&#227;o OpenSource. Atualmente é distribuída gratuitamente pela Sun Microsystems.</p>
+<p>O VirtualBox suporta virtualizaç&#227;o de Sistemas operacionais de 32 e 64 bits e processadores Intel e AMD.</p>
+<p>Abaixo, voc&#234; tem uma vis&#227;o geral de todas plataformas/sistemas opercionais, em que voc&#234; pode utilizar o VirtualBox.</p>
+<ul>
+<li>Windows
+<ul>
+<li>Windows XP</li>
+<li>Windows Server 2003</li>
+<li>Windows Vista (32-bit and 64-bit)</li>
+</ul>
+</li>
+<li>Apple Mac OS X hosts (Intel hardware only, all versions of Mac OS X supported)</li>
+<li>Linux (32-bit and 64-bit)
+<ul>
+<li>Debian GNU/Linux 3.1 ("sarge"), 4.0 ("etch") e 5.0 ("lenny")</li>
+<li>Fedora Core 4 &#224; 9</li>
+<li>Gentoo Linux</li>
+<li>Redhat Enterprise Linux 3, 4 e 5</li>
+<li>SUSE Linux 9 e 10, openSUSE 10.1, 10.2, 10.3 e 11</li>
+<li>Ubuntu 6.06 ("Dapper Drake"), 6.10 ("Edgy Eft"), 7.04 ("Feisty Fawn"), 7.10 ("Gutsy Gibbon"), 8.04 ("Hardy Heron")</li>
+<li>Mandriva 2007.1 e 2008.0</li>
+<li>Além, dessas distribuiç&#245;es, também é possível utilizar o VirtualBox em sistemas com kernel 2.4 ou 2.6, porém a instalaç&#227;o deve ser realizda maualmente (esse é o caso da instalaç&#227;o abaixo, que será realizada em uma máquina com <strong>Slackware 12.1</strong>).</li>
+</ul>
+</li>
+<li>Solaris hosts (32-bit e 64-bit):
+<ul>
+<li>OpenSolaris (2008.05 ou superior, "Nevada" build 86 ou superior)</li>
+<li>Solaris 10 (ou superior, suporte experimental)</li>
+</ul>
+</li>
+</ul>
+<p>Abaixo, ressalto algumas características sobre o VirtualBox.</p>
+<ul>
+<li>N&#227;o necessita de processador específico para a virtualizç&#227;o, como por exemplo Intel VT-x ou AMD-V.</li>
+<li>Fácil portbilidade, pois é possível utilizar o VirtualBox em diversos sistemas operacionais, como mencionado anteriormente.</li>
+<li><em>Guest Additions</em> é um conjunto de ferramentas que melhora a performance e prov&#234; integraç&#227;o e comunicaç&#227;o com a máquina hospedeira. Essas integraç&#245;es incluem a possibilidade de compartilhar uma pasta entre a máquina hospedeira com a máquina virtual.</li>
+<li>Toda a configuraç&#227;o de uma máquina virtual, é armazenada em um arquivo XML, o que facilita a sua leitura e portabilidade.</li>
+<li>Suporte completo a ACPI</li>
+<li>Suporte a APIC I/O</li>
+<li>Suporte a dispositivos USB's</li>
+<li>Acesso remoto para a máquina hospedeira através do protocolo VRDP (Protocolo Remoto de Desktop VirtualBox).</li>
+</ul>
+<p>O que é possível Virtualizar com o VirtualBox?</p>
+<p>A resposta para essa pergunta é simples: <strong>muitos sistemas operacionais</strong>, os mais utilizados no mundo podem ser virtualizados. Veja alguns exemplos:</p>
+<ul>
+<li>Windows NT 4.0</li>
+<li>Windows 2000 / XP / Server 2003 / Vista</li>
+<li>DOS / Windows 3.x / 95 / 98 / ME</li>
+<li>Linux 2.4</li>
+<li>Linux 2.6</li>
+<li>Solaris 10, OpenSolaris</li>
+<li>FreeBSD</li>
+<li>OpenBSD</li>
+<li>OS/2 Warp 4.5</li>
+</ul>
+<p>Bom, vamos deixar a "proza" de lado e vamos para a parte mais interessante: <strong>Colocando a m&#227;o na massa</strong>.</p>
+<p><em>Como já foi dito anteriormente, os passos a seguir para a instalaç&#227;o do VirtualBox, foram realizados em uma máquina com Sistema Operacional Linux. Distribuiç&#227;o utilizada: Slackware :-). Caso voc&#234; queira instalar o VirtualBox em uma máquina Windows, acesse o site oficial e baixa a vers&#227;o específica para a plataforma. Essa instalaç&#227;o é muito Simples: NNF (Next, Next, Finished).</em></p>
+<p>A primeira etapa, é muito simples, consiste em efetuar o download do VirtualBox. Isso pode ser realizado através do site <a href="http://www.virtualbox.org">oficial</a>. No momento em que este artigo estava sendo escrito a vers&#227;o utilizada para a instalaç&#227;o do VirtualBox foi a vers&#227;o: <span style="text-decoration:underline;"><strong>2.0.2</strong></span>.</p>
+<h1>Instalaç&#227;o</h1>
+<p>Para efetuar o download escolha vers&#227;o do Sistema Hospedeiro, nesse caso voc&#234; baixará algo semelhante &#224; <em>VirtualBox-2.0.2-36488-Linux_x86.run</em>.</p>
+<p><em><span style="text-decoration:underline;">Dica:</span> para efetuar o download, clique com o bot&#227;o direito do mouse e selecione salvar link como.</em></p>
+<p>Após efetuar o download, é necessário alterar as permiss&#245;es do arquivo para que seja possível executá-lo, isso pode ser feito através do comando a seguir.</p>
+<pre>  # chmod +x VirtualBox-2.0.2-36488-Linux_x86.run</pre>
+<p>Agora que o arquivo já possui permiss&#227;o de execuç&#227;o, vamos iniciar a instalaç&#227;o com o comando:</p>
+<pre>  # ./VirtualBox-2.0.2-36488-Linux_x86.run</pre>
+<p>As seguintes mensagens ser&#227;o exibidas:</p>
+<pre>  Verifying archive integrity... All good.
+  Uncompressing VirtualBox for Linux installation........
+  VirtualBox Version 2.0.2 (2008-09-12T13:39:17Z) installer
+  Installing VirtualBox to /opt/VirtualBox-2.0.2
+  Building the VirtualBox kernel module
+
+  VirtualBox has been installed successfully.
+
+  You will find useful information about using VirtualBox in the user manual
+    /opt/VirtualBox-2.0.2/UserManual.pdf
+  and in the user FAQ
+    http://www.virtualbox.org/wiki/User_FAQ
+
+  We hope that you enjoy using VirtualBox.</pre>
+<p>Pronto a instalaç&#227;o está <strong>pré-concluída</strong>!</p>
+<p>Durante a instalaç&#227;o é criado o grupo <strong>vboxusers</strong>. Para que seja possível iniciar o VirtualBox com um usuário comum, é necessário que este esteja pertença ao grupo <strong>vboxusers</strong>. Para incluir um usuário nesse grupo, usamos o seguinte comando:</p>
+<pre>  #gpasswd -a brusso vboxusers
+  Adding user brusso to group vboxusers</pre>
+<h1>Utlizaç&#227;o</h1>
+<p>Pronto! agora basta acessar o ambiente gráfico e executar o comando:</p>
+<pre>  $VirtualBox</pre>
+<p>Se voc&#234; utiliza o ambiente gráfico KDE ou XFCE, voc&#234; pode facilmente iniciar o VirtualBox através do menu: <strong>system</strong>.</p>
+<p>Para cada usuário é necessário realizar a primeira "configuraç&#227;o". A primeira imagem exibida é a tela com os termos da Licença.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem1.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem1.png" alt="" width="546" height="438" /></a></p>
+<p>Para aceitar clique em <strong>I Agree</strong>.</p>
+<p>A próxima tela voc&#234; informa um nome de usuário e um E-mail:</p>
+<p style="text-align:center;"><a href="http://www.brunorusso.eti.br/imagem/imagem2.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem2.png" alt="" width="546" height="438" /></a></p>
+<p>Feito isso, o VirtualBox está pronto para ser utilizado.</p>
+<p style="text-align:center;"><a href="http://www.brunorusso.eti.br/imagem/imagem3.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem3.png" alt="" width="546" height="438" /></a></p>
+<p>Caso ache interessante, voc&#234; pode mudar o idioma para o idioma de sua prefer&#234;ncia. Isso pode ser realizado através do menu <strong>File --&gt; Preferences</strong> Escolhendo a opç&#227;o Language.</p>
+<p style="text-align:center;"><a href="http://www.brunorusso.eti.br/imagem/imagem4.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem4.png" alt="" width="546" height="438" /></a></p>
+<p>Agora que o VirtualBox está instalado, é possível definir algumas prefer&#234;ncias, como por exemplo o local onde será armazenada as informaç&#245;es sobre as máquinas virtuais e sobre o local onde ser&#227;o armazanados os discos de cada máquina.</p>
+<p>Essas alteraç&#245;es s&#227;o realizadas no menu <strong>File --&gt; Preferences</strong> na opç&#227;o <em>GENERAL</em>.</p>
+<p style="text-align:center;"><a href="http://www.brunorusso.eti.br/imagem/imagem5.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem5.png" alt="" width="546" height="438" /></a></p>
+<p>As duas primeiras opç&#245;es <em>(VDI files e Machines)</em> s&#227;o, respectivamente, o local onde ser&#227;o armazenados os discos, utilizados pelas máquinas virtuais e o local onde ser&#227;o salvos os arquivos com as informaç&#245;es das máquinas.</p>
+<p>O padr&#227;o para o armazenamento é a criaç&#227;o de um diretório oculto chamado VirtualBox.</p>
+<p>Antes de criar uma máquina virtual, podemos criar os discos, que ser&#227;o utilizados por cada máquina, para isso o VirtualBox, possui um aplicativo chamado <em>Gerenciador de Discos</em>, que facilita esse trabalho para voc&#234;. Esse utilitário pode ser acessado através do menu <strong>File --&gt; Virtual Disk Manager</strong></p>
+<p style="text-align:center;"><a href="http://www.brunorusso.eti.br/imagem/imagem6.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem6.png" alt="" width="546" height="438" /></a></p>
+<p>Para criar um novo disco, clique em <strong>NEW</strong>, será carregado um assistente que o ajudrá nessa tarefa.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem7.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem7.png" alt="" width="546" height="438" /></a></p>
+<p>Existem dois tipos de discos:</p>
+<ol>
+<li><strong>Disco Dinâmico</strong> - O disco dinâmico funciona da seguinte maneira: é criado um arquivo, onde o tamanho máximo que esse arquivo pode chegar é o tamanho que voc&#234; definiu. Suponha que voc&#234; definiu que o disco terá 20Gb de capacidade, será criado um arquivo <strong>VDI</strong> que poderá ter até 20Gb. Inicialmente esse disco ficará com o tamanho ocupado pelo sistema operacional instalado.</li>
+<li><strong>Disco Fixo</strong> - Já o disco fixo, quando escolhido cria um arquivo <strong>VDI</strong> do tamanho definido, se voc&#234; escolher 20Gb será criado um arquivo inicial com 20Gb.</li>
+</ol>
+<p>Escolha a opç&#227;o que melhor atenda as suas necesidades e ent&#227;o clique em <strong>NEXT</strong></p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem8.png"><img class="alignnone" style="border:0 none;" src="{{ site.baseurl }}/assets/2008/10/imagem8.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Em seguida defina um nome para o arquivo e o seu tamanho.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem9.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem9.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Confira as opç&#245;es na próxima tela e ent&#227;o clique em <strong>Finish</strong></p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem10.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem10.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Veja que irá aparecer um disco no <strong>Gerenciador de discos virtuais</strong></p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem11.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem11.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Nesse caso criei um disco de 10GB Dinâmico, veja que o tamanho inicial do arquivo é de apenas 40Kb.</p>
+<p>Agora, vamos criar a máquina virtual. Eu vou fazer a instalaç&#227;o básica de uma máquina com Slackware.</p>
+<h1>Criando a primeira máquina Virtual</h1>
+<p>Com o VirtualBox instalado e configurado, vamos criar nossa primeira Máquina Virtual. Para isso iremos utilizar o disco criado anteriormente, para realizar a instalaç&#227;o do Slackware 12.1.</p>
+<p>Para criar a máquina virtual, selecione a opç&#227;o Novo no menu <strong>Máquinas --&gt; Novo</strong>. Será carregado o assitente de criaç&#227;o de máquinas virtuais.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem12.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem12.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Clique em próximo, informe o nome da máquina e o tipo do sistema Operacional que esse máquina terá.</p>
+<p>Caso a sua distribuiç&#227;o Linux, n&#227;o apareça na opç&#227;o <strong>Tipo de sistema,</strong> selecione a vers&#227;o do kernel que ele possui. Esse é o caso do Slackware, onde devemos selecionar a opç&#227;o <strong>Linux 2.6.</strong></p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem13.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem13.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Clique em próximo, e ent&#227;o defina o tamanho de memória que essa máquina virtual poderá utilizar. Tenha bom senso para fazer essa escolha!</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem14.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem14.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Clique em próximo, e ent&#227;o escolha o disco que essa máquina virtual irá utilizar. Como, já haviamos criado um disco, anteriormente, vamos utilizá-lo. Caso n&#227;o tenha definido o disco, voc&#234; poderá criá-lo aqui, igualmente explicado anteriormente.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem15.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem15.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Clique em próximo, confira as informaç&#245;es de suas máquina virtual e em seguida clique em <strong>Finalizar</strong>.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem16.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem16.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Veja, que na tela principal do VirtualBox é apresentada a sua máquina.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem17.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem17.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Após, criar a máquina é possível alterar algumas opç&#245;es, como por exemplo a memória, dispositivos de boot, parâmetros de placa de rede, etc..etc..</p>
+<p>Para alterar essas configuraç&#245;es, selecione a máquna virtual e clique no bot&#227;o <strong>Configuraç&#245;es</strong>.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem18.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem18.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>Repara que nessa tela existem várias opç&#245;es:</p>
+<ul>
+<li>Geral</li>
+<li>Discos Rígidos</li>
+<li>CD/DVD-com</li>
+<li>Disquete</li>
+<li>Áudio</li>
+<li>Rede</li>
+<li>Portas Seriais</li>
+<li>USB</li>
+<li>Pastas COmpartilhadas</li>
+<li>Tela Remota</li>
+</ul>
+<h1>Configurando a Máquina Virtual</h1>
+<ol>
+<li>Geral
+<ol>
+<li>Básico - define opç&#245;es de memória principal e memória de vídeo, além de poer alterar o nome da máquina e o tipo do Sistema Operacional.</li>
+<li>Avançado - Determina a ordem de boot na inicializaç&#227;o da máquina virtual. Além, disso permite configurar as opç&#245;es da área de transfer&#234;ncia, tipo da controladora e a pasta padr&#227;o para armazenar os Snapshots.</li>
+<li>Descriç&#227;o - permite inserir algum comentário para a máquina.</li>
+<li>Outros - opç&#245;es referentes a mídias utilizadas pela máquina virtual.</li>
+</ol>
+</li>
+<li>Discos Rígidos - exibe as informaçes sobre os discos utilizados pela máquina virtual. CAso necessite, é possível acrescentar ou elimiar discos para a máquina.</li>
+<li>CD/DVD-ROM - aqui, voc&#234; pode especificar qual será o drive de CD/DVD que a máquina irá utiliar. Além disso, voc&#234; também pode defnir um arquivo do tipo <strong>.ISO</strong> para ser utiliado como o CD/DVD.</li>
+<li>Disquete - permite configurar as opç&#245;es que ser&#227;o utilizadas para o disquete. (meio obsoleto hoje em dia).</li>
+<li>Áudio - Permite que voc&#234; habilite o áudio da máquina virtual ou n&#227;o.</li>
+<li>Rede - Nessa seç&#227;o voc&#234; pode trabalhar com até 4 placas de rede. E cada placa de rede pode ser configurada de 4 formas diferentes: <strong>N&#227;o conectado</strong>, <strong>NAT</strong>. <strong>Interface do hospedeiro</strong> e <strong>Rede Interna</strong>. Cada uma dessas opç&#245;es necessitam de uma configuraç&#227;o espefícica, é um pouco complicado a sua explicaç&#227;o, por isso merece um outro artigo.</li>
+<li>Portas Seriais - permite que voc&#234; configura até duas portas seriais, as famosas COM1 e COM2.</li>
+<li>USB - permite que voc&#234; utilize as "entradas" de USB da máquina hospedeira para serem utilizadas na máquina virtual.</li>
+<li>Pastas Compartilhadas - permite que voc&#234; compartilhe uma pasta na máquina hospedeira para ser utilizada na máquina virtual.</li>
+<li>Tela Remota - permite o acesso remota &#224; tela da máquina virtual.</li>
+</ol>
+<p>Após, realizar as configuraç&#245;es necessárias, selecione a máquina virtual e em seguida clique em <strong>Iniciar</strong>.</p>
+<p>No meu caso, eu utilizri as seguinte opç&#245;es: Na opç&#227;o CD/DVD, informei o caminho do arquivo .ISO do CD número 1 do Slackware 2.1.</p>
+<p>Será apresentada a tela inicial.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem19.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem19.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<p>O Processo de instalaç&#227;o do Sistema Operacional é semelhante a uma instalç&#227;o em uma máquina Física. Após a instalaç&#227;o, o boot da máquina pode ser realizado através da opç&#227;o <strong>Iniciar</strong>.</p>
+<p><a href="http://www.brunorusso.eti.br/imagem/imagem20.png"><img src="{{ site.baseurl }}/assets/2008/10/imagem20.png" border="0" alt="" width="546" height="438" align="middle" /></a></p>
+<hr size="5" />Comentários, correç&#245;es e elogios ser&#227;o muito bem recebidos.</p>

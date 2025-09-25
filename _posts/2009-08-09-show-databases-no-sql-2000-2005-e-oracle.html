@@ -1,0 +1,27 @@
+---
+layout: post
+title: Show databases no sql 2000 - 2005 e Oracle
+date: 2009-08-09 20:01:06.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- mysql
+tags:
+- Banco de Dados
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '621'
+permalink: "/2009/08/09/show-databases-no-sql-2000-2005-e-oracle/"
+---
+<p>O MSSQL 2000/2005 e Oracle n&#227;o possuem um comando simples como o comando do mysql</p>
+<blockquote><p>show databases;</p></blockquote>
+<p>Onde voc&#234; visualiza todas as Bases de Dados existentes no Servidor, porém ele possui o comando, que faz o mesmo...</p>
+<p>SQL 2000/2005</p>
+<blockquote><p>SELECT [name] FROM [master].[dbo].[sysdatabases] order by name</p></blockquote>
+<p>Oracle, o comando abaixo pode ajudar bastante</p>
+<blockquote><p>SELECT username from all_users order by username</p></blockquote>

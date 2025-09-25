@@ -1,0 +1,380 @@
+---
+layout: page
+title: Fundamentos de Linux
+date: 2007-07-24 10:52:20.000000000 +00:00
+type: page
+parent_id: '228'
+published: true
+password: freefall
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '229'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/treinamentos/fundamentos-de-linux/"
+---
+<p> <strong>A quem se destina</strong></p>
+<p>Profissionais de TI que nunca tiveram , ou possuem pouco, contato com GNU/Linux e querem iniciar suas atividades com esse sistema Operacional.</p>
+<p><strong>Carga Horária</strong></p>
+<p>20 horas</p>
+<p><strong>Conhecimentos adquiridos após o curso</strong></p>
+<ul>
+<li>Instalar um sistema Operacional GNU/Linux em um equipamento;</li>
+<li>Utilizar o sistema Operacional GNU/Linux como usuário Desktop;</li>
+<li>Entender o processo de Boot do sistema;</li>
+<li>Manipular arquivos e diretótios;</li>
+<li>Gerenciar processos;</li>
+<li>Compilar um kernel para um hardware específico.</li>
+</ul>
+<p><strong>Pré-requisitos</strong></p>
+<ul>
+<li>Noç&#245;es de hardware, software e Internet;</li>
+<li>Conhecimentos em algum sistema operacional.</li>
+</ul>
+<p><strong>Pontos fortes do treinamento:</strong></p>
+<ul>
+<li>Conceitos básicos visto de forma prática;</li>
+<li>Distribuiç&#227;o utilizada possui alto grau de envolvimento do Aluno com o Sistema;</li>
+<li>100% do curso é feito utilizando o modo texto, o que facilita a integraç&#227;o do Aluno com o sistema;</li>
+<li>Os comandos aprendidos podem ser utilizados em qualquer outra distribuiç&#227;o.</li>
+</ul>
+<p><strong>Conteúdo Programático:</strong></p>
+<ol>
+<li><a href="#toc1">Introduç&#227;o</a>
+<ul>
+<li><a href="#toc2">1.1. Histórico</a></li>
+<li><a href="#toc3">1.2. Características</a></li>
+<li><a href="#toc4">1.3. Escolha da distribuiç&#227;o</a></li>
+<li><a href="#toc5">1.4. Por que utilizar Slackware</a></li>
+</ul>
+</li>
+<li><a href="#toc6">Instalaç&#227;o</a>
+<ul>
+<li><a href="#toc7">2.1. Processo de Boot</a></li>
+<li><a href="#toc8">2.2. Particionamento do disco</a></li>
+<li><a href="#toc9">2.3. Programa SETUP</a>
+<ul>
+<li><a href="#toc10">2.3.1. HELP</a></li>
+<li><a href="#toc11">2.3.2. KEYMAP</a></li>
+<li><a href="#toc12">2.3.3. ADDSWAP</a></li>
+<li><a href="#toc13">2.3.4. TARGET</a></li>
+<li><a href="#toc14">2.3.5. SOURCE</a></li>
+<li><a href="#toc15">2.3.6. SELECT</a></li>
+<li><a href="#toc16">2.3.7. INSTALL</a></li>
+<li><a href="#toc17">2.3.8. CONFIGURE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc18">Inicializaç&#227;o do Sistema</a>
+<ul>
+<li><a href="#toc19">3.1. Processo de Boot</a></li>
+<li><a href="#toc20">3.2. Detalhe dos procesos de Boot</a>
+<ul>
+<li><a href="#toc21">3.2.1. BIOS</a></li>
+<li><a href="#toc22">3.2.2. Boot Loader</a></li>
+<li><a href="#toc23">3.2.3. Kernel</a></li>
+<li><a href="#toc24">3.2.4. Programa /sbin/init</a></li>
+</ul>
+</li>
+<li><a href="#toc25">3.3. Níveis de execuç&#227;o</a></li>
+<li><a href="#toc26">3.4. ShutDown</a></li>
+</ul>
+</li>
+<li><a href="#toc27">Gerenciadores de Boot</a>
+<ul>
+<li><a href="#toc28">4.1. LILO</a>
+<ul>
+<li><a href="#toc29">4.1.1. Instalando o LILO</a></li>
+<li><a href="#toc30">4.1.2. Configurando o LILO</a></li>
+</ul>
+</li>
+<li><a href="#toc31">4.2. GRUB</a>
+<ul>
+<li><a href="#toc32">4.2.1. Instalando o GRUB</a></li>
+<li><a href="#toc33">4.2.2. Configurando o GRUB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc34">Usuários e Grupos de usuários</a>
+<ul>
+<li><a href="#toc35">5.1. Usuários padr&#245;es</a>
+<ul>
+<li><a href="#toc36">5.1.1. Criando um novo usuário</a></li>
+<li><a href="#toc37">5.1.2. Alterando a senha do usuário</a></li>
+</ul>
+</li>
+<li><a href="#toc38">5.2. Grupos Padr&#245;es</a>
+<ul>
+<li><a href="#toc39">5.2.1. Criando um novo grupo de usuário</a></li>
+<li><a href="#toc40">5.2.2. Alterando a senha do grupo de uduário</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc41">Introduç&#227;o ao SHELL</a>
+<ul>
+<li><a href="#toc42">6.1. Variáveis de Ambiente</a></li>
+</ul>
+</li>
+<li><a href="#toc43">Personalizaç&#227;o do Sistema</a>
+<ul>
+<li><a href="#toc44">7.1. Variáveis de Ambiente</a></li>
+<li><a href="#toc45">7.2. Modificando o Idioma usado em seu sistema</a></li>
+<li><a href="#toc46">7.3. alias</a></li>
+<li><a href="#toc47">7.4. Arquivo /etc/profile</a></li>
+<li><a href="#toc48">7.5. Arquivo .bash_profile</a></li>
+<li><a href="#toc49">7.6. Arquivo .bashrc</a></li>
+<li><a href="#toc50">7.7. Arquivo .hushlogin</a></li>
+<li><a href="#toc51">7.8. Arquivo /etc/environment</a></li>
+<li><a href="#toc52">7.9. Diretório /etc/skel</a></li>
+</ul>
+</li>
+<li><a href="#toc53">Sistemas de Arquivos</a>
+<ul>
+<li><a href="#toc54">8.1. Estrutura dos Sistemas de Arquivos</a>
+<ul>
+<li><a href="#toc55">8.1.1. /bin</a></li>
+<li><a href="#toc56">8.1.2. /boot</a></li>
+<li><a href="#toc57">8.1.3. /dev</a></li>
+<li><a href="#toc58">8.1.4. /etc</a></li>
+<li><a href="#toc59">8.1.5. /home</a></li>
+<li><a href="#toc60">8.1.6. /lib</a></li>
+<li><a href="#toc61">8.1.7. /mnt</a></li>
+<li><a href="#toc62">8.1.8. /opt</a></li>
+<li><a href="#toc63">8.1.9. /proc</a></li>
+<li><a href="#toc64">8.1.10. /root</a></li>
+<li><a href="#toc65">8.1.11. /sbin</a></li>
+<li><a href="#toc66">8.1.12. /srv</a></li>
+<li><a href="#toc67">8.1.13. /tmp</a></li>
+<li><a href="#toc68">8.1.14. /usr</a></li>
+<li><a href="#toc69">8.1.15. /var</a></li>
+</ul>
+</li>
+<li><a href="#toc70">8.2. Sistema de arquivos /proc</a>
+<ul>
+<li><a href="#toc71">8.2.1. Arquivos do /proc</a></li>
+<li><a href="#toc72">8.2.2. Diretórios do /proc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc73">Comandos para manipulaç&#227;o de diretório</a>
+<ul>
+<li><a href="#toc74">9.1. ls</a></li>
+<li><a href="#toc75">9.2. cd</a></li>
+<li><a href="#toc76">9.3. pwd</a></li>
+<li><a href="#toc77">9.4. mkdir</a></li>
+<li><a href="#toc78">9.5. rmdir</a></li>
+</ul>
+</li>
+<li><a href="#toc79">Comandos para manipulaç&#227;o de Arquivos</a>
+<ul>
+<li><a href="#toc80">10.1. cat</a></li>
+<li><a href="#toc81">10.2. tac</a></li>
+<li><a href="#toc82">10.3. rm</a></li>
+<li><a href="#toc83">10.4. cp</a></li>
+<li><a href="#toc84">10.5. mv</a></li>
+</ul>
+</li>
+<li><a href="#toc85">Redirecionadores e Coringas</a>
+<ul>
+<li><a href="#toc86">11.1. (|) pipe</a></li>
+<li><a href="#toc87">11.2. &gt;</a></li>
+<li><a href="#toc88">11.3. &lt;</a></li>
+<li><a href="#toc89">11.4. &gt;&gt;</a></li>
+<li><a href="#toc90">11.5. &lt;&lt;</a></li>
+<li><a href="#toc91">11.6. ?</a></li>
+<li><a href="#toc92">11.7. *</a></li>
+</ul>
+</li>
+<li><a href="#toc93">Comandos diversos</a>
+<ul>
+<li><a href="#toc94">12.1. clear</a></li>
+<li><a href="#toc95">12.2. date</a></li>
+<li><a href="#toc96">12.3. df</a></li>
+<li><a href="#toc97">12.4. ln</a></li>
+<li><a href="#toc98">12.5. du</a></li>
+<li><a href="#toc99">12.6. find</a></li>
+<li><a href="#toc100">12.7. free</a></li>
+<li><a href="#toc101">12.8. grep</a></li>
+<li><a href="#toc102">12.9. head</a></li>
+<li><a href="#toc103">12.10. nl</a></li>
+<li><a href="#toc104">12.11. more</a></li>
+<li><a href="#toc105">12.12. less</a></li>
+<li><a href="#toc106">12.13. sort</a></li>
+<li><a href="#toc107">12.14. tail</a></li>
+<li><a href="#toc108">12.15. time</a></li>
+<li><a href="#toc109">12.16. touch</a></li>
+<li><a href="#toc110">12.17. uptime</a></li>
+<li><a href="#toc111">12.18. dmesg</a></li>
+<li><a href="#toc112">12.19. mesg</a></li>
+<li><a href="#toc113">12.20. echo</a></li>
+<li><a href="#toc114">12.21. su</a></li>
+<li><a href="#toc115">12.22. uname</a></li>
+<li><a href="#toc116">12.23. wc</a></li>
+<li><a href="#toc117">12.24. cut</a></li>
+</ul>
+</li>
+<li><a href="#toc118">Permiss&#245;es de arquivos</a>
+<ul>
+<li><a href="#toc119">13.1. Donos, grupos e outros usuários</a></li>
+<li><a href="#toc120">13.2. Tipos de permiss&#245;es de acesso</a></li>
+<li><a href="#toc121">13.3. Comandos para manipulaç&#227;o de permiss&#245;es</a>
+<ul>
+<li><a href="#toc122">13.3.1. chmod</a></li>
+<li><a href="#toc123">13.3.2. chgrp</a></li>
+<li><a href="#toc124">13.3.3. chown</a></li>
+<li><a href="#toc125">13.3.4. Modo de permiss&#227;o octal</a></li>
+<li><a href="#toc126">13.3.5. umask</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc127">Gerenciamento de processos</a>
+<ul>
+<li><a href="#toc128">14.1. Processos do sistema</a></li>
+<li><a href="#toc129">14.2. Comandos básicos para o gerenciamento de processos</a>
+<ul>
+<li><a href="#toc130">14.2.1. ps</a></li>
+<li><a href="#toc131">14.2.2. pstree</a></li>
+<li><a href="#toc132">14.2.3. top</a></li>
+<li><a href="#toc133">14.2.4. fuser</a></li>
+<li><a href="#toc134">14.2.5. pidof</a></li>
+<li><a href="#toc135">14.2.6. kill</a></li>
+<li><a href="#toc136">14.2.7. killall</a></li>
+<li><a href="#toc137">14.2.8. nice</a></li>
+<li><a href="#toc138">14.2.9. renice</a></li>
+<li><a href="#toc139">14.2.10. fg</a></li>
+<li><a href="#toc140">14.2.11. bg</a></li>
+<li><a href="#toc141">14.2.12. jobs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc142">Gerenciamento de Logs do Sistema</a>
+<ul>
+<li><a href="#toc143">15.1. Introduç&#227;o</a></li>
+<li><a href="#toc144">15.2. Explorando o /var/log</a></li>
+<li><a href="#toc145">15.3. syslog</a></li>
+<li><a href="#toc146">15.4. Logrotate</a></li>
+</ul>
+</li>
+<li><a href="#toc147">Introduç&#227;o ao VI</a>
+<ul>
+<li><a href="#toc148">16.1. Utilizaç&#227;o básica</a></li>
+<li><a href="#toc149">16.2. Comandos básicos</a></li>
+</ul>
+</li>
+<li><a href="#toc150">Configurando Serviços na Inicializaç&#227;o do Sistema</a>
+<ul>
+<li><a href="#toc151">17.1. Entendendo a inicializaç&#227;o</a></li>
+<li><a href="#toc152">17.2. Habilitando e desabilitando serviços</a></li>
+</ul>
+</li>
+<li><a href="#toc153">Compactadores</a>
+<ul>
+<li><a href="#toc154">18.1. gzip</a></li>
+<li><a href="#toc155">18.2. zip</a></li>
+<li><a href="#toc156">18.3. unzip</a></li>
+<li><a href="#toc157">18.4. tar</a></li>
+<li><a href="#toc158">18.5. bzip2</a></li>
+<li><a href="#toc159">18.6. rar</a></li>
+</ul>
+</li>
+<li><a href="#toc160">Instalando e removendo pacotes</a>
+<ul>
+<li><a href="#toc161">19.1. Conceitos de pacotes</a></li>
+<li><a href="#toc162">19.2. Gerenciamento de pacotes</a>
+<ul>
+<li><a href="#toc163">19.2.1. pkgtools</a></li>
+</ul>
+</li>
+<li><a href="#toc164">19.3. Introduç&#227;o ao slackpkg</a></li>
+</ul>
+</li>
+<li><a href="#toc165">Agendamento de tarefas</a>
+<ul>
+<li><a href="#toc166">20.1. Comando at</a></li>
+<li><a href="#toc167">20.2. Comando crontab</a></li>
+</ul>
+</li>
+<li><a href="#toc168">Protocolo SSH</a>
+<ul>
+<li><a href="#toc169">21.1. Introduç&#227;o</a></li>
+<li><a href="#toc170">21.2. Características do SSH</a></li>
+<li><a href="#toc171">21.3. Por que usar SSH</a></li>
+<li><a href="#toc172">21.4. Arquivos de log criados pelo servidor ssh</a></li>
+<li><a href="#toc173">21.5. Configurando o SSH</a>
+<ul>
+<li><a href="#toc174">21.5.1. Instalaç&#227;o do servidor openSSH</a></li>
+<li><a href="#toc175">21.5.2. Iniciando o servidor/reiniciando/recarregando a configuraç&#227;o</a></li>
+<li><a href="#toc176">21.5.3. Opç&#245;es de linha de comando</a></li>
+</ul>
+</li>
+<li><a href="#toc177">21.6. Usando aplicativos clientes</a>
+<ul>
+<li><a href="#toc178">21.6.1. ssh</a></li>
+<li><a href="#toc179">21.6.2. scp</a></li>
+<li><a href="#toc180">21.6.3. sftp</a></li>
+<li><a href="#toc181">21.6.4. putty (somente para windows)</a></li>
+</ul>
+</li>
+<li><a href="#toc182">21.7. Recursos Adicionais</a>
+<ul>
+<li><a href="#toc183">21.7.1. sshd</a></li>
+<li><a href="#toc184">21.7.2. Controle de acesso</a></li>
+<li><a href="#toc185">21.7.3. Usando autenticaç&#227;o RSA/DSA - chave pública/privada</a></li>
+<li><a href="#toc186">21.7.4. Execuç&#227;o de comandos específicos usando chaves</a></li>
+<li><a href="#toc187">21.7.5. Criando um gateway ssh</a></li>
+<li><a href="#toc188">21.7.6. Criando um tunel proxy</a></li>
+<li><a href="#toc189">21.7.7. Diferenças nas vers&#245;es do protocolo</a></li>
+<li><a href="#toc190">21.7.8. Exemplo de sshd_config com explicaç&#245;es das diretivas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#toc191">Kernel e Módulos</a>
+<ul>
+<li><a href="#toc192">22.1. O Kernel</a></li>
+<li><a href="#toc193">22.2. Módulos</a>
+<ul>
+<li><a href="#toc194">22.2.1. kmod</a></li>
+<li><a href="#toc195">22.2.2. lsmod</a></li>
+<li><a href="#toc196">22.2.3. insmod</a></li>
+<li><a href="#toc197">22.2.4. rmmod</a></li>
+<li><a href="#toc198">22.2.5. modprobe</a></li>
+<li><a href="#toc199">22.2.6. depmod</a></li>
+<li><a href="#toc200">22.2.7. modconf</a></li>
+</ul>
+</li>
+<li><a href="#toc201">22.3. Recompilando o Kernel</a></li>
+<li><a href="#toc202">22.4. Arquivos relacionados aos módulos do Kernel</a>
+<ul>
+<li><a href="#toc203">22.4.1. /etc/modules</a></li>
+<li><a href="#toc204">22.4.2. modules.conf</a></li>
+</ul>
+</li>
+<li><a href="#toc205">22.5. Aplicando "patches" no kernel</a></li>
+</ul>
+</li>
+<li><a href="#toc206">Como obter ajuda no sistema</a>
+<ul>
+<li><a href="#toc207">23.1. Páginas de Manual</a></li>
+<li><a href="#toc208">23.2. Info Pages</a></li>
+<li><a href="#toc209">23.3. apropos/whatis</a></li>
+<li><a href="#toc210">23.4. locate</a></li>
+<li><a href="#toc211">23.5. which</a></li>
+<li><a href="#toc212">23.6. On-line</a></li>
+</ul>
+</li>
+</ol>

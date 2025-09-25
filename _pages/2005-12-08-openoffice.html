@@ -1,0 +1,45 @@
+---
+layout: page
+title: OpenOffice
+date: 2005-12-08 17:35:54.000000000 +00:00
+type: page
+parent_id: '888'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '890'
+author:
+  login: brunotadeurusso
+  email: brusso@gmail.com
+  display_name: BrunoRusso
+  first_name: Bruno
+  last_name: Russo
+permalink: "/dicas/openoffice/"
+---
+<p align="justify">Desde a primeira vers&atilde;o o <a title="OpenOffice" target="_blank" href="http://www.openoffice.org">OpenOffice</a> tornou-se a suíte de escritório padr&atilde;o no meu dia-a-dia. Porém sempre existem algumas coisas que podemos fazer para facilitar a nossa vida! Além disso, existe uma grande quantidade de problemas também. E aqui coloquei como resolver alguns desses problemas.</p>
+<p>&nbsp;</p>
+<p><strong>1-) Openoffice n&atilde;o acentua nenhuma palavra?</strong></p>
+<p>Simples! Encontrei a solu&ccedil;&atilde;o para esse problema procurando no Google! </p>
+<p>Fa&ccedil;a o seguinte: edite o arquivo de soffice (geralmente voc&ecirc; pode encontrar esse arquivo em /usr/local/openoffice/program ou ent&atilde;o em /op/openoffice/program ou no lugar que voc&ecirc; instalou) e troque a última linha de:</p>
+<p><em> exec &quot;$sd_prog/$sd_binary&quot; &quot;$@&quot; </em> </p>
+<p> por:</p>
+<p><em> LC_ALL=pt_BR exec<br />  &quot;$sd_prog/$sd_binary&quot; &quot;$@&quot;</em></p>
+<p>&nbsp;</p>
+<p>Feche e abra o OpenOffice novamente.&nbsp;</p>
+<p>Essa dica foi criada a partir do <a href="http://www.vivaolinux.com.br/dicas/verDica.php?codigo=1150" target="_self" title="vivaolinux">seguinte artigo&nbsp;</a></p>
+<p> </p>
+<p><strong>2-) Instalando o Openoffice 2.0 no Slackware via RPM!</strong></p>
+<p>Baixe o pacote rpm do OpenOffice 2.0. Geralmente esse pacote esta compactado via tar+gzip</p>
+<p>Assim que baixar, execute:</p>
+<p><em># tar xzvf OOo_2.0_LinuxIntel_install_rpms.tar.gz</em></p>
+<p>entre no diretorio RPMS</p>
+<p><em># cd RPMS&nbsp;</em></p>
+<p>depois execute:</p>
+<p><em># rpm -iv --nodeps --force *.rpm</em></p>
+<p>Pronto! O Openoffice foi instalado em /opt/openoffice.org2.0</p>
+<p>Obrigado ao pessoal no canal #slackware-br em especial ao Lorn!&nbsp;</p>

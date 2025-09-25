@@ -1,0 +1,29 @@
+---
+layout: post
+title: Gerenciador de Redes no Slackware
+date: 2010-06-16 23:05:37.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+- slackware
+tags: []
+meta:
+  _publicize_pending: '1'
+  _edit_last: '64604456'
+  saaya_post_sidebar_layout: layout--default-sidebar
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '759'
+permalink: "/2010/06/16/gerenciador-de-redes-no-slackware/"
+---
+<p>Um aplicativo para o gerenciamento de rede em modo gráfico é muito útil. O Slackware até então não tinha, ou melhor, possui um ótimo <a href="http://www.brunorusso.com.br/imagem/wicd-gui.png">gerenciador para redes wifi</a>, chamado wicd, que está disponível na seção extra do CD oficial.</p>
+<p>Agora, graças ao esforço do Robby Workman, ele disponibilizou um SBo com o gerenciador de redes <a href="http://projects.gnome.org/NetworkManager/">NetworkManager</a> do Projeto Gnome.</p>
+<blockquote><p>NetworkManager is a set of co-operative tools that make networking simple and straightforward. Whether WiFi, wired, 3G, or Bluetooth, NetworkManager allows you to quickly move from one network to another: once a network has been configured and joined once, it can be detected and re-joined automatically the next time its available.</p></blockquote>
+<p>Estou utilizando esse gerenciador há cerca de 3 dias, e seu fincionamento está estável, porém algumas características precisam ser melhoradas, uma elas é a forma de inicialização, pois o gerenciador não está sendo carregado durante o login no ambiente gráfico!</p>
+<p>Compilei e disponibilizei os pacotes para X64 em meu site:</p>
+<p><a href="http://www.brunorusso.com.br/pacotes/NetworkManager/">http://www.brunorusso.com.br/pacotes/NetworkManager/</a></p>
+<p>Precisamos ajudar no desenvolvimento dessa aplicação, para quem sabe o Pat, inclua ela em uma nova versão do Slackware.</p>
+<p>Com o NetworkManager é possível, realizar conexões Cabo, Wifi, VPN, PPTP, ADSL.</p>

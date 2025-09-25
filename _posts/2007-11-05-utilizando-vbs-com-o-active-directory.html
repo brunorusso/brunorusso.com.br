@@ -1,0 +1,122 @@
+---
+layout: post
+title: Utilizando vbs com o active directory
+date: 2007-11-05 06:52:39.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- blog
+tags: []
+meta:
+  _publicize_pending: '1'
+  _import_session_id: 5f47b4106fdc1
+  _import_original_post_id: '257'
+permalink: "/2007/11/05/utilizando-vbs-com-o-active-directory/"
+---
+<p>Essa dica vai para quem administra servidores Active Directory da Microsoft.  Existe uma grande facilidade em utilizar arquivos de lote do MS-DOS (com a extens&#227;o <strong>.bat</strong>), para realizar script's de login, ou seja, quando o usuário faz o login em uma estaç&#227;o, &#224;s suas unidades de rede s&#227;o mapeadas automaticamente, pois existe o script para isso.</p>
+<p>Porém, script's de login feitos como arquivos de lote n&#227;o s&#227;o t&#227;o eficientes, pois o seu desenvolvimento é limitado e muitas tarefas n&#227;o podem ser realizadas :(</p>
+<p>Para contornar esse problema, existe script's em <strong>VBS</strong> (Visual Basic Script) que fornecem um pouco mais de vantagem, em relaç&#227;o aos arquivos de lote. O problema dos scripts em VBS é que eles s&#227;o um tanto quanto <em>"complexos"</em> para entender, pois a sua sintaxe é totalmente diferente dos arquivos de lote.</p>
+<p>Como existe uma grande facilidade no uso de VBS, comecei a pesquisar em que o VBS poderia me ajudar, principalmente em script's de login. Pois imagine, uma empresa que possui 5 departamentos, logo precisaria de 5 arquivos de lote para fazer os mapeamentos específicos, sendo que com a utilizaç&#227;o do VBS poderia utilizar apenas um script.</p>
+<blockquote><p>Apesar dos script's feitos em VBS serem "poderosos" ainda s&#227;o inferiores em relaç&#227;o aos script's feitos em shell para GNU/Linux e UNIX.</p></blockquote>
+<p>Abaixo, est&#227;o alguns exemplos do uso de VBS. Est&#227;o prontos para copiar e colar!!!</p>
+<p>As variáveis abaix, s&#227;o necessárias para executar todo o script, caso utilize apenas um trecho, crie apenas as variáveis necessárias.</p>
+<p><code>Dim ADSysInfo, CurrentUser, strGroups, wshNetwork, WshShell, bKey, BtnCode, oExec</code></p>
+<p>Cria uma variável do tipo data, na qual obtem as informaç&#245;es do momento atual.</p>
+<p>Cria uma variável que retornará o m&#234;s atual, da variável anterior.</p>
+<p>De acordo com o m&#234;s, é exibida uma mensagem na tela para o usuário informando o m&#234;s atual.</p>
+<p><code>dNow = Now<br />
+mes = Right("00" &amp;Month(dNow), 2)</code></p>
+<p><code>If InStr(mes, "01") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Janeiro", 0 + 64, "JAN"<br />
+End If<br />
+If InStr(mes, "02") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Fevereiro", 0 + 64, "FEV"<br />
+End If<br />
+If InStr(mes, "03") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Março", 0 + 64, "MAR"<br />
+End If<br />
+If InStr(mes, "04") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Abril", 0 + 64, "ABR"<br />
+End If<br />
+If InStr(mes, "05") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Maio", 0 + 64, "MAI"<br />
+End If<br />
+If InStr(mes, "06") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Junho", 0 + 64, "JUN"<br />
+End If<br />
+If InStr(mes, "07") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Julho", 0 + 64, "JUL"<br />
+End If<br />
+If InStr(mes, "08") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Agosto", 0 + 64, "AGO"<br />
+End If<br />
+If InStr(mes, "09") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Setembro", 0 + 64, "SET"<br />
+End If<br />
+If InStr(mes, "10") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Outubro", 0 + 64, "OUT"<br />
+End If<br />
+If InStr(mes, "11") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Novembro", 0 + 64, "NOV"<br />
+End If<br />
+If InStr(mes, "12") Then<br />
+msgbox "Voc&#234; está no m&#234;s de Dezembro", 0 + 64, "DEZ"<br />
+End If<br />
+</code><br />
+Grava entrada no registro</p>
+<p><code>WshShell.RegWrite "HKCUSoftwareACMEFortuneTeller", 1, "REG_BINARY"</code></p>
+<p>Envia um msgbox para a tela<br />
+<code><br />
+strTitulo = "Seç&#227;o Técnica de Informática"<br />
+strMensagem = _<br />
+"AVISO IMPORTANTE" &amp; vbcrlf &amp; vbcrlf &amp; _<br />
+"mensagem de teste, mensagem de teste, mensagem de teste" &amp; vbcrlf &amp; _<br />
+"mensagem de teste, mensagem de teste, mensagem de teste" &amp; vbcrlf &amp; _<br />
+"e está sujeito &#224; puniç&#227;o prevista no regimento interno."<br />
+'BtnCode = WshShell.Popup(strMensagem, 5, "Informaç&#227;o:", 64 + 0)<br />
+msgbox strMensagem, 0 + 64, strTitulo</code></p>
+<p>Agora, a seç&#227;o o script mais interessante, consulta a base do AD e verifica que grupo o usuario pertence. De acordo com o grupo que o usuario peretence um drive de rede será mapeado</p>
+<p><code>Set ADSysInfo = CreateObject("ADSystemInfo")<br />
+Set CurrentUser = GetObject("LDAP://" &amp; ADSysInfo.UserName)<br />
+Set wshNetwork = CreateObject("WScript.Network")<br />
+strGroups = LCase(Join(CurrentUser.MemberOf,"**"))<br />
+If InStr(strGroups, "suporte") Then<br />
+WshNetwork.RemoveNetworkDrive "Y:"<br />
+wshNetwork.MapNetworkDrive "Y:", "IP_SERVIDORPASTA"<br />
+End If<br />
+If InStr(strGroups, "financeiro") Then<br />
+WshNetwork.RemoveNetworkDrive "Y:"<br />
+wshNetwork.MapNetworkDrive "Y:", "NOME_SERVIDORPASTA"<br />
+End If<br />
+</code></p>
+<blockquote><p> WshNetwork.RemoveNetworkDrive "Y:" - Desconecta a unidade de rede<br />
+wshNetwork.MapNetworkDrive "Y:", "192.168.8.232PASTA" - Conecta a unidade de rede</p></blockquote>
+<p>Executa um determinado programa</p>
+<p><code><br />
+Set WshShell = WScript.CreateObject("WScript.Shell")<br />
+Set oExec = WshShell.Exec("C:windowscalc.exe")<br />
+</code></p>
+<p>O exemplo abaixo, gera um arquivo de log, a medida que o script for executado, é difícil explicar, leia e tente entender...</p>
+<p><code><br />
+dim loggit_logfilename, loggit_fso, loggit_silent<br />
+loggit_logfilename = "c:msg.log"<br />
+loggit_silent = true  ' log file only or with MsgBox/Echo<br />
+set loggit_fso = CreateObject("Scripting.FileSystemObject")<br />
+set stream = loggit_fso.OpenTextFile(loggit_logfilename, 8, True)<br />
+WScript.Sleep 10<br />
+comando = "calc"<br />
+stream.writeline date &amp; " " &amp; time &amp;  ": ==========&gt; INICIO &lt;=========="<br />
+WScript.Sleep 1000<br />
+stream.writeline date &amp; " " &amp; time &amp; ": " &amp; comando<br />
+Set oExec = WshShell.Exec(comando)<br />
+WScript.Sleep 3000<br />
+stream.writeline date &amp; " " &amp; time &amp; ": " &amp; comando<br />
+Set oExec = WshShell.Exec(comando)<br />
+stream.writeline date &amp; " " &amp; time &amp;  ": ==========&gt; FIM &lt;=========="<br />
+stream.close<br />
+</code></p>
+<blockquote><p>Aspas simples (<strong>'</strong>) utilizado no início da linha indica um comentário</p></blockquote>
+<p>No momento estou impossibilitado de permitir o download do arquivo pronto, assim que for possíves ele poderá ser baixado.</p>
