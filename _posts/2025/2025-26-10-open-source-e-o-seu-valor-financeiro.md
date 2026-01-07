@@ -32,7 +32,7 @@ O relatório estabelece que o COSS é uma categoria de investimento bem estabele
 * **Avaliações Mais Elevadas**: As empresas COSS levantam capital com avaliações significativamente mais altas.
 
 #### Resultados de Saída (Liquidez) Excecionais
-* **Avaliações de Saída Superiores**: As empresas COSS alcançam avaliações de saída substancialmente mais altas.
+* **Avaliações de Saída Superiores**: As empresas COSS alcançam avaliações de saída substancialmente mais altas. 
     * As avaliações medianas de IPO são **7x mais altas**, atingindo **\$1,3 mil milhões** (vs. \$171 milhões para as de código fechado).
     * As avaliações de M&A (Fusões e Aquisições) são **14x mais altas**, atingindo **\$482 milhões** (vs. \$34 milhões para as de código fechado).
 * **Eficiência de Capital em M&A**: As empresas COSS demonstram ser mais eficientes em termos de capital. O valor de M&A está mais fortemente correlacionado com o capital levantado para empresas COSS, indicando que **cada dólar levantado contribui mais para a avaliação final** do que para empresas de código fechado.

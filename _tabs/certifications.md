@@ -28,9 +28,13 @@ order: 1
 
 # Certificação Técnica
 
+## Platform Engineering
+- **Introduction to Platform Engineering** - Emitido em 04 Jan de 2026 - Não expira - [badge](https://www.virtualbadge.io/certificate-validator?credential=fcc6d1a0-6249-45be-a6f0-63e02e74d8b6)
+
+
 ## Datadog
 - **Datadog Foundation** - Emitido em Jun de 2024 - Não expira
-- **Introduction to Observability** - - Emitido em Jun de 2024 - Não expira
+- **Introduction to Observability** - Emitido em Jun de 2024 - Não expira
   
 
 ## DevOps Institute
