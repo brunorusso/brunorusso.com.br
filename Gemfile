@@ -29,6 +29,10 @@ gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 
 # gem 'jekyll-analytics'
 
+gem "csv"
+gem "logger"
+gem "base64"
+
 group :jekyll_plugins do
     gem "jekyll-youtube"
 end
