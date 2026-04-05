@@ -9,7 +9,7 @@ math: true
 mermaid: true
 image: 
     path: https://www.brunorusso.com.br/assets/2026/Minukube+kubevirt.png
-    alt: "MINIKUBE KUBERNETES + KUBEVIRT LOCAL LAB. Dividi-a em seções: "CONTAINERS (PODS)" com ícones de contêineres, "VIRTUAL MACHINES (VMs)" com um bloco de detalhes da VM apresentando o logotipo do Fedora e uma barra de status indicando "KUBEVIRT OPERATOR ACTIVE". Além disso, destaco os gráficos holográficos flutuantes acima do laptop, incluindo o logotipo do Kubernetes."
+    alt: "MINIKUBE KUBERNETES + KUBEVIRT LOCAL LAB. Dividi-a em seções: 'CONTAINERS (PODS)' com ícones de contêineres, 'VIRTUAL MACHINES (VMs)' com um bloco de detalhes da VM apresentando o logotipo do Fedora e uma barra de status indicando 'KUBEVIRT OPERATOR ACTIVE'. Além disso, destaco os gráficos holográficos flutuantes acima do laptop, incluindo o logotipo do Kubernetes."
 ---
 
 A virtualização de servidores é uma tecnologia que permite criar múltiplas máquinas virtuais (VMs) independentes dentro de um único servidor físico. Porém, é necessário ter um software que faça a orquestração de todas essas múltiplas máquinas virtuais.
