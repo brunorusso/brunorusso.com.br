@@ -30,14 +30,14 @@ Para testar essa solução, fiz um laboratório em meu próprio [notebook](https
 
 O passo a passo que usei para preparar o ambiente e subir uma máquina virtual está descrito abaixo:
 
-1. O Minikube precisa estar instalado.
-2. A inicialização do minikube foi realizada com o seguinte parâmetro.
+1- O Minikube precisa estar instalado.
+2- A inicialização do minikube foi realizada com o seguinte parâmetro.
 
 ```
 minikube start --driver=docker --cpus=4 --memory=8192 --cni=flannel
 ```
 
-3. Habilitei o addon de storage e habilitei, com o comando:
+3- Habilitei o addon de storage e habilitei, com o comando:
 
 ```
 minikube addons enable storage-provisioner
@@ -45,13 +45,13 @@ minikube addons enable storage-provisioner
 minikube addons enable default-storageclass
 ```
 
-4. Habilitei o kubevirt, com o comando:
+4- Habilitei o kubevirt, com o comando:
 
 ```
 minikube addons enable kubevirt
 ```
 
-5. Habilitei alguns itens específicos, pois o objetivo era subir um servidor com Fedora Linux, e para isso foi necessário fazer o upload da imagem etc
+5- Habilitei alguns itens específicos, pois o objetivo era subir um servidor com Fedora Linux, e para isso foi necessário fazer o upload da imagem etc
 
 ```
 export TAG=$(curl -s https://api.github.com/repos/kubevirt/containerized-data-importer/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
@@ -60,14 +60,14 @@ kubectl create -f https://github.com/kubevirt/containerized-data-importer/releas
 kubectl port-forward -n cdi svc/cdi-uploadproxy 8443:443
 ```
 
-6. A imagem do fedora que usei para o laboratório foi
+6- A imagem do fedora que usei para o laboratório foi
 
 ```
 cd /tmp 
 wget https://br.mirrors.cicku.me/fedora/linux/releases/43/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-43-1.6.x86_64.qcow2
 ```
 
-7. Agora que as dependências foram sanadas, o próximo passo é fazer o upload da imagem para o cluster com o comando
+7- Agora que as dependências foram sanadas, o próximo passo é fazer o upload da imagem para o cluster com o comando
 
 ```
 ./virtctl image-upload pvc fedora-pvc \
@@ -80,7 +80,7 @@ wget https://br.mirrors.cicku.me/fedora/linux/releases/43/Cloud/x86_64/images/Fe
   --insecure
 ```
 
-8. O próximo passo é criar um arquivo com o conteúdo abaixo, salvei ele com o nome de vm.yaml
+8- O próximo passo é criar um arquivo com o conteúdo abaixo, salvei ele com o nome de vm.yaml
 
 ```
 apiVersion: kubevirt.io/v1
@@ -122,31 +122,31 @@ spec:
 ```
 
 
-9. O próximo passo é criar a VM, com o comando
+9- O próximo passo é criar a VM, com o comando
 
 ```
 kubectl apply -f vm.yaml
 ```
 
-10. Como o parâmetro **runStrategy** está definido com o valor **Always** a máquina virtual será inicializada automaticamente. Para visualizar, instalei o dashboard com o comando
+10- Como o parâmetro **runStrategy** está definido com o valor **Always** a máquina virtual será inicializada automaticamente. Para visualizar, instalei o dashboard com o comando
 
 ```
 minikube dashboard
 ```
 
-11. Uma outra forma de visualizar é através do comando 
+11- Uma outra forma de visualizar é através do comando 
 
 ```
 kubectl get vmis
 ```
 
-12. Para acessar a console gráfica do ambiente, usa-se o comando
+12- Para acessar a console gráfica do ambiente, usa-se o comando
 
 ```
 virtctl vnc fedora
 ```
 
-13. Para acessar a console texto, usa-se o comando
+13- Para acessar a console texto, usa-se o comando
 
 ```
 virtctl console fedora
