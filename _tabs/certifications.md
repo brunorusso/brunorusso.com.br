@@ -28,19 +28,6 @@ order: 1
 
 # Certificação Técnica
 
-## Platform Engineering
-- **Introduction to Platform Engineering** - Emitido em 04 Jan de 2026 - Não expira - [badge](https://www.virtualbadge.io/certificate-validator?credential=fcc6d1a0-6249-45be-a6f0-63e02e74d8b6)
-
-
-## Datadog
-- **Datadog Foundation** - Emitido em Jun de 2024 - Não expira
-- **Introduction to Observability** - Emitido em Jun de 2024 - Não expira
-  
-
-## DevOps Institute
-- **SRE Foundation℠ Certification** - Emitido em dez de 2023 · Expira em dez de 2025
-
-    
 ## AWS
 - **AWS Certified Machine Learning – Specialty** - Emitido em Set de 2025 · Expira em Set de 2028
 - **AWS Certified Solutions Architect – Professional** - Emitido em jun de 2022 · Expira em jun de 2028
@@ -55,6 +42,14 @@ order: 1
 - **AWS Certified Security – Specialty** - Emitido em mar de 2023 · Expira em mar de 2026
 - **AWS Cloud Financial Management for Builders** - Emitida em abr de 2021
 
+## Banco Itaú
+- **[M365 Copilot](https://www.credly.com/badges/d5e782d7-d7e7-438e-a2c1-9f9df82ff8d9/public_url)** - Emitida em 6/3/2026
+- **[Practitioner - D&A Foundation](https://www.credly.com/badges/9a3cff44-31fe-4a2d-b058-ff3f87c41ec8/public_url)** - Emitida em 5/12/2025
+- **[Practitioner - Leadership D&A](https://www.credly.com/badges/ae941ab6-311e-4dca-bd39-2001744af4cc/public_url)** - Emitida em 18/3/2025
+- **[Qualidade em Mudanças](https://www.credly.com/badges/04f2be9e-5e9f-44fd-b303-5ea45eee3c1f/public_url)** - Emitida em 1/7/2025
+- **[Arquitetura de Soluções Foundation](https://www.credly.com/badges/00406daf-f60f-41c2-865a-24ea78720421/public_url)** - Emitida em 20/8/2024
+- **[SRE - Trained](https://www.credly.com/badges/f0cfe070-6de2-4910-b6e0-fd1285666fb2/public_url)** - Emitida em 16/8/2024
+
 
 
 ## Coursera Course Certificates
@@ -62,6 +57,16 @@ order: 1
 - **Big Data Modeling and Management Systems** - Emitida em dez de 2017
 - **Introdução a Big Data** - Emitida em nov de 2016
 - **Segurança e Usabilidade** - Emitida em out de 2015
+
+## Datadog
+- **Datadog Foundation** - Emitido em Jun de 2024 - Não expira
+- **Introduction to Observability** - Emitido em Jun de 2024 - Não expira
+  
+## DevOps Institute
+- **SRE Foundation℠ Certification** - Emitido em dez de 2023 · Expira em dez de 2025
+
+## Platform Engineering
+- **Introduction to Platform Engineering** - Emitido em 04 Jan de 2026 - Não expira - [badge](https://www.virtualbadge.io/certificate-validator?credential=fcc6d1a0-6249-45be-a6f0-63e02e74d8b6)
 
 
 ## Escola Conquer
