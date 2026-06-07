@@ -9,8 +9,9 @@ math: true
 mermaid: true
 image: 
     path: https://www.brunorusso.com.br/assets/2026/KubeVirt-alternativa-vmware.png
-    alt: "A imagem utiliza uma paleta de cores dominada por azuis frios, luz branca brilhante e toques de roxo profundo, evocando velocidade, modernidade e estabilidade corporativa. No centro, um grande núcleo de energia estilizado e futurista brilha com a inscrição legível: KUBEVIRT v1.8.x. Streams de dados convergem para este núcleo de vários pontos, simbolizando a unificação de infraestrutura. Ao redor do núcleo, painéis de exibição holográfica estruturados flutuam, cada um rotulado claramente com os principais avanços técnicos e empresariais discutidos no texto: SEGURANÇA CORPORATIVA (RBAC Granular & TDX Confidencial), PERFORMANCE GenAI/HPC (Topologia PCIe NUMA Topology) e GOVERNANÇA DE DADOS (Backup Incremental CBT). Toda a montagem repousa sobre uma base octogonal robusta e brilhante, rotulada com KUBERNETES NATIVE FOUNDATION. O fundo apresenta um datacenter futurista abstrato e levemente desfocado, com fileiras de racks de servidores limpos em vidro e aço, sugerindo um ambiente empresarial premium. Estruturas de tijolos antigos e isolados, representando o modelo legado da VMware, são vistas no fundo distante sendo quebradas por feixes de luz provenientes do núcleo principal do KubeVirt, simbolizando a transição tecnológica. A composição é limpa, equilibrada e visualmente impactante, voltada para um público de líderes de tecnologia e CTOs."
+    alt: "A imagem utiliza uma paleta de cores dominada por azuis frios. No centro, um grande núcleo de energia estilizado e futurista brilha com a inscrição legível: KUBEVIRT v1.8.x."
 ---
+
 
 > **Sumário Executivo**: Impulsionado pelas mudanças globais e agressivas no modelo de licenciamento
 da VMware (Broadcom), o ecossistema de infraestrutura corporativa busca substitutos maduros. Esta
