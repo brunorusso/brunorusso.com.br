@@ -1,7 +1,7 @@
 ---
 title: "A Era da Virtualização Cloud-Native: Como o Ciclo KubeVirt v1.8.x Consolida a Alternativa ao VMware"
 author: "Bruno Russo"
-date: 2026-07-06 01:00 +0300
+date: 2026-06-07 01:00 +0300
 categories: ["k8s"]
 tags: ["OpenSource", "Kubernetes", "Transformação Digital", "Virtualização", "kubevirt"]
 ping: true
