@@ -1,0 +1,29 @@
+# Jekyll build output
+_site/
+
+# Jekyll metadata
+.jekyll-metadata
+
+# Ruby dependencies
+.bundle/
+vendor/
+Gemfile.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (for rollup, etc)
+node_modules/
+npm-debug.log
+
+# Misc
+.env
+.env.local
