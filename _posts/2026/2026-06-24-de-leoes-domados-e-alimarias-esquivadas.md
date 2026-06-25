@@ -2,8 +2,8 @@
 title: "De Leões Domados e Alimárias Esquivadas"
 author: "Bruno Russo"
 date: 2026-06-24 01:00 +0300
-categories: ["k8s"]
-tags: ["OpenSource", "Kubernetes", "Transformação Digital"]
+categories: ["Gestão"]
+tags: ["Conhecimento", "Transformação Digital"]
 ping: true
 math: true
 mermaid: true
