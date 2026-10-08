@@ -8,7 +8,7 @@ ping: true
 math: true
 mermaid: true
 image: 
-    path: https://www.brunorusso.com.br/assets/2026/slackware_logo.png
+    path: https://www.brunorusso.com.br/assets/2026/slackware_logo.jpeg
     alt: "A imagem é o Logo da distribuição Slackware."
 ---
 
