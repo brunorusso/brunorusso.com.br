@@ -27,3 +27,4 @@ npm-debug.log
 # Misc
 .env
 .env.local
+.github/
