@@ -9,7 +9,7 @@ math: true
 mermaid: true
 image: 
     path: https://www.brunorusso.com.br/assets/2026/news-slackbook.jpeg
-    alt: "Um livro técnico aberto intitulado 'SLACKBOOK' sobre uma mesa de trabalho de tecnologia, de onde emana uma forte luz digital azul com dados e códigos flutuantes. Acima do livro, o logotipo holográfico brilhante do Slackware Linux se materializa no ar, em meio a um ambiente com teclado mecânico, mouse e monitores ao fundo.
+    alt: "Um livro técnico aberto intitulado 'SLACKBOOK' sobre uma mesa de trabalho de tecnologia, de onde emana uma forte luz digital azul com dados e códigos flutuantes. Acima do livro, o logotipo holográfico brilhante do Slackware Linux se materializa no ar, em meio a um ambiente com teclado mecânico, mouse e monitores ao fundo."
 ---
 
 # Working on the New Version of the Slackbook: From XML to Markdown (and a Call for Contributors!)
