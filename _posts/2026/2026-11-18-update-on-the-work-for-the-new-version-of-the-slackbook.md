@@ -1,7 +1,7 @@
 ---
 title: "Update on the Work for the New Version of the Slackbook"
 author: "Bruno Russo"
-date: 2026-10-18 7:13 -0300
+date: 2026-11-18 7:13 -0300
 categories: ["Slackware"]
 tags: ["Open Source", "Linux", "Slackware", "Slackbook"]
 ping: true
