@@ -9,7 +9,7 @@ math: true
 mermaid: true
 image: 
     path: https://www.brunorusso.com.br/assets/2026/kubevirt-1-10.jpeg
-    alt: "Infográfico ilustrando a transição da virtualização tradicional para o ambiente Cloud-Native com o KubeVirt v1.10.0, destacando resiliência operacional, proteção de dados, performance e suporte a hardware avançado."
+    alt: "Infographic illustrating the transition from traditional virtualization to a cloud-native environment with KubeVirt v1.10.0, highlighting operational resilience, data protection, performance, and advanced hardware support."
 ---
 
 
