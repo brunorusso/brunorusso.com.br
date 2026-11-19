@@ -77,7 +77,7 @@ The numbers from the v1.10.0 release answer this question clearly. Far from bein
 
 This industrial backing ensures that the platform's roadmap remains directly aligned with the real-world security, performance, and stability demands of large data centers.
 
-![Comparative infographic of KubeVirt v1.10.0 (released November 18, 2026) featuring two side-by-side donut charts analyzing contributions. The first chart displays 'Corporate Contribution' by number of contributors: redhat.com at 84%, ibm.com at 7%, nvidia.com at 5%, and others at 4%. The second chart displays 'Evolution Volume' by number of improvements: redhat.com at 88%, ibm.com at 5%, nvidia.com at 4%, and others at 3%.](https://www.brunorusso.com.br/assets/2026/contribuicao-kubevirt-1-10.jpeg)
+![Comparative infographic of KubeVirt v1.10.0 (released November 18, 2026) Donut chart showing share by email domain for the KubeVirt v1.10.0 release (Nov 18, 2026) across 101 entries: redhat at 54.5% (55), gmail at 13.9% (14), github at 6.9% (7), ibm at 5.9% (6), nvidia at 4.0% (4), microsoft at 2.0% (2), and 13 other domains totaling 12.9% (13).](https://www.brunorusso.com.br/assets/2026/contribuicao-email-kubevirt-1-10.jpeg)
 
 ---
 
