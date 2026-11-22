@@ -9,7 +9,7 @@ math: true
 mermaid: true
 image: 
     path: https://www.brunorusso.com.br/assets/2026/PoC-PoV.jpeg
-    alt: "Light-toned isometric illustration comparing two technology evaluation scenarios under the title 'Beyond Cold Data: Real-World Technology Evaluation'. On the left, a clean structure inside a glass dome represents an isolated lab ("Greenfield Illusion"), displaying synthetic benchmark metrics. On the right, the same technology is connected to a complex web of cables, legacy systems, firewalls, and a hybrid network mesh ("Real-World Ecosystem / Brownfield"). In the center, a technology architect reviews a chart contrasting linear lab data with the fluctuations of production reality, symbolizing team confidence and operational reality."
+    alt: "Light-toned isometric illustration comparing two technology evaluation scenarios under the title Beyond Cold Data: Real-World Technology Evaluation. On the left, a clean structure inside a glass dome represents an isolated lab (Greenfield Illusion), displaying synthetic benchmark metrics. On the right, the same technology is connected to a complex web of cables, legacy systems, firewalls, and a hybrid network mesh (Real-World Ecosystem / Brownfield). In the center, a technology architect reviews a chart contrasting linear lab data with the fluctuations of production reality, symbolizing team confidence and operational reality."
 ---
 
 
